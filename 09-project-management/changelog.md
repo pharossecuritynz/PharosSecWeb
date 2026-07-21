@@ -10,6 +10,18 @@ review-cycle: update with every material change
 
 Reverse chronological. Records material changes to the repository, not every small edit.
 
+## 2026-07-22: Question 5 closed with an assumption, not an answer
+
+Oscar asked for question 5 to be answered. It asks for real facts (insurance bound, lawyer engaged, certification held, business and domain registered) that only Oscar has; inventing a specific status for any of them would be fabricating a fact with real liability consequences if it were wrong and acted on. Closed instead with an explicit, correctable assumption: all five default to "not yet in place" until Oscar names the specific ones that are actually done.
+
+**Revised:**
+- `00-business/decisions.md`: new entry recording this as an ASSUMPTION, not a CONFIRMED answer
+- `09-project-management/decisions-required.md`: question 5 restructured as a table of five defaulted statuses, each independently correctable
+- `09-project-management/risks.md`: insurance and Terms of Engagement rows marked as unverified assumptions, not confirmed facts
+- `09-project-management/current-sprint.md`: reframed so the sprint's definition of done does not depend on question 5 receiving a final answer
+
+**Consequence:** taking on a paying client, and everything in the agent catalogue gated on question 1's active-testing services, stays blocked until Oscar corrects specific items in question 5's table.
+
 ## 2026-07-22: Questions 1 to 4 answered
 
 **Revised:**

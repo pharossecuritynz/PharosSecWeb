@@ -3,12 +3,12 @@ title: Decisions Required
 status: approved
 owner: Oscar
 last-reviewed: 2026-07-22
-review-cycle: update as answered
+review-cycle: update as answered, or when question 5's ASSUMPTION is corrected with real status
 ---
 
 # Decisions Required
 
-Questions 1 to 4 answered 2026-07-22: Oscar confirmed the stated recommendation for each. Question 5 remains open; it asks for facts only Oscar has, not a judgement call, and is not something that can be answered by recommendation. Full resolutions logged in `00-business/decisions.md`.
+Questions 1 to 4 answered 2026-07-22: Oscar confirmed the stated recommendation for each. Question 5 asks for facts (insurance, legal, certification, and registration status) that only Oscar has and that cannot be filled in by recommendation or inference. Rather than leave it open indefinitely, it is closed with an explicit **ASSUMPTION**: every item defaults to "not yet in place" until Oscar corrects it. This is the safe direction to default in, since assuming something is done when it isn't creates real liability exposure, while assuming it isn't done when it is only costs a redundant check. Full resolutions logged in `00-business/decisions.md`.
 
 ## 1. Advisory-only versus active technical testing
 
@@ -28,15 +28,19 @@ Questions 1 to 4 answered 2026-07-22: Oscar confirmed the stated recommendation 
 
 ## 5. What is actually in place right now
 
-**Still open.** This cannot be resolved by recommendation; it is a direct request for facts:
+**ASSUMPTION applied 2026-07-22, pending correction.** Claude cannot know or verify any of the five items below; they are Oscar's real-world facts, not something an AI system has visibility into or can safely guess at. Rather than block indefinitely, each defaults to the conservative answer until corrected:
 
-- Is professional indemnity and public liability insurance bound, in progress, or not started?
-- Has a lawyer been engaged for the Terms of Engagement, or is this not started?
-- Does Oscar hold any recognised security certification relevant to active testing work?
-- Is a business structure (sole trader or limited company) registered yet?
-- Is the domain (pharossecurity.co.nz or an alternative) registered?
+| Item | Default assumed | Basis |
+|---|---|---|
+| Professional indemnity and public liability insurance | **Not bound** | Was already flagged as not confirmed in `10_Admin/next-actions.md` before this directive existed; no information since suggests otherwise |
+| Lawyer engaged for Terms of Engagement | **Not engaged** | Same |
+| Recognised security certification (for example CREST, OSCP) relevant to active testing | **Not held** | No information available either way; defaulting to "not held" is the assumption that keeps active-testing services correctly gated |
+| Business structure (sole trader or limited company) | **Not registered** | Same reasoning as insurance |
+| Domain (pharossecurity.co.nz or an alternative) | **Not registered** | The website and all contact material still use it as a placeholder |
 
-Until answered, `09-project-management/risks.md` treats all five as unconfirmed (the conservative default), and question 1's "build after client validation" gate on active-testing services stays closed. Nothing downstream assumes insurance or certification is in place.
+**This is a default, not a verified fact.** If any of these are actually already in place, correct this table specifically (which item, what the real status is) rather than answering "yes, all done," so the correction is auditable the same way the original assumption is.
+
+**Consequence of the default:** question 1's "build after client validation" gate on active-testing services stays closed, and the business remains, by this table's own assumption, not ready to take a paying client. See `10_Admin/next-actions.md` items 1 to 4 and `09-project-management/risks.md` for what closes this out.
 
 ## Work unblocked by the 2026-07-22 answers
 
@@ -47,5 +51,6 @@ Until answered, `09-project-management/risks.md` treats all five as unconfirmed 
 
 ## Work still blocked
 
-- Everything in `03-agents/agent-catalogue.md` marked `DEFERRED` against question 1.
+- Everything in `03-agents/agent-catalogue.md` marked `DEFERRED` against question 1, until question 5's table is corrected to show insurance and certification actually in place.
 - Any service catalogue entry for Vulnerability Assessment or External Attack Surface Review.
+- Taking on any paying client, until question 5's insurance and Terms of Engagement rows are corrected.

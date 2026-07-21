@@ -10,10 +10,12 @@ review-cycle: monthly, or when a risk materialises
 
 Risks to the Pharos Security business and build process itself, not client-facing security risk findings (which will get their own register once the service model is confirmed, per `03-agents/agent-catalogue.md`).
 
+**Note on question 5:** the insurance, legal, certification, and registration status below is an ASSUMPTION ("not yet in place"), not a verified fact, per `00-business/decisions.md` (2026-07-22). It stays Open until Oscar corrects it, not because no answer was given, but because the only honest answer available defaults to conservative.
+
 | Risk | Likelihood | Impact | Priority | Treatment | Owner | Status |
 |---|---|---|---|---|---|---|
-| Taking a paying client without professional indemnity insurance bound | Medium | High | Now | Confirm insurance status (question 5, `decisions-required.md`), bind before first paid engagement | Oscar | Open |
-| Taking a paying client without a lawyer-reviewed Terms of Engagement | Medium | High | Now | Engage a lawyer, treat as launch-blocking | Oscar | Open |
+| Taking a paying client without professional indemnity insurance bound | Medium (assumed not bound, unverified) | High | Now | Confirm real status, correcting the assumption in `decisions-required.md` question 5 if wrong; bind before first paid engagement | Oscar | Open |
+| Taking a paying client without a lawyer-reviewed Terms of Engagement | Medium (assumed not engaged, unverified) | High | Now | Same | Oscar | Open |
 | Expanding into active technical testing (vulnerability assessment, external attack surface scanning) without matching certification, insurance, and authorisation controls | Low, decision recorded | High if it happened | Now | Answered 2026-07-22: launch advisory-only, active-testing services stay deferred until question 5 confirms insurance and certification are actually in place, not merely asked about | Oscar | Managed |
 | Building a second, parallel documentation structure alongside the existing 91-file studio | Low, actively managed | Medium | Ongoing | `CLAUDE.md` and the current-state review both establish the rule against this; check before creating new files | Claude (process), Oscar (oversight) | Managed |
 | Attractive technical or agent-building work displacing essential sales, legal, and delivery work | Medium | Medium | Ongoing | Backlog scoring method in `backlog.md` | Oscar | Managed |

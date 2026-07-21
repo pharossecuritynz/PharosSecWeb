@@ -1,0 +1,6 @@
+{
+  "files": ["08_Website/pharos-security-site/app/layout.tsx"],
+  "insertBefore": "</body>",
+  "commentSyntax": "jsx",
+  "cspChecked": true
+}

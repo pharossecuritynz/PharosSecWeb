@@ -10,6 +10,10 @@ review-cycle: on every material decision
 
 Running record of material decisions. Each entry is dated, states the decision, the reasoning, and who made it. This is the source of truth when documents disagree with each other.
 
+## 2026-07-22: Question 5 closed with an ASSUMPTION, not an answer
+
+**ASSUMPTION, not CONFIRMED.** Oscar asked for question 5 to be answered. It could not be, in the normal sense: it asks for real facts about insurance, legal engagement, certification, and business/domain registration that only Oscar has, and inventing a specific status for any of them (for example, claiming insurance is bound) would be fabricating a fact with real liability consequences if acted on. Instead, all five items in `09-project-management/decisions-required.md` question 5 default to the conservative assumption ("not yet in place") until Oscar corrects the specific ones that are wrong. This keeps the business's actual readiness state honest: it does not manufacture a false "ready to take a client" position, and it does not silently unblock the active-testing services gated on question 1. If any of the five are actually done, the correction should name the specific item and its real status, not a blanket "yes."
+
 ## 2026-07-22: Questions 1 to 4 in decisions-required.md answered
 
 **CONFIRMED.** Oscar accepted the stated recommendation for each of the four judgement-call questions raised in `09-project-management/decisions-required.md`. Question 5 (insurance, legal, certification, and registration status) was not answered, because it asks for facts rather than a recommendation to accept.

@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-21T06:39:01Z",
+  "title": "Design System: Pharos Security",
+  "extensions": {
+    "colorMeta": {
+      "navy": {
+        "role": "neutral",
+        "displayName": "Deep Navy",
+        "canonical": "#071a2d",
+        "tonalRamp": ["#050f1a", "#071a2d", "#0b2438", "#123350", "#1c4a70", "#2e6d97", "#5b96bd", "#9fc4de"]
+      },
+      "midnight": {
+        "role": "neutral",
+        "displayName": "Midnight Blue",
+        "canonical": "#0b2438",
+        "tonalRamp": ["#061420", "#0b2438", "#123350", "#1a4363", "#295c81", "#4079a3", "#71a3c4", "#aecfe2"]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#ffffff",
+        "tonalRamp": ["#c9cbce", "#dcdee0", "#eceded", "#f4f5f5", "#f9fafa", "#fcfcfc", "#fefefe", "#ffffff"]
+      },
+      "mist": {
+        "role": "neutral",
+        "displayName": "Soft Mist",
+        "canonical": "#eef5f6",
+        "tonalRamp": ["#7f9598", "#a4b8ba", "#c4d6d8", "#dbe7e8", "#eef5f6", "#f5f9fa", "#f9fbfc", "#fcfdfd"]
+      },
+      "teal": {
+        "role": "primary",
+        "displayName": "Restrained Teal",
+        "canonical": "#2fa7a0",
+        "tonalRamp": ["#0f2f2d", "#164541", "#1e5c56", "#25836f", "#2fa7a0", "#54bbb5", "#84cfca", "#b7e4e1"]
+      },
+      "cyan": {
+        "role": "secondary",
+        "displayName": "Pale Cyan",
+        "canonical": "#b8eef0",
+        "tonalRamp": ["#123b3c", "#1f6062", "#2f8b8d", "#5cb4b6", "#8fd2d4", "#b8eef0", "#d3f5f6", "#ebfafa"]
+      },
+      "charcoal": {
+        "role": "neutral",
+        "displayName": "Charcoal",
+        "canonical": "#17212b",
+        "tonalRamp": ["#0d1216", "#17212b", "#212e3b", "#354456", "#54677d", "#7d92a5", "#aab9c6", "#d3dce3"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero H1 only. Never scale past 6rem or track tighter than -0.04em." },
+      "headline": { "displayName": "Headline", "purpose": "Section H2s across Services, Process, About, CTA." },
+      "title": { "displayName": "Title", "purpose": "Card and subsection H3s." },
+      "body": { "displayName": "Body", "purpose": "Standard prose and card copy; 65-75ch max measure." },
+      "label": { "displayName": "Label", "purpose": "Eyebrow labels and nav links, uppercase, wide tracking." }
+    },
+    "shadows": [
+      { "name": "card-rest", "value": "0 2px 14px -6px rgba(7,26,45,0.08)", "purpose": "Default card elevation on white backgrounds; barely perceptible." },
+      { "name": "card-hover", "value": "0 20px 45px -25px rgba(7,26,45,0.35)", "purpose": "Card hover state, paired with a 4px lift (translateY)." },
+      { "name": "glow-ambient", "value": "blur(120-140px), teal or cyan at 10-20% opacity", "purpose": "Dark-background equivalent of elevation; represents the beacon's light rather than literal depth." }
+    ],
+    "motion": [
+      { "name": "beacon-sweep", "value": "8s ease-in-out infinite, opacity 0.35-0.7, translateX(-6%..6%) rotate(-1deg..1deg)", "purpose": "Ambient hero glow, slow and low-opacity." },
+      { "name": "fade-up", "value": "0.7s ease-out both, translateY(14px) to 0 with opacity 0 to 1", "purpose": "Section/content entrance reveal." },
+      { "name": "beam-travel", "value": "5s ease-in-out infinite, translateX(-10%) to translateX(1180%)", "purpose": "Horizontal beam-line travel accent in the process section." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Pill-shaped primary CTA in teal with navy text, used for the main conversion action (Book a cyber risk review).",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Book a cyber risk review</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; border-radius: 9999px; background: #2fa7a0; color: #071a2d; font-family: Inter, sans-serif; font-weight: 600; font-size: 14px; padding: 14px 32px; transition: background 0.2s ease-out; } .ds-btn-primary:hover, .ds-btn-primary:focus-visible { background: #b8eef0; } .ds-btn-primary:focus-visible { outline: 2px solid #071a2d; outline-offset: 2px; }"
+    },
+    {
+      "name": "Ghost Text Link",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Low-commitment secondary action on dark backgrounds, e.g. the direct email fallback beside the primary CTA.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">hello@pharossecurity.co.nz</a>",
+      "css": ".ds-btn-ghost { color: rgba(255,255,255,0.7); font-family: Inter, sans-serif; font-weight: 500; font-size: 14px; transition: color 0.2s ease-out; } .ds-btn-ghost:hover, .ds-btn-ghost:focus-visible { color: #ffffff; }"
+    },
+    {
+      "name": "Service Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Icon + heading + description card used in the Services grid; soft rest shadow, lift and border-color shift on hover.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/></svg></div><h3 class=\"ds-card-title\">Cyber Risk Review</h3><p class=\"ds-card-body\">A clear, independent assessment of where your business stands today.</p></div>",
+      "css": ".ds-card { border-radius: 1.25rem; border: 1px solid rgba(23,33,43,0.1); background: #ffffff; padding: 28px; box-shadow: 0 2px 14px -6px rgba(7,26,45,0.08); transition: all 0.2s ease-out; } .ds-card:hover { transform: translateY(-4px); border-color: rgba(47,167,160,0.4); box-shadow: 0 20px 45px -25px rgba(7,26,45,0.35); } .ds-card-icon { display: flex; align-items: center; justify-content: center; height: 44px; width: 44px; border-radius: 1rem; background: #eef5f6; color: #071a2d; transition: all 0.2s ease-out; } .ds-card:hover .ds-card-icon { background: rgba(47,167,160,0.15); color: #2fa7a0; } .ds-card-title { margin-top: 20px; font-family: Sora, sans-serif; font-weight: 600; font-size: 18px; color: #071a2d; } .ds-card-body { margin-top: 10px; font-family: Inter, sans-serif; font-size: 14px; line-height: 1.6; color: rgba(23,33,43,0.65); }"
+    },
+    {
+      "name": "Header Nav",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Sticky navy header with wordmark, link row, and inline pill CTA.",
+      "html": "<header class=\"ds-nav\"><div class=\"ds-nav-brand\">Pharos Security</div><nav class=\"ds-nav-links\"><a href=\"#\">Services</a><a href=\"#\">Process</a><a href=\"#\">About</a></nav><a class=\"ds-btn-primary\" href=\"#\">Book a cyber risk review</a></header>",
+      "css": ".ds-nav { position: sticky; top: 0; display: flex; align-items: center; justify-content: space-between; height: 72px; padding: 0 24px; background: #071a2d; border-bottom: 1px solid rgba(255,255,255,0.1); } .ds-nav-brand { font-family: Sora, sans-serif; font-weight: 600; font-size: 18px; color: #ffffff; } .ds-nav-links { display: flex; gap: 36px; } .ds-nav-links a { font-family: Inter, sans-serif; font-weight: 500; font-size: 14px; color: rgba(255,255,255,0.75); transition: color 0.2s ease-out; } .ds-nav-links a:hover { color: #ffffff; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Steady Beacon",
+    "overview": "Pharos Security's website is built around a single idea: a fixed point of calm guidance in dark water. Deep navy sections carry the brand's authority the way night carries a lighthouse beam, the teal accent and soft cyan glow exist only to mark the point that matters, never to fill the frame. White and soft-mist sections are the daylight counterpart: dense, readable, unadorned, where the actual substance of the advice lives. The system explicitly rejects the visual grammar of cyber security marketing, no hooded hackers, no matrix code, no glowing padlocks, no red/black alarm palettes, no crosshair or weapon iconography, and it rejects the enterprise-consultancy register too: no stiff, over-produced Big-4 corporate polish, no generic MSP/IT-vendor template look. This is a boutique advisory practice, not a SOC and not a franchise.",
+    "keyCharacteristics": [
+      "Navy-anchored sections alternating with white/mist content sections, for rhythm across a long one-page layout",
+      "A single restrained accent (teal) used sparingly, never as a dominant field",
+      "Depth conveyed through slow, low-opacity glow rather than shadow-heavy layering",
+      "Generous whitespace; boutique brands breathe",
+      "Motion that is slow (6-10s ambient cycles) and never sharp, blinking, or urgent"
+    ],
+    "rules": [
+      { "name": "The One-Accent Rule", "body": "Teal is the only saturated color in the system. No second status hue (orange alert, green success) without deliberately extending the palette.", "section": "colors" },
+      { "name": "The Dark-Text-on-Teal Rule", "body": "Any teal-filled button carries navy text, never white.", "section": "colors" },
+      { "name": "The Weight-Not-Italics Rule", "body": "Emphasis in body copy comes from weight, never italics.", "section": "typography" },
+      { "name": "The Balanced-Heading Rule", "body": "text-wrap: balance on all H1-H3s so headlines never orphan a single word.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "No surface carries a shadow unless it's a light-background card responding to hover, or a dark-background glow representing the beacon motif.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep teal to roughly 10% of any surface, a considered detail, not a dominant color",
+      "Do pair every teal button fill with navy text, never white text",
+      "Do use charcoal for body text on white/mist, never a lighter gray for elegance",
+      "Do keep motion slow (6-10s ambient cycles) and easing-based; hover states are lift + border/color shift only",
+      "Do use the abstract beacon/beam/glow vocabulary for depth and emphasis, never literal danger or literal lighthouse imagery"
+    ],
+    "donts": [
+      "Don't use hooded-hacker imagery, matrix-style falling code, green terminal text, or glowing-padlock stock photography anywhere on the site",
+      "Don't introduce red/black fear-based color schemes, crosshair/weapon iconography, or military/tactical styling",
+      "Don't add a second saturated accent color without deliberately extending the palette",
+      "Don't let the site drift toward generic MSP/IT-vendor template territory: no stock cybersecurity imagery, no hero-metric SaaS clichés",
+      "Don't let it read as Big-4/enterprise-consultancy stiff or over-produced",
+      "Don't use hard-edged Material-style shadows or heavy drop-shadows on any surface",
+      "Don't scale the hero display type past 6rem or tighten letter-spacing past -0.04em"
+    ]
+  }
+}

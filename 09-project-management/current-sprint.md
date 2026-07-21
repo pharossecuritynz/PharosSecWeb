@@ -10,7 +10,7 @@ review-cycle: weekly, or when a sprint completes
 
 ## Sprint focus
 
-Questions 1 to 4 are answered. The sprint now shifts to the work they unblocked: the master plan, the folder migration, and continuing the agent catalogue, while question 5 (insurance, legal, certification, registration, domain) remains the one item genuinely blocking a paying client.
+Questions 1 to 4 are answered. Question 5 is closed with an explicit conservative assumption rather than a real answer, since only Oscar has the actual facts. The sprint now shifts to the work questions 1 to 4 unblocked: the master plan, the folder migration, and continuing the agent catalogue. Taking a paying client stays blocked until question 5's assumption is corrected with real status.
 
 ## In this sprint
 
@@ -26,7 +26,8 @@ Questions 1 to 4 are answered. The sprint now shifts to the work they unblocked:
 - [x] Founder name placeholders corrected to Oscar across 4 files
 - [x] Questions 1 to 4 answered and recorded (`00-business/decisions.md`, 2026-07-22)
 - [x] `04_Operating_Manual/discovery-call-process.md` and `client-intake-process.md` revised to the confirmed 15-minute call
-- [ ] Question 5 answered by Oscar (insurance, legal, certification, business registration, domain)
+- [x] Question 5 closed with an explicit ASSUMPTION (all five items default to "not yet in place") rather than left open indefinitely; genuinely cannot be answered without Oscar's real status, see `00-business/decisions.md`
+- [ ] Oscar corrects any of question 5's five assumed statuses that are wrong
 - [ ] `00-business/pharos-master-plan.md`
 - [ ] Execute folder migration to kebab-case taxonomy
 - [ ] Business Analyst Agent specification
@@ -43,8 +44,8 @@ Questions 1 to 4 are answered. The sprint now shifts to the work they unblocked:
 
 ## Definition of done for this sprint
 
-Question 5 answered, `00-business/pharos-master-plan.md` written, and the folder migration either executed or explicitly scheduled with Oscar's confirmation of timing.
+`00-business/pharos-master-plan.md` written, and the folder migration either executed or explicitly scheduled with Oscar's confirmation of timing. Question 5 does not need a final answer to close this sprint; it needs to stay visibly open rather than quietly forgotten.
 
 ## Next sprint (proposed)
 
-Once question 5 is answered: update the launch-readiness view in `09-project-management/risks.md` and `10_Admin/next-actions.md` to reflect real status, and if insurance and certification are confirmed, reopen question 1's active-testing gate as a new, separate decision rather than assuming it follows automatically. Continue the agent catalogue in sequencing order. Begin `08-research/market-research-plan.md`.
+Once Oscar corrects any wrong items in question 5's assumed status table: update the launch-readiness view in `09-project-management/risks.md` and `10_Admin/next-actions.md` to reflect real status, and if insurance and certification are confirmed, reopen question 1's active-testing gate as a new, separate decision rather than assuming it follows automatically. Continue the agent catalogue in sequencing order. Begin `08-research/market-research-plan.md`.
