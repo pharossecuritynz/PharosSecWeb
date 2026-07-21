@@ -2,13 +2,25 @@
 title: Changelog
 status: approved
 owner: Oscar
-last-reviewed: 2026-07-21
+last-reviewed: 2026-07-22
 review-cycle: update with every material change
 ---
 
 # Changelog
 
 Reverse chronological. Records material changes to the repository, not every small edit.
+
+## 2026-07-22: Questions 1 to 4 answered
+
+**Revised:**
+- `00-business/decisions.md`: new entry recording the four answers
+- `09-project-management/decisions-required.md`: questions 1 to 4 marked answered with resolution text; question 5 restated as the sole remaining open item
+- `09-project-management/backlog.md`, `current-sprint.md`, `risks.md`: updated to reflect what the answers unblocked (master plan, folder migration, agent catalogue continuation) and what stays gated on question 5
+- `04_Operating_Manual/discovery-call-process.md`: rewritten to the confirmed 15-minute structured call
+- `04_Operating_Manual/client-intake-process.md`: pre-call reminder wording updated to match
+- `02_Business_Strategy/risk-boundaries.md`, `03_Services/service-boundaries.md`: one-line reaffirmation added noting the advisory-only boundary was explicitly reconsidered and kept, not left over by default
+
+**Not done in this pass:** the folder migration itself, `00-business/pharos-master-plan.md`, and the remaining agent specifications. All three are now unblocked and queued, not yet executed.
 
 ## 2026-07-21: Master Build Directive reconciliation, phase 1
 

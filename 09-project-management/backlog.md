@@ -2,7 +2,7 @@
 title: Backlog
 status: approved
 owner: Oscar
-last-reviewed: 2026-07-21
+last-reviewed: 2026-07-22
 review-cycle: weekly
 ---
 
@@ -26,13 +26,15 @@ Score out of 7. Items scoring 5 or higher, or scoring anything on question 7, so
 
 | Item | Score | Required before first client | Notes |
 |---|---|---|---|
-| Answer the 5 questions in `decisions-required.md` | 7 | Yes | Blocks a large share of downstream work |
+| Answer question 5 in `decisions-required.md` (insurance, legal, certification, registration, domain status) | 7 | Yes | Only remaining open question; questions 1 to 4 answered 2026-07-22 |
 | Bind professional indemnity and public liability insurance | 6 | Yes | Was already the top item in `10_Admin/next-actions.md` before this directive |
 | Engage a lawyer for Terms of Engagement | 6 | Yes | Same |
 | Register business structure (sole trader or limited company) | 5 | Yes | Same |
 | Register domain and business email | 5 | Yes | Same |
-| Remove em dash from all 91 existing markdown files | 4 | No, but close | Mechanical, large, deferred from this pass deliberately; see current-state review |
 | Write Oscar's founder bio and background for the About section | 5 | No | Currently the largest credibility gap on the website |
+| Execute folder migration to kebab-case taxonomy | 5 | No | Unblocked 2026-07-22 (question 2 answered, question 1 kept the service model unchanged so no combined rewrite is needed). Large mechanical pass across roughly 94 files; sequence deliberately rather than rush |
+| `00-business/pharos-master-plan.md` | 5 | No | Unblocked 2026-07-22 (questions 1 to 3 answered) |
+| Remove em dash from all remaining existing markdown files (85 files as of 2026-07-21) | 4 | No, but close | Mechanical, large, deliberately not rushed; see current-state review |
 
 ## Next (score 3 to 4, not required before first client)
 
@@ -41,21 +43,19 @@ Score out of 7. Items scoring 5 or higher, or scoring anything on question 7, so
 | Business Analyst Agent specification | 4 | Supports Phase 3 commercial foundation |
 | Documentation Architect Agent specification | 3 | Supports keeping this repository consistent as it grows |
 | Website Strategy, Content, Design Reviewer, Technical Architect Agent specifications | 4 | Supports Phase 4, does not require rebuilding the live site |
-| Intake, discovery call, call notes, proposal workflow drafts | 4 | Supports Phase 5, most content already exists in `04_Operating_Manual/` and needs restructuring rather than fresh writing |
-| Market research plan (`08-research/market-research-plan.md`) | 4 | Not blocked by the two open questions, recommended as the next major piece of work |
+| Intake, discovery call, call notes, proposal workflow drafts | 4 | Supports Phase 5; discovery call content already rewritten to 15 minutes in `04_Operating_Manual/discovery-call-process.md`, needs restructuring into the formal workflow format rather than fresh writing |
+| Market research plan (`08-research/market-research-plan.md`) | 4 | Not blocked by anything, recommended as the next major piece of work |
 | Report Writer and Report Quality Agent specifications | 4 | Supports Phase 6, closest existing prompts already exist |
-| `00-business/pharos-master-plan.md` | 3 | Deferred until questions 1 to 3 land, to avoid rewriting it immediately after |
+| Digital Exposure Review service definition | 3 | Confirmed in scope 2026-07-22 (question 1), passive research only, sequenced after the master plan names it properly |
 
-## Later (score 1 to 2, or explicitly gated on question 1)
+## Later (gated on question 5, entirely)
 
 | Item | Score | Gated on |
 |---|---|---|
-| Digital Exposure Review service definition | 3 | Nothing (passive research only), but sequenced after the front-door service is confirmed |
-| External Exposure Analyst Agent (passive-only split) | 2 | Question 1 for the active-testing half |
-| Vulnerability Assessment and External Attack Surface Review service definitions | 2 | Question 1, entirely |
-| Security Scope and Authorisation Agent | 1 | Question 1, entirely |
-| Nmap Command Builder, Nmap Results Parser, External Exposure Evidence Collector | 1 | Question 1, entirely, and explicitly last in the directive's own tool priority order |
-| Folder migration to kebab-case taxonomy | 3 | Question 2 |
+| External Exposure Analyst Agent (active-testing half; passive half is not gated) | 2 | Question 5 answers feeding back into question 1's insurance/certification gate |
+| Vulnerability Assessment and External Attack Surface Review service definitions | 2 | Same |
+| Security Scope and Authorisation Agent | 1 | Same |
+| Nmap Command Builder, Nmap Results Parser, External Exposure Evidence Collector | 1 | Same, and explicitly last in the directive's own tool priority order |
 
 ## Do not build unless required
 

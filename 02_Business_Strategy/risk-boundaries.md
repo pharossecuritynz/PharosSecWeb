@@ -2,6 +2,8 @@
 
 This document defines what Pharos Security will and will not do, as a business-level policy. It exists to protect clients (from receiving advice or services beyond the practice's realistic capability) and to protect the business (from liability, scope creep, and reputational risk).
 
+**Reaffirmed 2026-07-22:** these boundaries, including no penetration testing and no vulnerability scanning of production systems, were explicitly reconsidered and kept as-is when answering question 1 in [../09-project-management/decisions-required.md](../09-project-management/decisions-required.md). See [../00-business/decisions.md](../00-business/decisions.md) for the reasoning.
+
 ## Hard boundaries — never offer or imply
 
 | Boundary | Why |

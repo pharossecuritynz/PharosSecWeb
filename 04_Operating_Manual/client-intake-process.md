@@ -28,7 +28,7 @@ Offer 2–3 concrete time slots within the next 3–5 business days. Use a booki
 ### 4. Send pre-call information
 At least 24 hours before the call, send:
 - Confirmation of time and video link (or phone number)
-- A one-line reminder of what to expect ("a relaxed 20–30 minute conversation about your business and where cyber security fits in — no pressure, no obligation")
+- A one-line reminder of what to expect ("a focused 15-minute conversation about your business and where cyber security fits in, no pressure, no obligation")
 - Optionally, a link to the relevant service page if they mentioned a specific interest
 
 ### 5. Log the enquiry

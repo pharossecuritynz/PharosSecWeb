@@ -2,13 +2,24 @@
 title: Decision Log
 status: approved
 owner: Oscar
-last-reviewed: 2026-07-21
+last-reviewed: 2026-07-22
 review-cycle: on every material decision
 ---
 
 # Decision Log
 
 Running record of material decisions. Each entry is dated, states the decision, the reasoning, and who made it. This is the source of truth when documents disagree with each other.
+
+## 2026-07-22: Questions 1 to 4 in decisions-required.md answered
+
+**CONFIRMED.** Oscar accepted the stated recommendation for each of the four judgement-call questions raised in `09-project-management/decisions-required.md`. Question 5 (insurance, legal, certification, and registration status) was not answered, because it asks for facts rather than a recommendation to accept.
+
+1. **Advisory-only launch, not active technical testing.** Vulnerability Assessment, External Attack Surface Review, and their supporting agents and tooling stay in "build after client validation," gated on question 5's answers. `02_Business_Strategy/risk-boundaries.md` and `03_Services/service-boundaries.md` are unchanged, since this keeps the existing boundary rather than reversing it. Digital Exposure Review (passive research only) is not gated by this.
+2. **Migrate to the kebab-case folder taxonomy.** Confirmed, but not yet executed. No longer needs to wait on a service catalogue rewrite (question 1 kept the status quo), so it is queued as a standalone task in `09-project-management/backlog.md` rather than run immediately.
+3. **Keep "Cyber Risk Review" as the front-door service name.** Not renamed to "Security Posture Review." Digital Exposure Review added as a second entry point.
+4. **Free discovery call: 15 minutes, structured.** `04_Operating_Manual/discovery-call-process.md` and `04_Operating_Manual/client-intake-process.md` revised to match.
+
+See `09-project-management/decisions-required.md` for the full resolution text and what each answer unblocks.
 
 ## 2026-07-21: Founder identified as Oscar
 

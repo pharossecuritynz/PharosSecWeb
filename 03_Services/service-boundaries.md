@@ -2,6 +2,8 @@
 
 This is the practical, service-level companion to [../02_Business_Strategy/risk-boundaries.md](../02_Business_Strategy/risk-boundaries.md). Use it as a quick reference during scoping calls and proposal writing.
 
+**Reaffirmed 2026-07-22:** the advisory-only boundary below (no penetration testing, no vulnerability scanning of production systems) was explicitly reconsidered and kept as-is when answering question 1 in [../09-project-management/decisions-required.md](../09-project-management/decisions-required.md). See [../00-business/decisions.md](../00-business/decisions.md) for the reasoning.
+
 ## What Pharos Security does
 
 | Category | Included |
