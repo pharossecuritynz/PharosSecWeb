@@ -41,3 +41,4 @@ tmp/
 *.swp
 *.swo
 .impeccable/config.local.json
+.impeccable/live/server.json
