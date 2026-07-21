@@ -1,7 +1,7 @@
 import { CheckIcon } from "./icons";
 
 const trustPoints = [
-  "Independent — no products sold",
+  "Independent, no products sold",
   "Built exclusively for NZ SMEs",
   "Plain-English, always",
 ];
@@ -57,7 +57,7 @@ export default function Hero() {
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl">
             Pharos Security helps SMEs understand cyber risk, strengthen
             practical controls, prepare for incidents, and build safer
-            everyday habits &mdash; without jargon or scare tactics.
+            everyday habits, without jargon or scare tactics.
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">

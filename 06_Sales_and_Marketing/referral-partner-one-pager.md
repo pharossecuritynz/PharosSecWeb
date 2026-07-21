@@ -38,9 +38,9 @@ We're not a managed security provider, penetration testing firm, or incident res
 
 ### Let's talk
 
-If you work with New Zealand SMEs and think there's a fit, I'd welcome a short conversation — no pressure, just an introduction.
+If you work with New Zealand SMEs and think there's a fit, I'd welcome a short conversation, no pressure, just an introduction.
 
-[Founder Name]
+Oscar
 Pharos Security
 [email] · [phone] · [website]
 

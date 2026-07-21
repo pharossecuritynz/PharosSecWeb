@@ -72,7 +72,7 @@ export default function Services() {
             Practical support, matched to how SMEs actually operate.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-charcoal/70">
-            Every engagement is scoped to your size, budget, and risk &mdash;
+            Every engagement is scoped to your size, budget, and risk,
             not a one-size-fits-all enterprise framework.
           </p>
         </div>
