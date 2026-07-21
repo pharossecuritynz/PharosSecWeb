@@ -16,7 +16,7 @@ export default function CTA() {
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/65">
           Start with a straightforward conversation about your business and
-          the risks that matter most &mdash; no obligation, no jargon.
+          the risks that matter most, no obligation, no jargon.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">

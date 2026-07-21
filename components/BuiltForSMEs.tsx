@@ -17,7 +17,7 @@ const reasons = [
   {
     title: "Independent, no products to sell",
     description:
-      "Advice isn't tied to any software or vendor — only to what genuinely reduces your risk.",
+      "Advice isn't tied to any software or vendor: only to what genuinely reduces your risk.",
   },
 ];
 

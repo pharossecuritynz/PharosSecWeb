@@ -2,7 +2,7 @@ const principles = [
   "Independent advice, free from vendor or product bias",
   "Plain-language guidance, explained without jargon",
   "Recommendations sized to your business and budget",
-  "A calm, practical approach — never scare tactics",
+  "A calm, practical approach, never scare tactics",
 ];
 
 export default function About() {
@@ -25,7 +25,7 @@ export default function About() {
               </p>
               <p>
                 We work directly with owners and leadership teams to
-                translate cyber risk into clear, achievable action &mdash;
+                translate cyber risk into clear, achievable action,
                 grounded in how your business actually runs, not
                 theoretical best practice.
               </p>

@@ -15,7 +15,7 @@ const steps = [
     number: "03",
     title: "Improve",
     description:
-      "We help you put practical, sustainable controls in place — matched to your team and tools.",
+      "We help you put practical, sustainable controls in place, matched to your team and tools.",
   },
   {
     number: "04",
@@ -37,7 +37,7 @@ export default function Process() {
             A steady, four-step path forward.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-white/65">
-            Every engagement follows the same considered process &mdash;
+            Every engagement follows the same considered process:
             calm, methodical, and grounded in what matters for your business.
           </p>
         </div>
