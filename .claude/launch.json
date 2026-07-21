@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pharos-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "08_Website/pharos-security-site", "run", "dev"],
+      "port": 3000
+    }
+  ]
+}
