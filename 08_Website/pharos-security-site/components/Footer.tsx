@@ -32,17 +32,17 @@ export default function Footer() {
                 Pharos Security
               </span>
             </Link>
-            <p className="mt-4 text-sm leading-relaxed text-white/50">
+            <p className="mt-4 text-sm leading-relaxed text-white/60">
               Independent cyber security advisory for New Zealand small and
               medium businesses.
             </p>
-            <p className="mt-4 font-heading text-xs font-semibold uppercase tracking-wide text-white/30">
+            <p className="mt-4 text-sm text-white/55">
               Clear guidance. Safer business.
             </p>
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-white/35">
+            <p className="text-xs font-semibold uppercase tracking-wide text-white/60">
               Navigate
             </p>
             <nav className="mt-4 flex flex-col gap-3">
@@ -59,7 +59,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-white/35">
+            <p className="text-xs font-semibold uppercase tracking-wide text-white/60">
               Services
             </p>
             <ul className="mt-4 flex flex-col gap-3">
@@ -76,8 +76,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="text-sm leading-relaxed text-white/50">
-            <p className="text-xs font-semibold uppercase tracking-wide text-white/35">
+          <div className="text-sm leading-relaxed text-white/60">
+            <p className="text-xs font-semibold uppercase tracking-wide text-white/60">
               Get in touch
             </p>
             <a
@@ -96,7 +96,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-8 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-8 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} Pharos Security. All rights reserved.</p>
           <p>Boutique cyber security advisory, based in New Zealand.</p>
         </div>

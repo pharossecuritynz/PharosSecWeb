@@ -75,7 +75,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <div className="mt-10 flex flex-col gap-x-6 gap-y-2.5 text-sm text-white/45 sm:flex-row sm:flex-wrap sm:items-center">
+          <div className="mt-10 flex flex-col gap-x-6 gap-y-2.5 text-sm text-white/60 sm:flex-row sm:flex-wrap sm:items-center">
             {trustPoints.map((point) => (
               <span key={point} className="inline-flex items-center gap-2">
                 <CheckIcon className="h-4 w-4 flex-none text-teal" />

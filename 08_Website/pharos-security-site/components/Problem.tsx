@@ -21,10 +21,7 @@ export default function Problem() {
     <section className="bg-mist py-24 md:py-32">
       <div className="container-px mx-auto max-w-6xl">
         <div className="max-w-2xl">
-          <span className="text-sm font-semibold uppercase tracking-wide text-teal">
-            Why Pharos
-          </span>
-          <h2 className="mt-4 font-heading text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+          <h2 className="font-heading text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
             Cyber security shouldn&apos;t feel overwhelming.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-charcoal/70">
