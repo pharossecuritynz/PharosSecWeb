@@ -40,7 +40,7 @@ export default function Header() {
           href="#contact"
           className="hidden rounded-full bg-teal px-5 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan md:inline-block"
         >
-          Book a cyber risk review
+          Start a conversation
         </a>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -48,7 +48,7 @@ export default function Header() {
             href="#contact"
             className="rounded-full bg-teal px-4 py-2 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
           >
-            Book a review
+            Let&apos;s talk
           </a>
           <button
             type="button"

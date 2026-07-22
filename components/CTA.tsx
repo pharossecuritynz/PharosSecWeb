@@ -24,7 +24,7 @@ export default function CTA() {
             href="mailto:hello@pharossecurity.co.nz"
             className="inline-flex items-center justify-center rounded-full bg-teal px-8 py-3.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
           >
-            Book a cyber risk review
+            Start a conversation
           </a>
           <a
             href="mailto:hello@pharossecurity.co.nz"
