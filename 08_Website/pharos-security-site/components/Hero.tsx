@@ -65,7 +65,7 @@ export default function Hero() {
               href="#contact"
               className="inline-flex items-center justify-center rounded-full bg-teal px-7 py-3.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
             >
-              Book a cyber risk review
+              Start a conversation
             </a>
             <a
               href="#services"
