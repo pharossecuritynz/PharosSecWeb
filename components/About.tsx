@@ -11,10 +11,7 @@ export default function About() {
       <div className="container-px relative z-10 mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
           <div>
-            <span className="text-sm font-semibold uppercase tracking-wide text-cyan">
-              About Pharos Security
-            </span>
-            <h2 className="mt-4 font-heading text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="font-heading text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               A steady point of reference for New Zealand SMEs.
             </h2>
             <div className="mt-6 space-y-4 text-lg leading-relaxed text-white/65">
@@ -37,23 +34,29 @@ export default function About() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-9 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.5)] backdrop-blur-sm sm:p-10">
-            <h3 className="font-heading text-lg font-semibold text-white">
-              How we work
-            </h3>
-            <ul className="mt-7 space-y-5">
-              {principles.map((principle) => (
-                <li key={principle} className="flex gap-4">
-                  <span
-                    aria-hidden="true"
-                    className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-teal"
-                  />
-                  <span className="text-base leading-relaxed text-white/75">
-                    {principle}
-                  </span>
-                </li>
-              ))}
-            </ul>
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -inset-10 rounded-full bg-teal/10 blur-[100px]"
+            />
+            <div className="relative rounded-3xl border border-white/10 bg-white/[0.04] p-9 sm:p-10">
+              <h3 className="font-heading text-lg font-semibold text-white">
+                How we work
+              </h3>
+              <ul className="mt-7 space-y-5">
+                {principles.map((principle) => (
+                  <li key={principle} className="flex gap-4">
+                    <span
+                      aria-hidden="true"
+                      className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-teal"
+                    />
+                    <span className="text-base leading-relaxed text-white/75">
+                      {principle}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>

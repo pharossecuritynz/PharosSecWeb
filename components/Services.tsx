@@ -83,9 +83,12 @@ export default function Services() {
     <section id="services" className="bg-white py-24 md:py-32">
       <div className="container-px mx-auto max-w-6xl">
         <div className="max-w-2xl">
-          <span className="text-sm font-semibold uppercase tracking-wide text-teal">
-            Services
-          </span>
+          <div className="flex items-center gap-2.5">
+            <span aria-hidden="true" className="h-px w-6 bg-teal" />
+            <span className="text-xs font-semibold uppercase tracking-wide text-navy">
+              Services
+            </span>
+          </div>
           <h2 className="mt-4 font-heading text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
             Practical support, matched to how SMEs actually operate.
           </h2>
@@ -119,7 +122,7 @@ export default function Services() {
         </div>
 
         <div className="mt-16">
-          <span className="text-sm font-semibold uppercase tracking-wide text-charcoal/40">
+          <span className="text-xs font-semibold uppercase tracking-wide text-charcoal/70">
             Also part of an engagement
           </span>
           <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3">
@@ -140,7 +143,7 @@ export default function Services() {
                           <h5 className="text-sm font-semibold text-navy">
                             {service.title}
                           </h5>
-                          <p className="mt-1 text-sm leading-relaxed text-charcoal/60">
+                          <p className="mt-1 text-sm leading-relaxed text-charcoal/70">
                             {service.description}
                           </p>
                         </div>

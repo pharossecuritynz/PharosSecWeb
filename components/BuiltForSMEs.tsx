@@ -27,10 +27,7 @@ export default function BuiltForSMEs() {
       <div className="container-px mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-center">
           <div>
-            <span className="text-sm font-semibold uppercase tracking-wide text-teal">
-              Built for SMEs
-            </span>
-            <h2 className="mt-4 font-heading text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+            <h2 className="font-heading text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
               Built for how New Zealand SMEs actually operate.
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-charcoal/70">
