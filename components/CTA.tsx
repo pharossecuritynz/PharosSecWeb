@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ConversationStarters from "./ConversationStarters";
 import LogoMark from "./LogoMark";
 
@@ -21,12 +22,12 @@ export default function CTA() {
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <a
-            href="mailto:pharos.security.nz@gmail.com?subject=Cyber%20security%20enquiry"
+          <Link
+            href="/book-a-conversation"
             className="inline-flex items-center justify-center rounded-full bg-teal px-8 py-3.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
           >
             Book a 15-minute conversation
-          </a>
+          </Link>
           <a
             href="mailto:pharos.security.nz@gmail.com?subject=Cyber%20security%20enquiry"
             className="text-sm font-medium text-white/70 transition-colors hover:text-white"

@@ -36,20 +36,20 @@ export default function Header() {
           ))}
         </nav>
 
-        <a
-          href="#contact"
+        <Link
+          href="/book-a-conversation"
           className="hidden rounded-full bg-teal px-5 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan md:inline-block"
         >
           Book a 15-minute conversation
-        </a>
+        </Link>
 
         <div className="flex items-center gap-2 md:hidden">
-          <a
-            href="#contact"
+          <Link
+            href="/book-a-conversation"
             className="rounded-full bg-teal px-4 py-2 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
           >
             Let&apos;s talk
-          </a>
+          </Link>
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}

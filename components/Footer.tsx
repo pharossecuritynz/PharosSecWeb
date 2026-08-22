@@ -91,12 +91,12 @@ export default function Footer() {
               pharos.security.nz@gmail.com
             </a>
             <p className="mt-2">New Zealand</p>
-            <a
-              href="#contact"
+            <Link
+              href="/book-a-conversation"
               className="mt-5 inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/30 hover:bg-white/5"
             >
               Book a 15-minute conversation
-            </a>
+            </Link>
           </div>
         </div>
 

@@ -82,12 +82,12 @@ export default function ITProviderSecurityAssurancePage() {
                 checked, not that the provider is failing.
               </p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-                <a
-                  href="mailto:pharos.security.nz@gmail.com?subject=IT%20Provider%20Security%20Assurance%20enquiry"
+                <Link
+                  href="/book-a-conversation"
                   className="inline-flex items-center justify-center rounded-full bg-teal px-7 py-3.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
                 >
                   Book a 15-minute conversation
-                </a>
+                </Link>
                 <Link
                   href="/#services"
                   className="inline-flex items-center justify-center rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/5"
@@ -203,12 +203,12 @@ export default function ITProviderSecurityAssurancePage() {
               is the right starting point for your business.
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a
-                href="mailto:pharos.security.nz@gmail.com?subject=IT%20Provider%20Security%20Assurance%20enquiry"
+              <Link
+                href="/book-a-conversation"
                 className="inline-flex items-center justify-center rounded-full bg-teal px-8 py-3.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
               >
                 Book a 15-minute conversation
-              </a>
+              </Link>
               <a
                 href="mailto:pharos.security.nz@gmail.com?subject=IT%20Provider%20Security%20Assurance%20enquiry"
                 className="text-sm font-medium text-white/70 transition-colors hover:text-white"
