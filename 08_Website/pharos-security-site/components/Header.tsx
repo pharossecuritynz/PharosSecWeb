@@ -5,10 +5,10 @@ import Link from "next/link";
 import LogoMark from "./LogoMark";
 
 const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#process", label: "Process" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#services", label: "Services" },
+  { href: "/#process", label: "Process" },
+  { href: "/#about", label: "About" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Header() {
@@ -17,7 +17,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-navy">
       <div className="container-px mx-auto flex h-18 max-w-6xl items-center justify-between py-4">
-        <Link href="#top" className="flex items-center gap-2.5 text-white">
+        <Link href="/" className="flex items-center gap-2.5 text-white">
           <LogoMark className="h-8 w-auto" />
           <span className="font-heading text-lg font-semibold tracking-tight">
             Pharos Security
@@ -26,13 +26,13 @@ export default function Header() {
 
         <nav className="hidden items-center gap-9 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm font-medium text-white/75 transition-colors hover:text-white"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -82,14 +82,14 @@ export default function Header() {
         <div className="border-t border-white/10 bg-navy md:hidden">
           <nav className="container-px mx-auto flex max-w-6xl flex-col gap-1 py-3">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
                 className="rounded-lg px-3 py-3 text-sm font-medium text-white/80 transition-colors hover:bg-white/5 hover:text-white"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>

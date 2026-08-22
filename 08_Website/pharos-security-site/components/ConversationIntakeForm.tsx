@@ -2,14 +2,33 @@
 
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import { CheckIcon } from "./icons";
 
 const inputClass =
   "mt-2 w-full rounded-xl border border-charcoal/15 bg-white px-4 py-3 text-sm text-charcoal transition-colors focus:border-teal focus:outline-none";
 const labelClass = "text-sm font-semibold text-navy";
 
+const starterQuestions = [
+  "We had a close call (a suspicious email, a strange login) and want to check we're actually okay.",
+  "We're getting a new IT provider, or leaving one, and want an independent baseline first.",
+  "We've been quoted for security software and aren't sure we actually need it.",
+  "A board member or manager has raised concern and we need a straight answer.",
+  "We're a small team. Do we really need to worry about this yet?",
+  "We're growing quickly and our security hasn't kept up.",
+  "Nothing's gone wrong. We just want reassurance before it does.",
+];
+
 export default function ConversationIntakeForm() {
   const router = useRouter();
   const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
+  const [question, setQuestion] = useState("");
+  const [showStarters, setShowStarters] = useState(false);
+  const [addedStarters, setAddedStarters] = useState<Set<string>>(new Set());
+
+  const addStarter = (starter: string) => {
+    setQuestion((prev) => (prev.trim() ? `${prev}\n${starter}` : starter));
+    setAddedStarters((prev) => new Set(prev).add(starter));
+  };
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -118,7 +137,47 @@ export default function ConversationIntakeForm() {
         <label htmlFor="question" className={labelClass}>
           What do you most want to know from this conversation?
         </label>
-        <textarea id="question" name="question" rows={4} className={inputClass} />
+        <textarea
+          id="question"
+          name="question"
+          rows={4}
+          value={question}
+          onChange={(event) => setQuestion(event.target.value)}
+          className={inputClass}
+        />
+
+        <button
+          type="button"
+          onClick={() => setShowStarters((prev) => !prev)}
+          className="mt-2 text-sm font-medium text-navy underline underline-offset-2 transition-colors hover:text-teal"
+        >
+          {showStarters ? "Hide example questions" : "Not sure what to ask? See example questions"}
+        </button>
+
+        {showStarters && (
+          <div className="mt-3 space-y-2">
+            {starterQuestions.map((starter) => {
+              const added = addedStarters.has(starter);
+              return (
+                <button
+                  key={starter}
+                  type="button"
+                  onClick={() => !added && addStarter(starter)}
+                  disabled={added}
+                  className="flex w-full items-start gap-2.5 rounded-xl border border-charcoal/10 p-3.5 text-left text-sm leading-relaxed text-charcoal/80 transition-colors hover:border-teal/40 hover:bg-mist disabled:cursor-default disabled:border-teal/30 disabled:bg-mist/60 disabled:text-charcoal/50 disabled:hover:bg-mist/60"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="mt-0.5 flex h-4 w-4 flex-none items-center justify-center rounded-full border border-charcoal/25"
+                  >
+                    {added && <CheckIcon className="h-2.5 w-2.5 text-teal" />}
+                  </span>
+                  {starter}
+                </button>
+              );
+            })}
+          </div>
+        )}
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
