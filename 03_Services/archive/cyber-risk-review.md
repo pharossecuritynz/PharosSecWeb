@@ -1,3 +1,5 @@
+> **Superseded 2026-08-22.** Renamed and reframed as [Independent Security Review](../independent-security-review.md) under the Pharos v2 directive. Retained here for reference; see `00-business/decisions.md`. Do not use this document for new client-facing material.
+
 # Cyber Risk Review
 
 ## Purpose

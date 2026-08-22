@@ -12,22 +12,22 @@ export default function CTA() {
         <BeaconMark className="mx-auto h-11 w-11 text-teal" />
 
         <h2 className="mt-8 font-heading text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
-          Ready to understand where you stand?
+          Understand where you stand.
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/65">
-          Start with a straightforward conversation about your business and
-          the risks that matter most, no obligation, no jargon.
+          A free, 15-minute conversation about your business and the risks
+          that matter most, no obligation, no jargon, no sales pitch.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
-            href="mailto:hello@pharossecurity.co.nz"
+            href="mailto:hello@pharossecurity.co.nz?subject=Cyber%20security%20enquiry"
             className="inline-flex items-center justify-center rounded-full bg-teal px-8 py-3.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
           >
-            Start a conversation
+            Book a 15-minute conversation
           </a>
           <a
-            href="mailto:hello@pharossecurity.co.nz"
+            href="mailto:hello@pharossecurity.co.nz?subject=Cyber%20security%20enquiry"
             className="text-sm font-medium text-white/70 transition-colors hover:text-white"
           >
             hello@pharossecurity.co.nz

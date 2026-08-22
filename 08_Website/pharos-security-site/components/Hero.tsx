@@ -2,8 +2,8 @@ import { CheckIcon } from "./icons";
 
 const trustPoints = [
   "Independent, no products sold",
-  "Built exclusively for NZ SMEs",
-  "Plain-English, always",
+  "Works with your existing IT provider",
+  "Clear scope, fixed pricing",
 ];
 
 export default function Hero() {
@@ -47,17 +47,18 @@ export default function Hero() {
       <div className="container-px relative z-10 mx-auto max-w-6xl">
         <div className="max-w-3xl animate-fade-up">
           <span className="inline-flex items-center rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-xs font-medium tracking-wide text-cyan uppercase">
-            Cyber security advisory for New Zealand SMEs
+            Independent security advisory for New Zealand SMEs
           </span>
 
           <h1 className="mt-7 font-heading text-4xl font-semibold leading-[1.12] tracking-tight text-white sm:text-5xl md:text-6xl">
-            Clear cyber security guidance for New Zealand businesses.
+            You have IT support. But who checks the security?
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl">
-            Pharos Security helps SMEs understand cyber risk, strengthen
-            practical controls, prepare for incidents, and build safer
-            everyday habits, without jargon or scare tactics.
+            Your IT provider manages your technology. Pharos Security
+            independently checks whether your security is actually good
+            enough, and gives you a clear, prioritised plan if it isn&apos;t.
+            No jargon, no products to sell.
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -65,13 +66,13 @@ export default function Hero() {
               href="#contact"
               className="inline-flex items-center justify-center rounded-full bg-teal px-7 py-3.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
             >
-              Start a conversation
+              Book a 15-minute conversation
             </a>
             <a
               href="#services"
               className="inline-flex items-center justify-center rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/5"
             >
-              View services
+              See how the review works
             </a>
           </div>
 

@@ -1,3 +1,5 @@
+> **Superseded 2026-08-22.** Broadened into [Incident Readiness](../incident-readiness.md) (the workshop is now one deliverable within a family, not the whole service) under the Pharos v2 directive. Retained here for reference; see `00-business/decisions.md`. Do not use this document for new client-facing material.
+
 # Incident Readiness Workshop
 
 ## Purpose

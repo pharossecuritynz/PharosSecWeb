@@ -1,3 +1,5 @@
+> **Superseded 2026-08-22.** Renamed as [Security Adviser](../security-adviser.md) under the Pharos v2 directive. Retained here for reference; see `00-business/decisions.md`. Do not use this document for new client-facing material.
+
 # Ongoing Cyber Advisor Support
 
 ## Purpose

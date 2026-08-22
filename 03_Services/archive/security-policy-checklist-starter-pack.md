@@ -1,3 +1,5 @@
+> **Superseded 2026-08-22.** No longer sold as a standalone flagship listing; offered as an add-on within [Secure Foundations](../secure-foundations.md) or on request. Retained here for reference; see `00-business/decisions.md`.
+
 # Security Policy and Checklist Starter Pack
 
 ## Purpose

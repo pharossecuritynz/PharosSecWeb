@@ -4,6 +4,8 @@ This document defines what Pharos Security will and will not do, as a business-l
 
 **Reaffirmed 2026-07-22:** these boundaries, including no penetration testing and no vulnerability scanning of production systems, were explicitly reconsidered and kept as-is when answering question 1 in [../09-project-management/decisions-required.md](../09-project-management/decisions-required.md). See [../00-business/decisions.md](../00-business/decisions.md) for the reasoning.
 
+**Reaffirmed again 2026-08-22** under the Pharos v2 directive: the advisory-only model is the point, not a temporary limitation. See [../00-business/decisions.md](../00-business/decisions.md).
+
 ## Hard boundaries — never offer or imply
 
 | Boundary | Why |
@@ -27,7 +29,7 @@ If a client contacts Pharos Security **during** a live incident:
 - Can provide calm, plain-English guidance on immediate first steps (e.g. isolate affected systems, notify the bank if financial fraud is involved, preserve evidence, who to notify)
 - Can help the client understand next steps and coordinate who they need (forensic IR firm, lawyer, insurer, Police / CERT NZ)
 - **Cannot** lead technical remediation, forensic investigation, or act as the client's incident response provider
-- Should direct urgent live-incident cases to **CERT NZ** (cert.govt.nz) and, where financial fraud is involved, the client's bank and the NZ Police (105, or 111 if urgent)
+- Should direct urgent live-incident cases to the **NCSC** (ncsc.govt.nz/report, 0800 114 115) and, where financial fraud is involved, the client's bank and the NZ Police (105, or 111 if urgent). CERT NZ fully merged into the NCSC; incidents are now reported through the NCSC, not a separate CERT NZ channel.
 
 This is why **Incident Readiness** (preparation, planning, tabletop exercises) is a core service, while **incident response** (live technical handling) is explicitly out of scope.
 

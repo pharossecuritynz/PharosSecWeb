@@ -1,3 +1,5 @@
+> **Superseded 2026-08-22.** No longer sold as a standalone flagship listing; its scope is now a module within [Independent Security Review](../independent-security-review.md) and can still be scoped as a narrow standalone engagement on request. Retained here for reference; see `00-business/decisions.md`.
+
 # Email and Phishing Readiness
 
 ## Purpose

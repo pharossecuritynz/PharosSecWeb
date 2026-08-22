@@ -1,10 +1,10 @@
+import Link from "next/link";
 import {
   ChecklistIcon,
   CompassArrowIcon,
   CompassIcon,
   GridIcon,
   LifebuoyIcon,
-  MailIcon,
   MapIcon,
   PeopleIcon,
 } from "./icons";
@@ -12,67 +12,62 @@ import {
 const featured = [
   {
     icon: CompassIcon,
-    title: "Cyber Risk Review",
+    title: "Independent Security Review",
     description:
-      "A clear, independent assessment of where your business stands today and the risks that matter most for your operation.",
+      "An independent review of the security controls protecting your business, followed by a clear, prioritised plan for improvement.",
   },
   {
-    icon: GridIcon,
-    title: "Microsoft 365 Security Basics Review",
+    icon: PeopleIcon,
+    title: "IT Provider Security Assurance",
     description:
-      "A focused check of your Microsoft 365 environment against sensible, well-understood security fundamentals.",
+      "Independent verification that the important security outcomes are actually in place, without putting your IT provider on trial.",
+    href: "/it-provider-security-assurance",
   },
 ];
 
 const clusters = [
   {
-    label: "Strengthen",
+    label: "Start light",
+    items: [
+      {
+        icon: ChecklistIcon,
+        title: "Free Security Health Check",
+        description:
+          "A free, ten-minute self-check on the basics, with an honest read on where you stand and no obligation.",
+      },
+      {
+        icon: GridIcon,
+        title: "Exposure Snapshot",
+        description:
+          "A fast, independent look at what your business looks like from the outside, without touching anything internal.",
+      },
+    ],
+  },
+  {
+    label: "Act on findings",
     items: [
       {
         icon: MapIcon,
-        title: "SME Security Uplift Plan",
+        title: "Secure Foundations",
         description:
-          "A practical, prioritised plan to strengthen your defences without unnecessary cost or complexity.",
+          "A coordinated period where we help you and your IT provider work through the highest-priority fixes, and check they actually happen.",
       },
-      {
-        icon: ChecklistIcon,
-        title: "Security Policy and Checklist Starter Pack",
-        description:
-          "Straightforward policies and checklists tailored to how your business actually works day to day.",
-      },
-    ],
-  },
-  {
-    label: "Prepare & respond",
-    items: [
       {
         icon: LifebuoyIcon,
-        title: "Incident Readiness Workshop",
+        title: "Incident Readiness",
         description:
-          "A guided session to prepare your team with a clear, calm plan for how to respond if something goes wrong.",
-      },
-      {
-        icon: MailIcon,
-        title: "Email and Phishing Readiness",
-        description:
-          "Practical steps to reduce your exposure to the most common way New Zealand businesses are compromised.",
+          "A clear, calm plan for what to do if something goes wrong, worked out before it happens, not during.",
       },
     ],
   },
   {
-    label: "Build the habit",
+    label: "Stay ahead",
     items: [
       {
-        icon: PeopleIcon,
-        title: "Staff Cyber Awareness Sessions",
-        description:
-          "Plain-language training that builds safer everyday habits across your team, without jargon or scare tactics.",
-      },
-      {
         icon: CompassArrowIcon,
-        title: "Ongoing Cyber Advisor Support",
+        title: "Security Adviser",
         description:
-          "Continued access to independent, practical advice as your business, tools, and risks evolve over time.",
+          "Independent security guidance without employing a security team, as your business, tools, and risks change.",
       },
     ],
   },
@@ -90,7 +85,7 @@ export default function Services() {
             </span>
           </div>
           <h2 className="mt-4 font-heading text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
-            Practical support, matched to how SMEs actually operate.
+            Independent assurance, not a list of scans.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-charcoal/70">
             Every engagement is scoped to your size, budget, and risk,
@@ -102,11 +97,10 @@ export default function Services() {
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">
           {featured.map((service) => {
             const Icon = service.icon;
-            return (
-              <div
-                key={service.title}
-                className="group relative rounded-2xl border border-charcoal/10 bg-white p-9 shadow-[0_2px_14px_-6px_rgba(7,26,45,0.08)] transition-all duration-200 hover:-translate-y-1 hover:border-teal/40 hover:shadow-[0_20px_45px_-25px_rgba(7,26,45,0.35)] sm:p-10"
-              >
+            const cardClass =
+              "group relative rounded-2xl border border-charcoal/10 bg-white p-9 shadow-[0_2px_14px_-6px_rgba(7,26,45,0.08)] transition-all duration-200 hover:-translate-y-1 hover:border-teal/40 hover:shadow-[0_20px_45px_-25px_rgba(7,26,45,0.35)] sm:p-10";
+            const content = (
+              <>
                 <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-mist text-navy transition-colors duration-200 group-hover:bg-teal/15 group-hover:text-teal">
                   <Icon className="h-7 w-7" />
                 </div>
@@ -116,6 +110,15 @@ export default function Services() {
                 <p className="mt-3 text-base leading-relaxed text-charcoal/70">
                   {service.description}
                 </p>
+              </>
+            );
+            return service.href ? (
+              <Link key={service.title} href={service.href} className={cardClass}>
+                {content}
+              </Link>
+            ) : (
+              <div key={service.title} className={cardClass}>
+                {content}
               </div>
             );
           })}
@@ -123,7 +126,7 @@ export default function Services() {
 
         <div className="mt-16">
           <span className="text-xs font-semibold uppercase tracking-wide text-charcoal/70">
-            Also part of an engagement
+            The rest of the journey
           </span>
           <div className="mt-6 grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-3">
             {clusters.map((cluster) => (

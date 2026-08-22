@@ -9,10 +9,10 @@ const navLinks = [
 ];
 
 const serviceLinks = [
-  "Cyber Risk Review",
-  "SME Security Uplift Plan",
-  "Microsoft 365 Basics Review",
-  "Staff Awareness Sessions",
+  "Independent Security Review",
+  "IT Provider Security Assurance",
+  "Secure Foundations",
+  "Security Adviser",
 ];
 
 export default function Footer() {
@@ -38,6 +38,10 @@ export default function Footer() {
             </p>
             <p className="mt-4 text-sm text-white/55">
               Clear guidance. Safer business.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-white/55">
+              We don&apos;t sell software or managed IT services, and we
+              don&apos;t earn commissions from what we recommend.
             </p>
           </div>
 
@@ -81,7 +85,7 @@ export default function Footer() {
               Get in touch
             </p>
             <a
-              href="mailto:hello@pharossecurity.co.nz"
+              href="mailto:hello@pharossecurity.co.nz?subject=Cyber%20security%20enquiry"
               className="mt-4 block transition-colors hover:text-white"
             >
               hello@pharossecurity.co.nz
@@ -91,7 +95,7 @@ export default function Footer() {
               href="#contact"
               className="mt-5 inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/30 hover:bg-white/5"
             >
-              Start a conversation
+              Book a 15-minute conversation
             </a>
           </div>
         </div>

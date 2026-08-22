@@ -10,6 +10,8 @@ review-cycle: on major directive change
 
 Reconciliation review comparing the existing Pharos Security studio against the Master Build Directive received 2026-07-21. Written before any restructuring or new agent work, per the directive's own instruction not to generate large volumes of files before the state of the project is understood.
 
+**2026-08-22 addendum:** the studio described below (91 files, advisory-only, eight flat services) is what a second directive, Pharos v2, was implemented against. That pass confirmed the "what should remain" findings below were sound (brand voice, operating manual, live website foundation) and acted on the "what is incomplete" and "what should be revised" sections by consolidating the eight services into seven organised around independent security assurance rather than a technical menu, naming the Pharos Security Baseline methodology, and updating the live website's homepage and adding one new page. Full reasoning in `00-business/decisions.md` (2026-08-22 entry); what it deliberately deferred is in `09-project-management/backlog.md`. This document's findings otherwise still stand and are not restated here.
+
 ## What exists
 
 A complete 91-file business studio was built on 2026-07-21, structured as:

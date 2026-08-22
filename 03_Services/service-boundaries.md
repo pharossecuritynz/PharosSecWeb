@@ -6,15 +6,18 @@ This is the practical, service-level companion to [../02_Business_Strategy/risk-
 
 ## What Pharos Security does
 
+**Updated 2026-08-22 to match the seven-service v2 architecture in [service-catalogue.md](service-catalogue.md).**
+
 | Category | Included |
 |---|---|
-| Risk assessment | Structured review of business context, systems, and practices to identify and prioritise cyber risk |
-| Practical uplift planning | Turning identified risks into a realistic, sequenced action plan |
-| Cloud environment basics review | Reviewing configuration of common SME platforms (primarily Microsoft 365) against sensible baseline practices |
-| Human risk reduction | Staff awareness training, phishing readiness guidance |
-| Incident preparation | Readiness planning, tabletop exercises, response plan templates |
-| Policy support | Plain-English security policies and checklists tailored to the business |
-| Ongoing advisory | Continued access to independent advice as the business changes |
+| Free entry point | Self-serve Free Security Health Check |
+| External-only review | Exposure Snapshot: domain, DNS, email security, public exposure, passive OSINT |
+| Independent risk assessment | Independent Security Review: structured review of business context, systems, and practices to identify and prioritise cyber risk |
+| IT provider verification | IT Provider Security Assurance: independently checking the security outcome of an existing MSP or internal IT arrangement |
+| Practical uplift planning | Secure Foundations: turning identified risks into a realistic, sequenced, coordinated action plan |
+| Incident preparation | Incident Readiness: tabletop exercises, response plan templates, first-60-minutes guidance |
+| Ongoing advisory | Security Adviser: continued access to independent advice as the business changes |
+| Add-ons within the above | Microsoft 365/Google Workspace configuration deep-dive, email and phishing technical review, staff awareness sessions, policy and checklist packs |
 
 ## What Pharos Security does not do
 

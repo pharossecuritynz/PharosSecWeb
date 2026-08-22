@@ -8,6 +8,10 @@ review-cycle: weekly, or when a sprint completes
 
 # Current Sprint
 
+## 2026-08-22 update: Pharos v2 pass complete
+
+A separate, more detailed directive (Pharos v2: positioning, service architecture, and website improvement) was received and implemented in this pass. This explicitly required implementation, not just recommendations, which supersedes the "not in this sprint: rebuilding or expanding the live website" line below for this specific pass. Full detail in `00-business/decisions.md` (2026-08-22 entry) and `09-project-management/backlog.md` (2026-08-22 section) for what's now queued next. The question-5 gate below (insurance, legal, certification, registration, domain) is unaffected: it still blocks taking a paying client regardless of how good the positioning or website now are.
+
 ## Sprint focus
 
 Questions 1 to 4 are answered. Question 5 is closed with an explicit conservative assumption rather than a real answer, since only Oscar has the actual facts. The sprint now shifts to the work questions 1 to 4 unblocked: the master plan, the folder migration, and continuing the agent catalogue. Taking a paying client stays blocked until question 5's assumption is corrected with real status.

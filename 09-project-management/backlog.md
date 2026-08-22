@@ -8,6 +8,23 @@ review-cycle: weekly
 
 # Backlog
 
+## 2026-08-22: Pharos v2 pass — what changed and what's queued next
+
+The Pharos v2 directive (see `00-business/decisions.md`) was implemented in place: positioning, service architecture (seven services replacing eight), the Pharos Security Baseline methodology, pricing, and the live website (homepage copy across every section, plus a new `/it-provider-security-assurance` page). The items below are what that pass deliberately deferred, added to this backlog rather than left implicit.
+
+| Item | Score | Notes |
+|---|---|---|
+| Free Security Health Check: build the actual questionnaire and results page | 6 | Content and output rules are defined in `03_Services/free-security-health-check.md`; this is now a real build item, not just a written spec |
+| Reconcile `06_Sales_and_Marketing/` copy decks against the live site | 4 | `website-copy.md`, `homepage-wireframe.md`, `service-page-copy.md`, `about-page-copy.md` predate this pass and now describe the pre-v2 site; not rewritten in this pass to keep it focused on the canonical strategy docs and the live website itself |
+| Rename old service names to the v2 names across `04_Operating_Manual/`, `05_Client_Templates/`, `06_Sales_and_Marketing/`, `07_Agents/`, `09_Checklists/`, and `10_Admin/` | 3 | Roughly 35 files still say "Cyber Risk Review", "SME Security Uplift Plan", "Ongoing Cyber Advisor Support", or one of the four folded-in service names. Content in each is still valid; only the naming is stale. Same discipline as the em dash cleanup below: a large mechanical pass across files that have already been reviewed once, so it should be done deliberately in its own pass, not rushed as a side effect of this one. Run `grep -rl` for the eight old service names (see `03_Services/archive/` filenames) to find them all. |
+| Pharos Answers article library | 3 | A small number of representative pieces, not the full list in the v2 brief section 22 |
+| NZ Small Business Security Brief production pipeline | 3 | Format defined in the v2 brief section 23; no content produced yet |
+| Pre-call AI brief automation workflow | 3 | Intake questionnaire content exists in `05_Client_Templates/discovery-questionnaire.md`; the automation (structured record, AI-assisted prep, safe recon, brief generation) is unbuilt |
+| Referral partner one-page PDF | 2 | `06_Sales_and_Marketing/referral-partner-one-pager.md` exists as copy; not laid out as a PDF artefact |
+| Sanitised sample report | 2 | Would support the "Sample Report" page named in the v2 brief section 21 |
+| "For IT Providers and Advisers" partner-facing page | 3 | Distinct from `/it-provider-security-assurance` (which is client-facing); targets MSPs, accountants, brokers as referral partners |
+| Individual sub-pages for the remaining five services | 3 | Only Independent Security Review's MSP-adjacent sibling (IT Provider Security Assurance) got a dedicated page this pass; the rest live on the homepage services section |
+
 ## Scoring method
 
 Every item is scored against the commercial focus test from the Master Build Directive section 20, one point per yes:

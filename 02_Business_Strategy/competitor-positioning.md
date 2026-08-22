@@ -13,10 +13,11 @@ Rather than naming specific NZ firms (which should be researched directly by the
 | **Security awareness training platforms (self-serve SaaS)** | Automated phishing simulation and e-learning modules | $2–$8/user/month | Impersonal, generic content; Pharos Security offers a facilitated, business-specific alternative |
 | **Freelance/independent IT consultants** | General technical consulting, sometimes including basic security advice | Variable, often hourly | Less structured, not security-specialised, no defined deliverables or reporting standard |
 | **Doing nothing** | Status quo | $0 (until an incident happens) | The real default competitor — Pharos Security must make the case for proactive investment |
+| **International analogue: Fractional Wisdom (UK)** | Independent cyber advice, Cyber Essentials certification support, fixed-price engagements, positioned alongside a client's existing IT provider | Not published (UK market) | Not a competitor (different country), but a useful benchmark for what independence and fixed pricing look like when done well. Researched directly at fractionalwisdom.co.uk (fetched 2026-08-22); not copied for wording, branding, or its certification-issuance service, which Pharos does not offer. See `00-business/decisions.md` for the full note. |
 
 ## How Pharos Security should talk about competitors
 
-- Never disparage MSPs — frame Pharos Security as complementary, and actively invite the client's MSP into the process (see [escalation-and-referral-rules.md](../04_Operating_Manual/escalation-and-referral-rules.md))
+- Never disparage MSPs, never build messaging on "catching MSPs out," and never imply MSPs generally can't be trusted. Most MSPs are doing a reasonable job with the scope they've been given; the value Pharos adds is an independent check of the security outcome, not a verdict on the MSP's competence. Frame Pharos as complementary, and actively invite the client's MSP into the process (see [escalation-and-referral-rules.md](../04_Operating_Manual/escalation-and-referral-rules.md) and [it-provider-security-assurance.md](../03_Services/it-provider-security-assurance.md))
 - Never claim capabilities (pentesting, 24/7 monitoring, forensics) to compete head-on with MSSPs or pentest firms — differentiate on fit, not false capability
 - When a prospect compares Pharos Security to "doing nothing," don't use fear — use proportion: "most of what we'd recommend costs less than a single incident's clean-up time, and is achievable in weeks, not months"
 

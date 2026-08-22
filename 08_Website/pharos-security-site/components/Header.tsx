@@ -40,7 +40,7 @@ export default function Header() {
           href="#contact"
           className="hidden rounded-full bg-teal px-5 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan md:inline-block"
         >
-          Start a conversation
+          Book a 15-minute conversation
         </a>
 
         <div className="flex items-center gap-2 md:hidden">
