@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { CheckIcon } from "./icons";
 
 const trustPoints = [
@@ -62,12 +63,12 @@ export default function Hero() {
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <a
-              href="#contact"
+            <Link
+              href="/book-a-conversation"
               className="inline-flex items-center justify-center rounded-full bg-teal px-7 py-3.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
             >
               Book a 15-minute conversation
-            </a>
+            </Link>
             <a
               href="#services"
               className="inline-flex items-center justify-center rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/5"
