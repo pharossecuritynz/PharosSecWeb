@@ -64,4 +64,4 @@ Work through this list honestly — it's not a test, just a way to see where the
 
 This checklist gives you a rough sense of where you stand. A [Cyber Risk Review](../03_Services/cyber-risk-review.md) gives you an independent, prioritised, business-specific plan — with a free, no-obligation conversation first.
 
-**pharossecurity.co.nz** · hello@pharossecurity.co.nz
+**pharossecurity.co.nz** · pharos.security.nz@gmail.com

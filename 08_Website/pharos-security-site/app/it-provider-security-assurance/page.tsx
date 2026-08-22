@@ -63,7 +63,7 @@ export default function ITProviderSecurityAssurancePage() {
               </p>
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
                 <a
-                  href="mailto:hello@pharossecurity.co.nz?subject=IT%20Provider%20Security%20Assurance%20enquiry"
+                  href="mailto:pharos.security.nz@gmail.com?subject=IT%20Provider%20Security%20Assurance%20enquiry"
                   className="inline-flex items-center justify-center rounded-full bg-teal px-7 py-3.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
                 >
                   Book a 15-minute conversation
@@ -169,16 +169,16 @@ export default function ITProviderSecurityAssurancePage() {
             </p>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
-                href="mailto:hello@pharossecurity.co.nz?subject=IT%20Provider%20Security%20Assurance%20enquiry"
+                href="mailto:pharos.security.nz@gmail.com?subject=IT%20Provider%20Security%20Assurance%20enquiry"
                 className="inline-flex items-center justify-center rounded-full bg-teal px-8 py-3.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
               >
                 Book a 15-minute conversation
               </a>
               <a
-                href="mailto:hello@pharossecurity.co.nz?subject=IT%20Provider%20Security%20Assurance%20enquiry"
+                href="mailto:pharos.security.nz@gmail.com?subject=IT%20Provider%20Security%20Assurance%20enquiry"
                 className="text-sm font-medium text-white/70 transition-colors hover:text-white"
               >
-                hello@pharossecurity.co.nz
+                pharos.security.nz@gmail.com
               </a>
             </div>
           </div>

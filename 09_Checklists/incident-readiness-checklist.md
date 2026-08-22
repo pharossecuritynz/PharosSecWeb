@@ -57,4 +57,4 @@
 
 *This card covers the first hour. For a complete, business-specific plan, see our [Incident Readiness Workshop](../03_Services/incident-readiness-workshop.md).*
 
-**pharossecurity.co.nz** · hello@pharossecurity.co.nz
+**pharossecurity.co.nz** · pharos.security.nz@gmail.com

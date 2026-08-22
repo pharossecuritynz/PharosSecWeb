@@ -48,7 +48,7 @@ This is the exact copy implemented in [pharos-security-site/](pharos-security-si
 
 ## Footer
 - Logo + tagline: Independent cyber security advisory for New Zealand small and medium businesses.
-- Nav links + contact block: hello@pharossecurity.co.nz, New Zealand
+- Nav links + contact block: pharos.security.nz@gmail.com, New Zealand
 - Copyright line
 
 ---

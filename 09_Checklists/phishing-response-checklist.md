@@ -43,4 +43,4 @@ If any answer raises doubt, **don't click** — verify first.
 
 *Want your team to feel genuinely confident spotting phishing attempts? Our [Staff Cyber Awareness Sessions](../03_Services/staff-cyber-awareness-sessions.md) build on this cheat sheet with live, business-specific training.*
 
-**pharossecurity.co.nz** · hello@pharossecurity.co.nz
+**pharossecurity.co.nz** · pharos.security.nz@gmail.com

@@ -45,4 +45,4 @@ This is a starting-point checklist, not a full technical audit. It doesn't cover
 
 That's exactly what the Microsoft 365 Security Basics Review is for — a fast, focused, independent check with a clear, prioritised report. Get in touch for a free, no-obligation conversation.
 
-**pharossecurity.co.nz** · hello@pharossecurity.co.nz
+**pharossecurity.co.nz** · pharos.security.nz@gmail.com

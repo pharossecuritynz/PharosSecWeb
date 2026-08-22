@@ -7,12 +7,12 @@
 **Body:** Start with a straightforward conversation about your business and the risks that matter most — no obligation, no jargon.
 
 **Primary CTA:** Book a cyber risk review
-**Secondary link:** hello@pharossecurity.co.nz
+**Secondary link:** pharos.security.nz@gmail.com
 
 ## Footer contact block
 
 **Get in touch**
-hello@pharossecurity.co.nz
+pharos.security.nz@gmail.com
 New Zealand
 
 ## Extended contact page copy (for future standalone page or expanded section)
@@ -23,7 +23,7 @@ New Zealand
 
 > Every engagement starts with a free, no-obligation conversation — not a sales pitch. We'll ask a few questions about your business, and give you an honest view of what (if anything) would help, including if the answer is "you're probably fine for now."
 >
-> Fill in the form below, or email us directly at hello@pharossecurity.co.nz, and we'll get back to you within one business day.
+> Fill in the form below, or email us directly at pharos.security.nz@gmail.com, and we'll get back to you within one business day.
 
 **Form fields (suggested):**
 - Name
@@ -35,7 +35,7 @@ New Zealand
 
 **Post-submit confirmation copy:**
 
-> Thanks — we've got your message and will be in touch within one business day. In the meantime, if anything is urgent, please email us directly at hello@pharossecurity.co.nz.
+> Thanks — we've got your message and will be in touch within one business day. In the meantime, if anything is urgent, please email us directly at pharos.security.nz@gmail.com.
 
 **Urgent/incident note (small text near the form):**
 
@@ -43,6 +43,6 @@ New Zealand
 
 ## Assumptions / needs founder input
 
-- **Contact email/domain (hello@pharossecurity.co.nz) is a placeholder** pending domain registration — confirm and update everywhere it appears (website, this doc, email templates).
+- **Contact email/domain (pharos.security.nz@gmail.com) is a placeholder** pending domain registration — confirm and update everywhere it appears (website, this doc, email templates).
 - Confirm whether a contact form will be built (requires a form handling service — see [../10_Admin/tools-and-software.md](../10_Admin/tools-and-software.md)) or whether a mailto link is sufficient for launch.
 - Phone number not yet provided — add if the founder wants to offer phone contact.

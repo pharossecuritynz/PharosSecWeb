@@ -22,7 +22,7 @@ For NZ SME owners who need to understand and reduce cyber risk but lack in-house
 
 ## Conversion & proof
 
-- Primary CTA: "Book a 15-minute conversation" (mailto, no form/scheduler yet). Secondary fallback: direct email contact (`hello@pharossecurity.co.nz`) for visitors not ready to commit to a review.
+- Primary CTA: "Book a 15-minute conversation" (mailto, no form/scheduler yet). Secondary fallback: direct email contact (`pharos.security.nz@gmail.com`) for visitors not ready to commit to a review.
 - The line a visitor should remember after 10 seconds: "Independent, plain-English cyber security advice, sized for my business, not trying to sell me something."
 - Belief ladder (in order): (1) this problem is relevant to a business my size, not just enterprises → (2) this advisor has no product to sell, so the advice is unbiased → (3) the advice will be proportionate and actionable, not a 40-point framework I can't action → (4) talking to them costs nothing and creates no pressure → (5) I should book a no-obligation conversation now.
 - Proof on hand: none yet — pre-launch, no delivered engagements. Testimonials, case studies, and any partner/referral logos should be added to `.impeccable/assets/proof/` as they become available; until then the site should carry its credibility through positioning clarity and tone, not fabricated or placeholder social proof.
