@@ -15,6 +15,13 @@ const featured = [
     title: "Independent Security Review",
     description:
       "An independent review of the security controls protecting your business, followed by a clear, prioritised plan for improvement.",
+    forWho:
+      "Owners and operations leads who don't have a clear, independent picture of where they actually stand.",
+    whatYouGet: [
+      "A 90-minute discovery session",
+      "A plain-English report with prioritised findings",
+      "A 90-day improvement plan",
+    ],
     price: "From $1,800",
   },
   {
@@ -22,6 +29,13 @@ const featured = [
     title: "IT Provider Security Assurance",
     description:
       "Independent verification that the important security outcomes are actually in place, without putting your IT provider on trial.",
+    forWho:
+      "Businesses with an outsourced MSP, an internal IT person, or a hybrid setup, who want an independent check on the security outcome.",
+    whatYouGet: [
+      "A review of your MSP/IT documentation and key configuration",
+      "A report on what's in place, unclear, or missing",
+      "A plain-English list of questions to put to your provider",
+    ],
     price: "From $1,500",
     href: "/it-provider-security-assurance",
   },
@@ -36,6 +50,7 @@ const clusters = [
         title: "Free Security Health Check",
         description:
           "A free, ten-minute self-check on the basics, with an honest read on where you stand and no obligation.",
+        forWho: "Anyone who wants a fast first read before committing to anything.",
         price: "Free",
       },
       {
@@ -43,6 +58,7 @@ const clusters = [
         title: "Exposure Snapshot",
         description:
           "A fast, independent look at what your business looks like from the outside, without touching anything internal.",
+        forWho: "Businesses that want an independent check without committing to a full review yet.",
         price: "From $400",
       },
     ],
@@ -55,6 +71,7 @@ const clusters = [
         title: "Secure Foundations",
         description:
           "A coordinated period where we help you and your IT support work through the highest-priority fixes, and check they actually happen.",
+        forWho: "Businesses that know their gaps and are ready to act, but need help sequencing the work.",
         price: "From $2,000",
       },
       {
@@ -62,6 +79,7 @@ const clusters = [
         title: "Incident Readiness",
         description:
           "A clear, calm plan for what to do if something goes wrong, worked out before it happens, not during.",
+        forWho: "Businesses with no documented plan for handling a cyber incident.",
         price: "From $900",
       },
     ],
@@ -74,6 +92,7 @@ const clusters = [
         title: "Security Adviser",
         description:
           "Independent security guidance without employing a security team, as your business, tools, and risks change.",
+        forWho: "Businesses that have completed an initial review and want an ongoing adviser to check in with.",
         price: "From $500/month",
       },
     ],
@@ -111,7 +130,25 @@ export default function Services() {
                 <p className="mt-3 text-base leading-relaxed text-charcoal/70">
                   {service.description}
                 </p>
-                <p className="mt-4 text-sm font-semibold text-teal">
+                <p className="mt-4 text-sm leading-relaxed text-charcoal/60">
+                  <span className="font-semibold text-navy">For: </span>
+                  {service.forWho}
+                </p>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-charcoal/50">
+                  What you get
+                </p>
+                <ul className="mt-2 space-y-1.5">
+                  {service.whatYouGet.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-2 text-sm leading-relaxed text-charcoal/70"
+                    >
+                      <span aria-hidden="true" className="mt-2 h-1 w-1 flex-none rounded-full bg-teal" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-5 text-sm font-semibold text-teal">
                   {service.price}
                 </p>
               </>
@@ -152,6 +189,10 @@ export default function Services() {
                           </h5>
                           <p className="mt-1 text-sm leading-relaxed text-charcoal/70">
                             {service.description}
+                          </p>
+                          <p className="mt-1.5 text-sm leading-relaxed text-charcoal/55">
+                            <span className="font-semibold text-navy/80">For: </span>
+                            {service.forWho}
                           </p>
                           <p className="mt-1.5 text-xs font-semibold uppercase tracking-wide text-teal">
                             {service.price}
