@@ -11,19 +11,39 @@ export const metadata: Metadata = {
 };
 
 const scope = [
-  "Review of existing MSP reports and documentation",
-  "Review of stated security responsibilities, and what falls into the gap between you and your provider",
-  "Microsoft 365 or Google Workspace configuration, checked against the Pharos Security Baseline",
-  "MFA coverage across your organisation",
-  "Endpoint protection coverage",
-  "Patch management evidence",
-  "Privileged administration practices",
-  "Backup evidence",
-  "External exposure",
-  "Vulnerability management practices, as reported and evidenced",
-  "Logging, at whatever level exists",
-  "Incident-response responsibilities as currently defined",
-  "Any security products your provider has recommended, translated into plain business risk",
+  {
+    label: "Identity & access",
+    items: [
+      "MFA coverage across your organisation",
+      "Privileged administration practices",
+      "Microsoft 365 or Google Workspace configuration, checked against the Pharos Security Baseline",
+    ],
+  },
+  {
+    label: "Protection & recovery",
+    items: [
+      "Endpoint protection coverage",
+      "Patch management evidence",
+      "Backup evidence",
+    ],
+  },
+  {
+    label: "Visibility & response",
+    items: [
+      "External exposure",
+      "Vulnerability management practices, as reported and evidenced",
+      "Logging, at whatever level exists",
+      "Incident-response responsibilities as currently defined",
+    ],
+  },
+  {
+    label: "Provider accountability",
+    items: [
+      "Review of existing MSP reports and documentation",
+      "Review of stated security responsibilities, and what falls into the gap between you and your provider",
+      "Any security products your provider has recommended, translated into plain business risk",
+    ],
+  },
 ];
 
 const situations = [
@@ -49,8 +69,8 @@ export default function ITProviderSecurityAssurancePage() {
               <span className="inline-flex items-center rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-xs font-medium tracking-wide text-cyan uppercase">
                 For businesses with an MSP or internal IT
               </span>
-              <h1 className="mt-7 font-heading text-4xl font-semibold leading-[1.12] tracking-tight text-white sm:text-5xl">
-                Your IT provider manages your technology. This is how you
+              <h1 className="mt-7 font-heading text-4xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-5xl">
+                Your IT support manages your technology. This is how you
                 independently check the security.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70">
@@ -75,6 +95,16 @@ export default function ITProviderSecurityAssurancePage() {
                   See all services
                 </Link>
               </div>
+              <p className="mt-4 text-sm text-white/60">
+                From $1,500 (excl. GST, indicative). Or email{" "}
+                <a
+                  href="mailto:pharos.security.nz@gmail.com?subject=IT%20Provider%20Security%20Assurance%20enquiry"
+                  className="font-medium text-white/80 underline underline-offset-2 transition-colors hover:text-white"
+                >
+                  pharos.security.nz@gmail.com
+                </a>{" "}
+                directly.
+              </p>
             </div>
           </div>
         </section>
@@ -83,27 +113,23 @@ export default function ITProviderSecurityAssurancePage() {
           <div className="container-px mx-auto max-w-6xl">
             <div className="grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
               <div>
-                <div className="flex items-center gap-2.5">
-                  <span aria-hidden="true" className="h-px w-6 bg-teal" />
-                  <span className="text-xs font-semibold uppercase tracking-wide text-navy">
-                    How this works with your provider
-                  </span>
-                </div>
-                <h2 className="mt-4 font-heading text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+                <h2 className="font-heading text-3xl font-bold tracking-tight text-navy sm:text-4xl">
                   Complementary, not adversarial.
                 </h2>
                 <p className="mt-5 text-lg leading-relaxed text-charcoal/70">
-                  We don&apos;t build this around catching your provider
+                  We don&apos;t build this around catching your IT support
                   out, proving they can&apos;t be trusted, or second-guessing
                   technical decisions for the sake of it. The working
-                  principle is simple: your provider operates and supports
-                  the technology; we independently review the security
-                  outcome and help you understand risk and priorities.
+                  principle is simple: your IT support, whether that&apos;s
+                  an outsourced provider or an internal team, operates and
+                  supports the technology; we independently review the
+                  security outcome and help you understand risk and
+                  priorities.
                 </p>
                 <p className="mt-4 text-lg leading-relaxed text-charcoal/70">
-                  Where it&apos;s useful, we invite your provider into the
-                  process rather than working around them. A good outcome
-                  here is often &ldquo;your provider has this covered, and
+                  Where it&apos;s useful, we invite them into the process
+                  rather than working around them. A good outcome here is
+                  often &ldquo;your IT support has this covered, and
                   here&rsquo;s the evidence&rdquo;, not just a list of gaps.
                 </p>
               </div>
@@ -130,7 +156,7 @@ export default function ITProviderSecurityAssurancePage() {
         <section className="bg-mist py-24 md:py-32">
           <div className="container-px mx-auto max-w-6xl">
             <div className="max-w-2xl">
-              <h2 className="font-heading text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+              <h2 className="font-heading text-3xl font-bold tracking-tight text-navy sm:text-4xl">
                 What we check.
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-charcoal/70">
@@ -141,13 +167,22 @@ export default function ITProviderSecurityAssurancePage() {
               </p>
             </div>
 
-            <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-4 sm:grid-cols-2">
-              {scope.map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <CheckIcon className="mt-1 h-4 w-4 flex-none text-teal" />
-                  <span className="text-base leading-relaxed text-charcoal/75">
-                    {item}
-                  </span>
+            <div className="mt-12 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2">
+              {scope.map((group) => (
+                <div key={group.label}>
+                  <h3 className="font-heading text-sm font-semibold uppercase tracking-wide text-navy/70">
+                    {group.label}
+                  </h3>
+                  <div className="mt-4 space-y-4">
+                    {group.items.map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <CheckIcon className="mt-1 h-4 w-4 flex-none text-teal" />
+                        <span className="text-base leading-relaxed text-charcoal/75">
+                          {item}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -160,7 +195,7 @@ export default function ITProviderSecurityAssurancePage() {
             className="pointer-events-none absolute left-1/2 top-0 h-[380px] w-[640px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-teal/15 blur-[120px]"
           />
           <div className="container-px relative z-10 mx-auto max-w-3xl text-center">
-            <h2 className="font-heading text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
               Find out what&apos;s actually covered.
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/65">

@@ -11,7 +11,7 @@ export default function About() {
       <div className="container-px relative z-10 mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
           <div>
-            <h2 className="font-heading text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h2 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
               A steady point of reference for New Zealand SMEs.
             </h2>
             <div className="mt-6 space-y-4 text-lg leading-relaxed text-white/65">

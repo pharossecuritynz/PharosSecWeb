@@ -2,7 +2,7 @@ import { CheckIcon } from "./icons";
 
 const trustPoints = [
   "Independent, no products sold",
-  "Works with your existing IT provider",
+  "Works with your existing IT support",
   "Clear scope, fixed pricing",
 ];
 
@@ -50,15 +50,15 @@ export default function Hero() {
             Independent security advisory for New Zealand SMEs
           </span>
 
-          <h1 className="mt-7 font-heading text-4xl font-semibold leading-[1.12] tracking-tight text-white sm:text-5xl md:text-6xl">
-            You have IT support. But who checks the security?
+          <h1 className="mt-7 font-heading text-4xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-5xl md:text-6xl">
+            Your IT support manages the technology. Who checks the
+            security?
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl">
-            Your IT provider manages your technology. Pharos Security
-            independently checks whether your security is actually good
-            enough, and gives you a clear, prioritised plan if it isn&apos;t.
-            No jargon, no products to sell.
+            Pharos Security independently checks whether your security is
+            actually good enough, and gives you a clear, prioritised plan
+            if it isn&apos;t. No jargon, no products to sell.
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">

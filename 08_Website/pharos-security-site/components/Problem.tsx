@@ -1,6 +1,6 @@
 const questions = [
   "Are we actually secure, or does it just feel that way?",
-  "How do I know our IT provider has everything covered?",
+  "How do I know our IT support has everything covered?",
   "What should we improve first?",
   "A customer wants evidence of our security. What do we give them?",
   "Our insurer sent a cyber questionnaire we don't fully understand.",
@@ -12,7 +12,7 @@ export default function Problem() {
     <section className="bg-mist py-24 md:py-32">
       <div className="container-px mx-auto max-w-6xl">
         <div className="max-w-2xl">
-          <h2 className="font-heading text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+          <h2 className="font-heading text-3xl font-bold tracking-tight text-navy sm:text-4xl">
             Questions we hear from business owners every week.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-charcoal/70">

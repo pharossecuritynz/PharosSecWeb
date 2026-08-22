@@ -11,28 +11,28 @@ colors:
   charcoal: "#17212b"
 typography:
   display:
-    fontFamily: "Sora, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Libre Franklin, ui-sans-serif, system-ui, sans-serif"
     fontSize: "clamp(2.5rem, 5vw, 4.5rem)"
-    fontWeight: 600
+    fontWeight: 800
     lineHeight: 1.12
     letterSpacing: "-0.02em"
   headline:
-    fontFamily: "Sora, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Libre Franklin, ui-sans-serif, system-ui, sans-serif"
     fontSize: "clamp(2.25rem, 3.5vw, 2.75rem)"
-    fontWeight: 600
+    fontWeight: 700
     lineHeight: 1.2
   title:
-    fontFamily: "Sora, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Libre Franklin, ui-sans-serif, system-ui, sans-serif"
     fontSize: "1.125rem"
     fontWeight: 600
     lineHeight: 1.3
   body:
-    fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Libre Franklin, ui-sans-serif, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.6
   label:
-    fontFamily: "Inter, ui-sans-serif, system-ui, sans-serif"
+    fontFamily: "Libre Franklin, ui-sans-serif, system-ui, sans-serif"
     fontSize: "0.8125rem"
     fontWeight: 600
     letterSpacing: "0.06em"
@@ -98,17 +98,20 @@ Two anchor neutrals (deep navy and clean white) do almost all the work; teal is 
 
 ## 3. Typography
 
-**Display Font:** Sora (with ui-sans-serif, system-ui fallback)
-**Body Font:** Inter (with ui-sans-serif, system-ui fallback)
+**Changed 2026-08-22:** Sora + Inter (a training-data-default pairing flagged in design critique) replaced with a single family, Libre Franklin, used across the whole hierarchy. Franklin Gothic heritage — civic, no-nonsense, squarer apertures than the previous geometric sans. Physical reference: a bridge inspection plaque, not a SaaS landing page. See `.impeccable/critique/2026-08-22T09-11-54Z__08-website-pharos-security-site.md`.
 
-**Character:** Sora is geometric and confident, slightly technical without reading cold — used exclusively for headings. Inter is highly legible at small sizes and carries both UI chrome and long-form body copy. The pairing is a single contrast axis (geometric display, neutral-humanist body), not two similar sans-serifs competing for the same job.
+**Family:** Libre Franklin (with ui-sans-serif, system-ui fallback), loaded at weights 400/500/600/700/800.
+
+**Character:** One family carries the entire hierarchy; real weight contrast does the work that two typefaces used to. This is deliberately not a display+body pairing — a single well-chosen family with committed weight/size contrast reads as more considered than a timid two-font pair, and it removes the "two similar sans-serifs competing for the same job" risk entirely.
 
 ### Hierarchy
-- **Display** (600 weight, clamp(2.5rem, 5vw, 4.5rem)/60–72px desktop, 1.12 line-height, −0.02em tracking): hero H1 only. Ceiling stays at 4.5rem; never scale past 6rem regardless of viewport.
-- **Headline** (600 weight, 2.25–2.75rem/36–44px, 1.2 line-height): section H2s (Services, Process, About, CTA).
+- **Display** (800 weight, clamp(2.5rem, 5vw, 4.5rem)/60–72px desktop, 1.12 line-height, −0.02em tracking): hero H1 only. Ceiling stays at 4.5rem; never scale past 6rem regardless of viewport.
+- **Headline** (700 weight, 2.25–2.75rem/36–44px, 1.2 line-height): section H2s (Services, Process, About, CTA).
 - **Title** (600 weight, 1.125–1.25rem/18–20px): card and subsection H3s.
 - **Body** (400 weight, 0.9375–1.25rem/15–20px, 1.5–1.65 line-height): standard body sits at 15–16px; large intro/subheading body sits at 18–20px. Cap prose measure at 65–75ch.
 - **Label** (600 weight, 0.75–0.875rem/12–14px, 0.06em tracking, uppercase): eyebrow labels above section headings, nav labels.
+
+The four-step weight jump (400 → 600 → 700 → 800) is the hierarchy now, not a font swap between tiers — a flat weight scale reads as uncommitted, so Display and Headline must stay visibly heavier than Title/Label, not just larger.
 
 ### Named Rules
 **The Weight-Not-Italics Rule.** Emphasis in body copy comes from weight (medium/semibold), never italics — consistent with the plain-English, non-decorative voice.
@@ -151,8 +154,14 @@ Restrained and considered: buttons, cards, and nav should feel calm and precise 
 - **Active/CTA:** the pill-shaped primary button (see Buttons) sits inline at the end of the nav, always visible even on mobile (compact variant).
 - **Mobile:** the same pill CTA persists; secondary links collapse behind a toggle rather than being dropped.
 
-### Beacon Mark (signature component)
-The abstract lighthouse/light-beam SVG mark used as the logo and as a recurring motif (CTA section, footer). Rendered in teal on dark backgrounds. It is the one literal brand symbol permitted in an otherwise abstract system — geometric, never a literal lighthouse illustration.
+### Logo mark (signature component)
+**Replaced 2026-08-22, twice.** First with a "Signal Window" geometric SVG mark (a quiet outlined square frame with a vertical slit of light), replacing an earlier beam-and-ring mark flagged as generic in design critique. Then, once a real founder-supplied logo became available (`01_Brand/logo.png`), replaced again with that actual mark: a two-tone "P" monogram built from a flag-like negative-space cutout, in deep navy.
+
+**Asset pipeline**: the source `logo.png` (flat off-white background, no transparency) was processed with a distance-threshold alpha algorithm to produce a clean transparent crop of the icon alone, separate from its wordmark. Two colour variants are kept: navy-on-transparent (`public/brand/pharos-mark-navy.png`, light backgrounds and the favicon) and white-on-transparent (`public/brand/pharos-mark-white.png`, the navy/midnight sections where the mark actually appears). Source masters live in `01_Brand/` (`logo-full-transparent.png`, `logo-icon-transparent.png`, `-white` variants, `logo-icon-square.png` for the favicon crop).
+
+**Composition**: the icon mark only, rendered via `components/LogoMark.tsx` (a `next/image` wrapper, `variant="white" | "navy"`, height-constrained with auto width to preserve the mark's true (non-square) proportions). "Pharos Security" stays live HTML text in the site's Libre Franklin type next to it, not baked into the image, so it stays accessible, selectable, and typographically consistent with the rest of the site.
+
+**Usage restrained to genuine logo placements**: header navigation, footer, and the CTA section's large centred mark. Not used decoratively elsewhere on the page.
 
 ## 6. Do's and Don'ts
 

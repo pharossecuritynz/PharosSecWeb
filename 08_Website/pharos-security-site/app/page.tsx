@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Problem from "@/components/Problem";
 import Services from "@/components/Services";
 import Process from "@/components/Process";
+import Methodology from "@/components/Methodology";
 import BuiltForSMEs from "@/components/BuiltForSMEs";
 import About from "@/components/About";
 import CTA from "@/components/CTA";
@@ -17,6 +18,7 @@ export default function Home() {
         <Problem />
         <Services />
         <Process />
+        <Methodology />
         <BuiltForSMEs />
         <About />
         <CTA />

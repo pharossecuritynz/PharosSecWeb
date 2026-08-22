@@ -1,4 +1,4 @@
-import BeaconMark from "./BeaconMark";
+import LogoMark from "./LogoMark";
 
 export default function CTA() {
   return (
@@ -9,9 +9,9 @@ export default function CTA() {
       />
 
       <div className="container-px relative z-10 mx-auto max-w-3xl text-center">
-        <BeaconMark className="mx-auto h-11 w-11 text-teal" />
+        <LogoMark className="mx-auto h-11 w-auto" />
 
-        <h2 className="mt-8 font-heading text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
+        <h2 className="mt-8 font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
           Understand where you stand.
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/65">

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import BeaconMark from "./BeaconMark";
+import LogoMark from "./LogoMark";
 
 const navLinks = [
   { href: "#services", label: "Services" },
@@ -18,7 +18,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-navy">
       <div className="container-px mx-auto flex h-18 max-w-6xl items-center justify-between py-4">
         <Link href="#top" className="flex items-center gap-2.5 text-white">
-          <BeaconMark className="h-8 w-8 text-teal" />
+          <LogoMark className="h-8 w-auto" />
           <span className="font-heading text-lg font-semibold tracking-tight">
             Pharos Security
           </span>

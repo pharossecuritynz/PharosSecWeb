@@ -15,12 +15,14 @@ const featured = [
     title: "Independent Security Review",
     description:
       "An independent review of the security controls protecting your business, followed by a clear, prioritised plan for improvement.",
+    price: "From $1,800",
   },
   {
     icon: PeopleIcon,
     title: "IT Provider Security Assurance",
     description:
       "Independent verification that the important security outcomes are actually in place, without putting your IT provider on trial.",
+    price: "From $1,500",
     href: "/it-provider-security-assurance",
   },
 ];
@@ -34,12 +36,14 @@ const clusters = [
         title: "Free Security Health Check",
         description:
           "A free, ten-minute self-check on the basics, with an honest read on where you stand and no obligation.",
+        price: "Free",
       },
       {
         icon: GridIcon,
         title: "Exposure Snapshot",
         description:
           "A fast, independent look at what your business looks like from the outside, without touching anything internal.",
+        price: "From $400",
       },
     ],
   },
@@ -50,13 +54,15 @@ const clusters = [
         icon: MapIcon,
         title: "Secure Foundations",
         description:
-          "A coordinated period where we help you and your IT provider work through the highest-priority fixes, and check they actually happen.",
+          "A coordinated period where we help you and your IT support work through the highest-priority fixes, and check they actually happen.",
+        price: "From $2,000",
       },
       {
         icon: LifebuoyIcon,
         title: "Incident Readiness",
         description:
           "A clear, calm plan for what to do if something goes wrong, worked out before it happens, not during.",
+        price: "From $900",
       },
     ],
   },
@@ -68,6 +74,7 @@ const clusters = [
         title: "Security Adviser",
         description:
           "Independent security guidance without employing a security team, as your business, tools, and risks change.",
+        price: "From $500/month",
       },
     ],
   },
@@ -78,13 +85,7 @@ export default function Services() {
     <section id="services" className="bg-white py-24 md:py-32">
       <div className="container-px mx-auto max-w-6xl">
         <div className="max-w-2xl">
-          <div className="flex items-center gap-2.5">
-            <span aria-hidden="true" className="h-px w-6 bg-teal" />
-            <span className="text-xs font-semibold uppercase tracking-wide text-navy">
-              Services
-            </span>
-          </div>
-          <h2 className="mt-4 font-heading text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+          <h2 className="font-heading text-3xl font-bold tracking-tight text-navy sm:text-4xl">
             Independent assurance, not a list of scans.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-charcoal/70">
@@ -109,6 +110,9 @@ export default function Services() {
                 </h3>
                 <p className="mt-3 text-base leading-relaxed text-charcoal/70">
                   {service.description}
+                </p>
+                <p className="mt-4 text-sm font-semibold text-teal">
+                  {service.price}
                 </p>
               </>
             );
@@ -149,6 +153,9 @@ export default function Services() {
                           <p className="mt-1 text-sm leading-relaxed text-charcoal/70">
                             {service.description}
                           </p>
+                          <p className="mt-1.5 text-xs font-semibold uppercase tracking-wide text-teal">
+                            {service.price}
+                          </p>
                         </div>
                       </div>
                     );
@@ -158,6 +165,12 @@ export default function Services() {
             ))}
           </div>
         </div>
+
+        <p className="mt-10 text-sm text-charcoal/55">
+          Prices are indicative, excl. GST, and scaled to your business size
+          and complexity. A fixed quote is confirmed after a short
+          conversation, not on the spot.
+        </p>
       </div>
     </section>
   );

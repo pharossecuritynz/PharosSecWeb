@@ -27,7 +27,7 @@ export default function BuiltForSMEs() {
       <div className="container-px mx-auto max-w-6xl">
         <div className="grid grid-cols-1 gap-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-center">
           <div>
-            <h2 className="font-heading text-3xl font-semibold tracking-tight text-navy sm:text-4xl">
+            <h2 className="font-heading text-3xl font-bold tracking-tight text-navy sm:text-4xl">
               Built for how New Zealand SMEs actually operate.
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-charcoal/70">
@@ -37,11 +37,11 @@ export default function BuiltForSMEs() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-7 sm:grid-cols-2">
             {reasons.map((reason) => (
               <div
                 key={reason.title}
-                className="rounded-2xl border border-charcoal/10 bg-mist/60 p-7 shadow-[0_2px_14px_-8px_rgba(7,26,45,0.06)] transition-colors duration-200 hover:border-teal/30"
+                className="border-t border-charcoal/15 pt-5"
               >
                 <h3 className="font-heading text-base font-semibold text-navy">
                   {reason.title}

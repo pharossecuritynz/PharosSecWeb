@@ -1,6 +1,6 @@
 # Pricing Strategy
 
-**Status: validated against published NZ/AU market data (see [Market validation](#market-validation) below) as of July 2026, restructured 2026-08-22 to match the seven-service v2 architecture. Figures below have been checked against real competitor and market pricing signals, but no NZ competitor publishes exact fixed-fee pricing for a direct like-for-like comparison — treat these as evidence-informed, not confirmed-by-quote. Continue to sanity-check against real proposals and win/loss feedback in the first 90 days.**
+**Status: validated against published NZ/AU market data (see [Market validation](#market-validation) below) as of July 2026, restructured 2026-08-22 to match the seven-service v2 architecture, and cross-checked against UK market data 2026-08-22 (see [International benchmark](#international-benchmark-uk-market-added-2026-08-22)). Figures below have been checked against real competitor and market pricing signals, but no NZ competitor publishes exact fixed-fee pricing for a direct like-for-like comparison — treat these as evidence-informed, not confirmed-by-quote. Continue to sanity-check against real proposals and win/loss feedback in the first 90 days.**
 
 ## Pricing philosophy
 
@@ -72,6 +72,21 @@ Researched July 2026 across published NZ/AU cyber security advisory, vCISO, and 
 | Security awareness training is typically sold as per-seat SaaS ($5–12/user/month); formal multi-day classroom courses start at $3,395 | [Swerve – Cyber Security Staff Awareness Training](https://www.swerve.nz/cyber-security-awareness-training), [The Knowledge Academy – NZ Cyber Security Awareness Training](https://www.theknowledgeacademy.com/nz/courses/cyber-security-training/cyber-security-awareness/) | Kept the staff awareness add-on at $600–$1,200/session, positioned as a distinct middle offer |
 | Enterprise-scale cyber incident tabletop exercises run into the tens of thousands (USD) | General industry sources (US-focused; no NZ SME-specific figure found) | Confirmed Incident Readiness's $900–$2,000 range is correctly and deliberately scaled down for a half-day SME session |
 | No NZ provider publishes fixed-fee pricing for a Microsoft 365 configuration review, an IT-provider assurance review, or a policy/checklist documentation pack | Search across NZ security/MSP providers found no comparable published pricing | Flagged as a genuine market pricing gap for the Independent Security Review, IT Provider Security Assurance, and policy pack add-on; an opportunity to lead on transparent pricing, not a risk signal |
+
+### International benchmark: UK market (added 2026-08-22)
+
+Fractional Wisdom (UK), the benchmark named in `00-business/decisions.md`, does not publish specific prices anywhere on its site. Its only pricing-related statement is a philosophy match, not a figure: "Our work is fixed price on an agreed scope, so you know exactly what you're committing to: no surprises or open-ended consultancy." That's already Pharos's stated pricing philosophy (see above), so the comparison below uses broader published UK market data as a proxy, not Fractional Wisdom's own numbers, which don't exist publicly.
+
+**Currency note:** figures are converted to NZD at an illustrative rate of roughly 1 GBP ≈ 2.2 NZD for scale reference only. Treat as directional, not precise; do not use for an actual client quote.
+
+| Finding (UK, GBP) | Illustrative NZD equivalent | Source | Applied as |
+|---|---|---|---|
+| Cyber Essentials certification (Fractional Wisdom's core product): £500–£5,000/year | ~$1,100–$11,000 | [Cypro – Cyber Essentials Cost 2026](https://cypro.co.uk/insights/cyber-essentials-cost/) | Comparable order of magnitude to the Independent Security Review's $1,800–$4,200 one-off range, despite being a different deliverable (certification vs. independent review); no reason to revise the existing range |
+| UK fractional CISO / vCISO monthly retainer: £3,000–£12,000/month | ~$6,600–$26,400/month | [Leadership Services – Fractional CISO UK](https://leadership-services.co.uk/insights/fractional-ciso-uk-cybersecurity-leadership/), [SideChannel – vCISO Pricing 2026](https://sidechannel.com/blog/the-ultimate-guide-to-vciso-pricing-everything-you-need-to-know/) | Confirms, from a second independent market, that the Security Adviser retainer ($500–$1,500/month) sits well below fractional-CISO-level pricing, consistent with the NZ vCISO comparison above. The gap is wider here than against the NZ figures, reinforcing that this retainer should stay positioned as lighter-touch advisory, not vCISO, until there's real demand pressure at the top of the existing tiers |
+| UK fractional CISO day rate: £900–£1,500/day (up to £1,500–£2,500 for regulated/complex sectors) | ~$2,000–$3,300/day | [Boardman – Fractional CTO & CISO Cost](https://www.boardman.com/blog/fractional-cto-ciso-cost) | Not directly applied; Pharos doesn't sell day-rate time, only fixed-scope engagements and tiered retainers, so this is context rather than a figure to calibrate against |
+| UK external penetration test: £3,500–£7,500 | ~$7,700–$16,500 | Aggregated from UK cyber security cost guides (2026) | Consistent with the existing NZ pentest figure ($5,000–$20,000+) already used to keep the Independent Security Review's ceiling well clear of pentest-level pricing |
+
+**Overall read:** two independent markets (NZ/AU and UK) land on the same conclusions — the one-off review pricing is in a sensible range, and the retainer is deliberately priced well under vCISO/fractional-CISO territory. Nothing here signals a need to change current ranges; if anything, the size of the UK retainer gap suggests there's room for a higher tier later, not urgency to raise prices now.
 
 ### Effort-rate sanity check
 
