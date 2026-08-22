@@ -2,10 +2,10 @@ import Link from "next/link";
 import LogoMark from "./LogoMark";
 
 const navLinks = [
-  { href: "#services", label: "Services" },
-  { href: "#process", label: "Process" },
-  { href: "#about", label: "About" },
-  { href: "#contact", label: "Contact" },
+  { href: "/#services", label: "Services" },
+  { href: "/#process", label: "Process" },
+  { href: "/#about", label: "About" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 const serviceLinks = [
@@ -26,7 +26,7 @@ export default function Footer() {
       <div className="container-px mx-auto max-w-6xl py-16">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.2fr_0.8fr_0.8fr_1fr]">
           <div className="max-w-xs">
-            <Link href="#top" className="flex items-center gap-2.5 text-white">
+            <Link href="/" className="flex items-center gap-2.5 text-white">
               <LogoMark className="h-7 w-auto" />
               <span className="font-heading text-base font-semibold tracking-tight">
                 Pharos Security
@@ -51,13 +51,13 @@ export default function Footer() {
             </p>
             <nav className="mt-4 flex flex-col gap-3">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   className="text-sm font-medium text-white/60 transition-colors hover:text-white"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -69,12 +69,12 @@ export default function Footer() {
             <ul className="mt-4 flex flex-col gap-3">
               {serviceLinks.map((service) => (
                 <li key={service}>
-                  <a
-                    href="#services"
+                  <Link
+                    href="/#services"
                     className="text-sm font-medium text-white/60 transition-colors hover:text-white"
                   >
                     {service}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
