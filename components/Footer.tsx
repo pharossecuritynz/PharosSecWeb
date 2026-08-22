@@ -1,5 +1,5 @@
 import Link from "next/link";
-import BeaconMark from "./BeaconMark";
+import LogoMark from "./LogoMark";
 
 const navLinks = [
   { href: "#services", label: "Services" },
@@ -27,7 +27,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.2fr_0.8fr_0.8fr_1fr]">
           <div className="max-w-xs">
             <Link href="#top" className="flex items-center gap-2.5 text-white">
-              <BeaconMark className="h-7 w-7 text-teal" />
+              <LogoMark className="h-7 w-auto" />
               <span className="font-heading text-base font-semibold tracking-tight">
                 Pharos Security
               </span>
@@ -100,9 +100,17 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-8 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-white/60 sm:flex-row sm:items-center sm:justify-between">
           <p>&copy; {new Date().getFullYear()} Pharos Security. All rights reserved.</p>
-          <p>Boutique cyber security advisory, based in New Zealand.</p>
+          <div className="flex items-center gap-5">
+            <Link href="/privacy" className="transition-colors hover:text-white">
+              Privacy
+            </Link>
+            <Link href="/terms" className="transition-colors hover:text-white">
+              Terms
+            </Link>
+            <span>Boutique cyber security advisory, based in New Zealand.</span>
+          </div>
         </div>
       </div>
     </footer>

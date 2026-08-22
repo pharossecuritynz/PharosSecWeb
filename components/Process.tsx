@@ -1,5 +1,3 @@
-import BeaconMark from "./BeaconMark";
-
 const steps = [
   {
     number: "1",
@@ -23,7 +21,7 @@ const steps = [
     number: "4",
     title: "Plan",
     description:
-      "You get a clear, achievable plan, and we help you and your IT provider work through it.",
+      "You get a clear, achievable plan, and we help you and your IT support work through it.",
   },
 ];
 
@@ -32,8 +30,7 @@ export default function Process() {
     <section id="process" className="bg-grain relative bg-navy py-24 md:py-32">
       <div className="container-px relative z-10 mx-auto max-w-6xl">
         <div className="max-w-2xl">
-          <BeaconMark className="h-6 w-6" />
-          <h2 className="mt-5 font-heading text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          <h2 className="font-heading text-3xl font-bold tracking-tight text-white sm:text-4xl">
             A steady, four-step path forward.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-white/65">

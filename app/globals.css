@@ -17,8 +17,8 @@
   --color-cyan: var(--cyan);
   --color-charcoal: var(--charcoal);
 
-  --font-heading: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
-  --font-body: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-libre-franklin), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-libre-franklin), ui-sans-serif, system-ui, sans-serif;
 
   --animate-beacon-sweep: beacon-sweep 8s ease-in-out infinite;
   --animate-fade-up: fade-up 0.7s ease-out both;
