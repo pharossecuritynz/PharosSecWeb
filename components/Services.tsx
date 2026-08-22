@@ -22,7 +22,6 @@ const featured = [
       "A plain-English report with prioritised findings",
       "A 90-day improvement plan",
     ],
-    price: "From $1,800",
   },
   {
     icon: PeopleIcon,
@@ -36,7 +35,6 @@ const featured = [
       "A report on what's in place, unclear, or missing",
       "A plain-English list of questions to put to your provider",
     ],
-    price: "From $1,500",
     href: "/it-provider-security-assurance",
   },
 ];
@@ -51,7 +49,6 @@ const clusters = [
         description:
           "A free, ten-minute self-check on the basics, with an honest read on where you stand and no obligation.",
         forWho: "Anyone who wants a fast first read before committing to anything.",
-        price: "Free",
       },
       {
         icon: GridIcon,
@@ -59,7 +56,6 @@ const clusters = [
         description:
           "A fast, independent look at what your business looks like from the outside, without touching anything internal.",
         forWho: "Businesses that want an independent check without committing to a full review yet.",
-        price: "From $400",
       },
     ],
   },
@@ -72,7 +68,6 @@ const clusters = [
         description:
           "A coordinated period where we help you and your IT support work through the highest-priority fixes, and check they actually happen.",
         forWho: "Businesses that know their gaps and are ready to act, but need help sequencing the work.",
-        price: "From $2,000",
       },
       {
         icon: LifebuoyIcon,
@@ -80,7 +75,6 @@ const clusters = [
         description:
           "A clear, calm plan for what to do if something goes wrong, worked out before it happens, not during.",
         forWho: "Businesses with no documented plan for handling a cyber incident.",
-        price: "From $900",
       },
     ],
   },
@@ -93,7 +87,6 @@ const clusters = [
         description:
           "Independent security guidance without employing a security team, as your business, tools, and risks change.",
         forWho: "Businesses that have completed an initial review and want an ongoing adviser to check in with.",
-        price: "From $500/month",
       },
     ],
   },
@@ -148,9 +141,6 @@ export default function Services() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-5 text-sm font-semibold text-teal">
-                  {service.price}
-                </p>
               </>
             );
             return service.href ? (
@@ -194,9 +184,6 @@ export default function Services() {
                             <span className="font-semibold text-navy/80">For: </span>
                             {service.forWho}
                           </p>
-                          <p className="mt-1.5 text-xs font-semibold uppercase tracking-wide text-teal">
-                            {service.price}
-                          </p>
                         </div>
                       </div>
                     );
@@ -206,12 +193,6 @@ export default function Services() {
             ))}
           </div>
         </div>
-
-        <p className="mt-10 text-sm text-charcoal/55">
-          Prices are indicative, excl. GST, and scaled to your business size
-          and complexity. A fixed quote is confirmed after a short
-          conversation, not on the spot.
-        </p>
       </div>
     </section>
   );
