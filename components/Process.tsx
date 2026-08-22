@@ -9,21 +9,21 @@ const steps = [
   },
   {
     number: "2",
-    title: "Prioritise",
+    title: "Verify",
     description:
-      "We rank what matters most, so effort and budget go toward the risks with the greatest impact.",
+      "We check what's actually in place, not just what's reported, and label every finding by how it was confirmed.",
   },
   {
     number: "3",
-    title: "Improve",
+    title: "Prioritise",
     description:
-      "We help you put practical, sustainable controls in place, matched to your team and tools.",
+      "We rank what matters most by real business impact, so effort and budget go where they count.",
   },
   {
     number: "4",
-    title: "Prepare",
+    title: "Plan",
     description:
-      "We make sure your business knows what to do if something goes wrong, before it happens.",
+      "You get a clear, achievable plan, and we help you and your IT provider work through it.",
   },
 ];
 

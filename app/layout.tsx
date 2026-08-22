@@ -15,9 +15,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Pharos Security | Cyber Security Advisory for New Zealand SMEs",
+  title: "Pharos Security | Independent Security Advisory for New Zealand SMEs",
   description:
-    "Pharos Security helps New Zealand SMEs understand cyber risk, strengthen practical controls, prepare for incidents, and build safer everyday habits without jargon or scare tactics.",
+    "Pharos Security independently checks whether your business's security is actually good enough, and gives you a clear, prioritised plan. No products sold, works alongside your existing IT provider.",
+  openGraph: {
+    title: "Pharos Security | Independent Security Advisory for New Zealand SMEs",
+    description:
+      "Independent cyber security reviews and practical guidance for New Zealand small businesses. No products sold, works alongside your existing IT provider.",
+    locale: "en_NZ",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
