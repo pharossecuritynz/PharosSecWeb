@@ -10,6 +10,10 @@ review-cycle: on every material decision
 
 Running record of material decisions. Each entry is dated, states the decision, the reasoning, and who made it. This is the source of truth when documents disagree with each other.
 
+## 2026-08-22: Public pricing paused, not decided against
+
+**PAUSED, not reversed.** "From" price ranges were briefly live on every service card on the website. Oscar asked for them to be removed, wanting to keep the public-pricing question for further discussion rather than settle it now. Removed from the homepage Services section and the IT Provider Security Assurance page. The underlying ranges and their NZ/AU/UK market research in `02_Business_Strategy/pricing-strategy.md` are untouched and remain the working internal reference for quoting on a call; only the decision to display them publicly is on hold. Revisit when Oscar wants to pick the question back up.
+
 ## 2026-08-22: Pharos v2 — assurance-led positioning and service architecture
 
 **CONFIRMED**, per a detailed operating brief from Oscar. This supersedes the front-door service naming in the 2026-07-22 entry below and sharpens (rather than reverses) the advisory-only decision. Recorded in full so later documents don't need to re-derive the reasoning.

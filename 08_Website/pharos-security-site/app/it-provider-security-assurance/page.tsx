@@ -96,7 +96,7 @@ export default function ITProviderSecurityAssurancePage() {
                 </Link>
               </div>
               <p className="mt-4 text-sm text-white/60">
-                From $1,500 (excl. GST, indicative). Or email{" "}
+                Or email{" "}
                 <a
                   href="mailto:pharos.security.nz@gmail.com?subject=IT%20Provider%20Security%20Assurance%20enquiry"
                   className="font-medium text-white/80 underline underline-offset-2 transition-colors hover:text-white"
