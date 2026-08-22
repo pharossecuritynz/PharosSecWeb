@@ -1,3 +1,4 @@
+import ConversationStarters from "./ConversationStarters";
 import LogoMark from "./LogoMark";
 
 export default function CTA() {
@@ -32,6 +33,10 @@ export default function CTA() {
           >
             pharos.security.nz@gmail.com
           </a>
+        </div>
+
+        <div className="mt-6">
+          <ConversationStarters />
         </div>
       </div>
     </section>
