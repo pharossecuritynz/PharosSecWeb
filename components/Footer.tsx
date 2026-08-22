@@ -85,10 +85,10 @@ export default function Footer() {
               Get in touch
             </p>
             <a
-              href="mailto:hello@pharossecurity.co.nz?subject=Cyber%20security%20enquiry"
+              href="mailto:pharos.security.nz@gmail.com?subject=Cyber%20security%20enquiry"
               className="mt-4 block transition-colors hover:text-white"
             >
-              hello@pharossecurity.co.nz
+              pharos.security.nz@gmail.com
             </a>
             <p className="mt-2">New Zealand</p>
             <a
