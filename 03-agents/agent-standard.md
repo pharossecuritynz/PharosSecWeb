@@ -1,8 +1,8 @@
 ---
 title: Agent Standard
 status: approved
-owner: Oscar
-last-reviewed: 2026-07-21
+owner: Jason Hill
+last-reviewed: 2026-08-29
 review-cycle: review when an agent spec fails to fit the template
 ---
 
@@ -19,7 +19,7 @@ Every agent specification must include all of the following. A field with nothin
 | Name | |
 | Purpose | One paragraph, plain English |
 | Business value | Which of the tests in the backlog scoring method it serves: client acquisition, service delivery, trust, delivery time, operational risk, consistency |
-| Owner | Oscar, unless a future team member is named |
+| Owner | Jason Hill, unless a future team member is named |
 | Status | `draft`, `review`, `approved`, or `deprecated` |
 | Build priority | Build now, build before first client, build after initial client validation, build later, or do not build unless required |
 | Trigger | What causes this agent to run |
@@ -33,8 +33,8 @@ Every agent specification must include all of the following. A field with nothin
 | Output format | Structure of the deliverable |
 | Evidence citation requirements | How the agent must reference its sources |
 | Confidence handling | How the agent expresses uncertainty, and what it does when confidence is low |
-| Escalation rules | When the agent must flag something to Oscar rather than complete the task |
-| Human review requirements | What Oscar must check before output is used |
+| Escalation rules | When the agent must flag something to Jason Hill rather than complete the task |
+| Human review requirements | What Jason Hill must check before output is used |
 | Privacy considerations | What personal or client information the agent may touch, and how |
 | Retention considerations | What happens to the agent's inputs and outputs after the task |
 | Prompt injection protections | How the agent treats instructions embedded in evidence or client-provided text |
@@ -55,10 +55,16 @@ Every agent inherits these regardless of what its own specification says, per th
 - Must not start active security testing without approval.
 - Must not make legal conclusions.
 - Must not commit Pharos to pricing or scope.
-- Must not issue a final client-facing report without Oscar's approval.
+- Must not issue a final client-facing report without Jason Hill's approval.
 - Must not store secrets in source control.
 - Must not bypass safety controls.
 - Must not present AI output as verified analysis without review.
+
+## Evidence discipline for findings
+
+Any agent that drafts, organises, or touches an assessment finding follows `04_Operating_Manual/evidence-standard.md` without exception. The rule stated there governs this standard too: **no evidence, no confirmed finding.**
+
+Concretely, this means an agent's "Evidence citation requirements" field must state that every draft finding cites a specific evidence type (client-stated, documentary, configuration observed, technical test, external observation, or inferred) and a specific citation, not a general impression. Where evidence is incomplete or the agent is inferring rather than confirming, the agent's "Confidence handling" field must require the finding to be marked using the status vocabulary from `evidence-standard.md` — **unverified**, **inferred**, **client-stated**, or **requires validation** — rather than silently upgraded to a stronger status. An agent must never change a finding's evidence type, confidence level, or risk rating from what a human reviewer set; it may only propose one, clearly flagged as a proposal, for the reviewer to accept or change.
 
 ## Minimum test cases
 

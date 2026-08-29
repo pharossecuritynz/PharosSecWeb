@@ -10,12 +10,12 @@ Clear rules for when to say "that's not something I do" — and what to do inste
 1. Respond immediately, calmly. Do not treat as a normal enquiry or wait for the standard response window.
 2. Provide immediate, plain-English first-step guidance **only** where confident to do so safely (e.g. "disconnect the affected device from the network," "contact your bank immediately if a payment was involved," "don't pay a ransom or engage with attackers directly").
 3. Direct them to the appropriate emergency resources:
-   - **CERT NZ** — cert.govt.nz (report cyber security incidents)
+   - **NCSC** — ncsc.govt.nz/report or 0800 114 115 (report cyber security incidents; CERT NZ has fully merged into the NCSC)
    - **NZ Police** — 105 (non-emergency) or 111 (if there's immediate danger or large-scale fraud in progress)
    - **Their bank**, immediately, if a fraudulent payment is involved
    - **Their cyber insurer** (if they have a policy) — many policies require using an approved incident response panel
 4. Be explicit that Pharos Security does not provide live technical incident response, and help them understand what kind of help to look for (a forensic IR firm, their insurer's panel).
-5. Follow up afterwards (once the immediate situation is resolved) to see if an Incident Readiness Workshop or Risk Review would help prevent a repeat — but never during the crisis itself.
+5. Follow up afterwards (once the immediate situation is resolved) to see if Incident Readiness or an Independent Security Review would help prevent a repeat — but never during the crisis itself.
 
 ## Category B: Out-of-scope service request
 

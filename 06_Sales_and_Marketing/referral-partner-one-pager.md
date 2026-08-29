@@ -40,7 +40,7 @@ We're not a managed security provider, penetration testing firm, or incident res
 
 If you work with New Zealand SMEs and think there's a fit, I'd welcome a short conversation, no pressure, just an introduction.
 
-Oscar
+Jason Hill
 Pharos Security
 [email] · [phone] · [website]
 

@@ -5,28 +5,28 @@
 ---
 
 **Client name:** [Client Name]
-**Based on:** [Cyber Risk Review / Microsoft 365 Review / etc.] dated [Date]
+**Based on:** [Security Posture Review / Microsoft 365 Review / etc.] dated [Date]
 **Last updated:** [Date]
 
 ## Now (next 30 days)
 
-| # | Action | Owner | Status | Notes |
+| Finding ID | Action | Owner | Status | Notes |
 |---|---|---|---|---|
-| 1 | | | ☐ Not started ☐ In progress ☐ Done | |
-| 2 | | | ☐ Not started ☐ In progress ☐ Done | |
-| 3 | | | ☐ Not started ☐ In progress ☐ Done | |
+| | | | ☐ Not started ☐ In progress ☐ Done | |
+| | | | ☐ Not started ☐ In progress ☐ Done | |
+| | | | ☐ Not started ☐ In progress ☐ Done | |
 
 ## Next (30–90 days)
 
-| # | Action | Owner | Status | Notes |
+| Finding ID | Action | Owner | Status | Notes |
 |---|---|---|---|---|
-| 1 | | | ☐ Not started ☐ In progress ☐ Done | |
+| | | | ☐ Not started ☐ In progress ☐ Done | |
 
 ## Later (3–12 months)
 
-| # | Action | Owner | Status | Notes |
+| Finding ID | Action | Owner | Status | Notes |
 |---|---|---|---|---|
-| 1 | | | ☐ Not started ☐ In progress ☐ Done | |
+| | | | ☐ Not started ☐ In progress ☐ Done | |
 
 ## How to use this document
 

@@ -25,7 +25,7 @@ Used for the website's About/credibility section and available to expand into a 
 
 ### Why Pharos Security exists
 
-Oscar founded Pharos Security after [seeing / experiencing, founder to provide the real story] how disconnected most cyber security advice was from the reality of running a small or medium business. Enterprise frameworks, fear-based sales tactics, and jargon-heavy reports don't help a 20-person business make a good decision on a Tuesday afternoon: they just create anxiety without clarity.
+Jason Hill spent around fifteen years in IT support, network security, and cyber security operations across London and New Zealand, most recently heading security operations at timbre Digital. After being made redundant from that role, he founded Pharos Security to close a gap he'd seen up close for years: enterprise frameworks, fear-based sales tactics, and jargon-heavy reports don't help a 20-person business make a good decision on a Tuesday afternoon, they just create anxiety without clarity.
 
 Pharos Security was built to be the opposite: independent, plain-English, and genuinely sized for New Zealand SMEs.
 
@@ -35,9 +35,11 @@ Pharos Security was built to be the opposite: independent, plain-English, and ge
 
 ### Founder bio
 
-*[Placeholder: needs founder input on professional background, relevant experience, and any credentials. Keep the tone consistent with the brand voice, factual and credible, not oversold. Example structure below.]*
-
-> Oscar has spent [X years] working in [relevant background, for example IT, security, risk, or a specific industry]. After seeing first-hand how many small and medium businesses were left without accessible, honest cyber security guidance, Oscar founded Pharos Security to close that gap.
+> Jason Hill has around fifteen years of experience across IT support, network security, and cyber security operations, gained in both London and New Zealand. Most recently, he headed security operations at timbre Digital, investigating and managing incidents across SIEM, EDR, endpoint, network, email, identity, and cloud platforms, and leading projects including a Cortex XDR tenant migration and a Cisco Umbrella DNS rollout.
+>
+> Alongside that work, Jason holds technical training through SANS, Palo Alto Networks, and Splunk, and has a strong interest in OSINT and threat research. He volunteers with Trace Labs, contributing open-source intelligence research to missing-persons search efforts.
+>
+> After being made redundant from timbre Digital, Jason founded Pharos Security to bring that same hands-on, evidence-based approach directly to New Zealand small and medium businesses that don't have access to an in-house security team.
 
 ### How we work with your existing IT provider
 
@@ -45,4 +47,5 @@ Most clients already have an IT provider or MSP handling day-to-day support. Pha
 
 ## Assumptions / needs founder input, high priority
 
-- **Founder bio, headshot, and background story are still placeholders (name is now confirmed: Oscar).** This is the single most important piece of missing content for building trust; prioritise completing this before a wider marketing push. See [../10_Admin/assumptions-and-open-questions.md](../10_Admin/assumptions-and-open-questions.md).
+- **Founder bio and background story filled in 2026-08-24**, from details Jason gave directly (fifteen years in IT/security across London and NZ, most recently at timbre Digital, SANS/Palo Alto Networks/Splunk training, Trace Labs OSINT volunteering, redundancy as the reason for founding Pharos). This is an AI-assisted draft and needs Jason's review before it's used anywhere client-facing, per `CLAUDE.md`.
+- **Still needed:** a headshot, and a decision on whether to name timbre Digital directly in public copy or refer to it more generally ("a New Zealand IT and security provider"). Also see the readiness caveat in `09-project-management/decisions-required.md` question 5: Pharos is still in the idea phase, so this copy should not go live publicly until the business is actually ready to take a client. See [../10_Admin/assumptions-and-open-questions.md](../10_Admin/assumptions-and-open-questions.md).

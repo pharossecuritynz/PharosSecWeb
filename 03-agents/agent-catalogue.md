@@ -1,7 +1,7 @@
 ---
 title: Agent Catalogue
 status: review
-owner: Oscar
+owner: Jason Hill
 last-reviewed: 2026-07-21
 review-cycle: update whenever an agent's status changes
 ---

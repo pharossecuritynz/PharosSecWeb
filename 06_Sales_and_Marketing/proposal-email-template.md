@@ -31,7 +31,7 @@ Based on what we covered, here's what I'd recommend and what it involves.
 
 Thanks again for your time, [First Name], looking forward to helping [Business Name] get some clarity here.
 
-Oscar
+Jason Hill
 Pharos Security
 Clear guidance. Safer business.
 [email] · [phone, if applicable]

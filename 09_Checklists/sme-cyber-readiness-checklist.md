@@ -43,7 +43,7 @@ Work through this list honestly — it's not a test, just a way to see where the
 
 - [ ] There's a written plan (even a simple one) for what to do if something goes wrong
 - [ ] Key contacts (IT provider, bank, insurer) are documented somewhere accessible — not just in one person's head
-- [ ] You know what CERT NZ is and how to report an incident (cert.govt.nz)
+- [ ] You know how to report a cyber security incident to the NCSC (ncsc.govt.nz/report, 0800 114 115)
 
 ## Third parties and vendors
 

@@ -1,8 +1,8 @@
 ---
 title: Pharos Security Baseline
 status: approved
-owner: Oscar
-last-reviewed: 2026-08-22
+owner: Jason Hill
+last-reviewed: 2026-08-29
 review-cycle: annually, or when a source framework issues a major revision
 ---
 
@@ -21,8 +21,10 @@ Without one, every assessment risks being an informal checklist that varies by m
 | **CIS Critical Security Controls v8.1, Implementation Group 1 (IG1)** | The practical control baseline. IG1 is CIS's own "essential cyber hygiene" tier, explicitly designed for organisations with limited IT and security expertise defending against general, non-targeted attacks — which describes the great majority of Pharos clients. 56 safeguards. | [cisecurity.org/controls/implementation-groups/ig1](https://www.cisecurity.org/controls/implementation-groups/ig1) |
 | **NIST Cybersecurity Framework 2.0** | Governance, risk, and organisational structure. Its six functions (Govern, Identify, Protect, Detect, Respond, Recover) give the Independent Security Review report its shape, independent of any specific control list. | [nist.gov/cyberframework](https://www.nist.gov/cyberframework) |
 | **NIST CSF 2.0 Small Business Quick Start Guide (NIST SP 1300)** | Keeps the framework application scaled to small-business reality rather than enterprise assumptions. Published alongside CSF 2.0, February 2024. | [nist.gov/publications/nist-cybersecurity-framework-20-small-business-quick-start-guide](https://www.nist.gov/publications/nist-cybersecurity-framework-20-small-business-quick-start-guide) |
-| **NCSC Cyber Security Framework (New Zealand)** | Keeps the methodology grounded in New Zealand context and language, and aligns Pharos reporting with the framework a NZ business's insurer, board, or bank is most likely to have already encountered. Functions broadly align with NIST CSF. | [ncsc.govt.nz/protect-your-organisation/ncsc-cyber-security-framework](https://www.ncsc.govt.nz/protect-your-organisation/ncsc-cyber-security-framework/) |
-| **New Zealand Privacy Act 2020** | The security-safeguards obligation (personal information must be protected by reasonable security safeguards, scaled to business size and data sensitivity) is assessed as a practical, operational matter. Legal interpretation is explicitly out of scope; see the boundary below. | [privacy.org.nz/privacy-principles](https://www.privacy.org.nz/privacy-principles/) |
+| **NCSC Cyber Security Framework and Minimum Cyber Security Standards (New Zealand)** | Keeps the methodology grounded in New Zealand context and language, and aligns Pharos reporting with the framework a NZ business's insurer, board, or bank is most likely to have already encountered. See below for the current structure. | [ncsc.govt.nz/protect-your-organisation/minimum-standards](https://www.ncsc.govt.nz/protect-your-organisation/minimum-standards/) |
+| **New Zealand Privacy Act 2020, including Information Privacy Principle 3A** | The security-safeguards obligation (personal information must be protected by reasonable security safeguards, scaled to business size and data sensitivity) is assessed as a practical, operational matter. IPP 3A (indirect-collection notification) took effect 1 May 2026. Legal interpretation is explicitly out of scope; see the boundary below and `nz-privacy-baseline.md`. | [privacy.org.nz/privacy-principles](https://www.privacy.org.nz/privacy-principles/) |
+
+**NCSC framework structure, verified current as of 2026-08-29.** NCSC now publishes its own five-function Cyber Security Framework: Guide and Govern, Identify and Understand, Prevent and Protect, Detect and Contain, and Respond and Recover. Sitting alongside it are ten Minimum Cyber Security Standards (Risk Management, Security Awareness, Assets and their Importance, Secure Configuration of Software, Patching, Multi-factor Authentication, Detect Unusual Behaviour, Least Privilege, Data Recovery, Response Planning), each mapped to one of the five functions. These standards are mandated for GCISO-mandated public sector agencies, not for private businesses, but they're a sound, current, NZ-specific practical baseline and Pharos uses them as a reference, not a compliance claim. This supersedes the previous description of NCSC's framework as "broadly aligned with NIST CSF's six functions" — that description borrowed NIST's structure rather than citing NCSC's own, and NCSC's published structure has since moved to five functions. Detailed traceability between Pharos's thirteen assessment domains and these ten standards is in `nz-guidance-mapping.md`. **Pharos never describes a client as "NCSC compliant."** See the language rule in `nz-guidance-mapping.md`.
 
 Note on incident reporting: CERT NZ has fully merged into the NCSC. Incidents are reported at [ncsc.govt.nz/report](https://www.ncsc.govt.nz/report) (0800 114 115), not a separate CERT NZ channel. Any Pharos material still referencing "CERT NZ" as a distinct body should be corrected.
 
@@ -78,12 +80,24 @@ Findings are never reduced to a single overall percentage score in a client-faci
 
 - maturity by area (identity, devices, backups, and so on)
 - risk themes, in plain language
-- verification level per finding
-- priority (Now / Next / Later)
+- verification level per finding, and a confidence rating kept distinct from risk (see `evidence-standard.md`)
+- a qualitative risk rating (Critical / High / Moderate / Low / Informational), kept as a separate axis from priority (see `risk-and-priority-methodology.md`)
+- priority (Now / Next / Later / Monitor)
 - business impact, not just technical severity
 
 The Free Security Health Check is the one exception, and even there the output must distinguish self-reported input from anything independently checked (there is nothing independently checked in a self-serve questionnaire, so its output should read as indicative, not as a score with false authority).
 
 ## Boundary: privacy is assessed operationally, not legally
 
-Pharos assesses whether sensible privacy-related security practices are in place (who has access to personal information, where it's stored, retention, breach procedures, staff awareness). Pharos does not provide legal advice on Privacy Act obligations, breach notification thresholds, or liability. Where legal interpretation is genuinely needed, the recommendation is to engage a suitable privacy or commercial lawyer. See `02_Business_Strategy/risk-boundaries.md`.
+Pharos assesses whether sensible privacy-related security practices are in place (who has access to personal information, where it's stored, retention, breach procedures, staff awareness). Pharos does not provide legal advice on Privacy Act obligations, breach notification thresholds, or liability. Where legal interpretation is genuinely needed, the recommendation is to engage a suitable privacy or commercial lawyer. See `02_Business_Strategy/risk-boundaries.md` and `nz-privacy-baseline.md`.
+
+## Related documents
+
+This baseline holds the cited frameworks, the verification-level concept, the evidence/interpretation/action finding structure, and the eight-stage lifecycle. Since 2026-08-29 it sits alongside a set of sibling documents that expand specific parts of it without changing anything above:
+
+- `assessment-methodology.md` — the thirteen assessment domains and the detailed, stage-by-stage assessment workflow.
+- `evidence-standard.md` — the fuller evidence-type taxonomy (extending the four verification levels above), the confidence concept, the finding data model, and the finding ID scheme.
+- `risk-and-priority-methodology.md` — the risk rating scale, kept separate from priority, plus effort and cost categories.
+- `nz-privacy-baseline.md` — the privacy assessment domain, including IPP 3A.
+- `nz-guidance-mapping.md` — traceability between Pharos domains/findings and NZ guidance, and the legal/guidance/practice/recommendation distinction.
+- `remediation-and-verification.md` — the 90-day plan structure and the evidence-based follow-up process.

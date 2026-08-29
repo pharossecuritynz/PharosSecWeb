@@ -1,7 +1,7 @@
 ---
 title: Milestones
 status: approved
-owner: Oscar
+owner: Jason Hill
 last-reviewed: 2026-07-21
 review-cycle: monthly
 ---
@@ -13,7 +13,7 @@ Aligned to the directive's core objective: begin earning revenue within approxim
 | Milestone | Target | Depends on | Status |
 |---|---|---|---|
 | Reconciliation review and decision brief complete | 2026-07-21 | Nothing | Done |
-| 5 open questions answered | Within 1 week | Oscar | Pending |
+| 5 open questions answered | Within 1 week | Jason Hill | Pending |
 | Business structure registered, domain and email live | Within 2 to 3 weeks | Business setup checklist in `10_Admin/business-setup-checklist-nz.md` | Pending |
 | Insurance bound, Terms of Engagement drafted and reviewed | Within 3 to 4 weeks | Lawyer and insurer engagement | Pending |
 | Service catalogue and master plan confirmed against question 1's answer | Within 1 week of that answer | Question 1 | Pending |

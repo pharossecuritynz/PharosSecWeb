@@ -39,7 +39,7 @@ A suggested weekly structure for a solo founder balancing delivery, sales, and o
 
 - Revisit [pricing-strategy.md](../02_Business_Strategy/pricing-strategy.md) against real data (actual time spent vs. estimated effort per service)
 - Revisit [customer-profiles.md](../02_Business_Strategy/customer-profiles.md) and [competitor-positioning.md](../02_Business_Strategy/competitor-positioning.md) with real market learnings
-- Review capacity: is retainer client load sustainable alongside project work? (See [../03_Services/ongoing-cyber-advisor-support.md](../03_Services/ongoing-cyber-advisor-support.md).)
+- Review capacity: is retainer client load sustainable alongside project work? (See [../03_Services/security-adviser.md](../03_Services/security-adviser.md).)
 
 ## Capacity guardrails
 

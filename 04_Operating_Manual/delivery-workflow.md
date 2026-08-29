@@ -52,7 +52,7 @@ Proposal accepted
 
 ## 5. Draft/findings review with client
 
-- For larger engagements (Risk Review, Uplift Plan), share findings in a live call rather than just emailing a document cold — this catches misunderstandings early and is a better client experience
+- For larger engagements (Independent Security Review, Secure Foundations), share findings in a live call rather than just emailing a document cold — this catches misunderstandings early and is a better client experience
 - Note any requested changes and apply them before finalising
 
 ## 6. Finalisation and delivery
@@ -64,20 +64,21 @@ Proposal accepted
 
 - Send the final invoice (if not already paid via deposit/balance structure)
 - Ask for feedback (see [../04_Operating_Manual/client-communication-standards.md](client-communication-standards.md)) and, if appropriate, a testimonial
-- Note any natural follow-on service to mention (e.g. after a Risk Review, mention the Uplift Plan) — but only if genuinely relevant, never as a reflexive upsell
+- Note any natural follow-on service to mention (e.g. after an Independent Security Review, mention Secure Foundations) — but only if genuinely relevant, never as a reflexive upsell
 - Update the CRM/tracker: mark complete, log actual time spent (for future estimating accuracy), log any lessons learned
 
 ## Timeline expectations by service (typical, from kickoff to delivery)
 
 | Service | Typical elapsed time |
 |---|---|
-| Cyber Risk Review | 1.5–2.5 weeks |
-| SME Security Uplift Plan | 1.5–2.5 weeks |
-| Microsoft 365 Basics Review | 1–1.5 weeks |
-| Email and Phishing Readiness | 1–1.5 weeks |
-| Incident Readiness Workshop | 1–2 weeks (mostly scheduling-dependent) |
-| Staff Cyber Awareness Session | 1–2 weeks (mostly scheduling-dependent) |
-| Security Policy Starter Pack | 1–2 weeks |
+| Independent Security Review (the flagship Security Posture Review) | 1.5–2.5 weeks |
+| Exposure Snapshot | 3–5 business days |
+| IT Provider Security Assurance | 1.5–2.5 weeks |
+| Secure Foundations | 1.5–2.5 weeks |
+| Incident Readiness | 1–2 weeks (mostly scheduling-dependent) |
+| Security Adviser | Ongoing, per retainer tier |
+
+Add-on modules folded into the above (Microsoft 365 deep-dive, phishing review, staff awareness sessions, policy pack — see `03_Services/service-catalogue.md`) typically add a few days each rather than running as separate standalone timelines.
 
 ## Assumptions / needs founder input
 

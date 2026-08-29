@@ -66,10 +66,10 @@ Not a list of every possible control. Seven questions:
 ## Deliverables
 
 1. Discovery session (interview-based, approximately 90 minutes)
-2. Independent Security Review report (see `05_Client_Templates/cyber-risk-review-report-template.md`, pending rename) including:
+2. A Pharos Security Posture Review report (see `05_Client_Templates/security-posture-review-report-template.md`) including:
    - Executive Security Brief (one page, non-technical — see `04_Operating_Manual/reporting-standards.md`)
-   - Findings by area, each stated as evidence, interpretation, action, and labelled by verification level
-   - A 90-Day Security Improvement Plan (Now / Next / Later, or First 30 / 31 to 60 / 61 to 90 days)
+   - Findings by domain, each with a stable finding ID, stated as evidence, interpretation, action, and labelled by verification level and risk rating (see `04_Operating_Manual/evidence-standard.md` and `risk-and-priority-methodology.md`)
+   - A 90-Day Security Improvement Plan (First 14 days / 15–30 / 31–60 / 61–90 days — see `04_Operating_Manual/remediation-and-verification.md`)
 3. A 45 to 60 minute walkthrough call to present findings and answer questions
 
 ## Inputs required from client
@@ -113,4 +113,4 @@ Not a list of every possible control. Seven questions:
 
 ## Report/output structure
 
-See `05_Client_Templates/cyber-risk-review-report-template.md` (pending rename to match this service) and the reporting hierarchy in `04_Operating_Manual/reporting-standards.md`.
+See `05_Client_Templates/security-posture-review-report-template.md`, the thirteen assessment domains in `04_Operating_Manual/assessment-methodology.md`, and the reporting hierarchy in `04_Operating_Manual/reporting-standards.md`.

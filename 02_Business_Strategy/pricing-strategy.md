@@ -2,12 +2,12 @@
 
 **Status: validated against published NZ/AU market data (see [Market validation](#market-validation) below) as of July 2026, restructured 2026-08-22 to match the seven-service v2 architecture, and cross-checked against UK market data 2026-08-22 (see [International benchmark](#international-benchmark-uk-market-added-2026-08-22)). Figures below have been checked against real competitor and market pricing signals, but no NZ competitor publishes exact fixed-fee pricing for a direct like-for-like comparison — treat these as evidence-informed, not confirmed-by-quote. Continue to sanity-check against real proposals and win/loss feedback in the first 90 days.**
 
-**2026-08-22: public display paused, pending further discussion.** Ranges were briefly live on every service card. Oscar asked for them to come off, wanting to keep this for further discussion rather than treat the public-ranges question as settled. The ranges and their research below are unchanged and still the working internal reference for quoting; only the decision to *display* them on the website is on hold. See `00-business/decisions.md`.
+**2026-08-22: public display paused, pending further discussion.** Ranges were briefly live on every service card. Jason Hill asked for them to come off, wanting to keep this for further discussion rather than treat the public-ranges question as settled. The ranges and their research below are unchanged and still the working internal reference for quoting; only the decision to *display* them on the website is on hold. See `00-business/decisions.md`.
 
 ## Pricing philosophy
 
 1. **Price the outcome, not the hour** wherever possible — fixed-scope pricing is easier for SME buyers to say yes to than open-ended hourly billing, and it protects the advisor from scope creep dragging down effective hourly rate.
-2. **Fixed quotes privately; public display currently paused.** The original intent was to show indicative ranges on the website (a transparency differentiator against vague consulting pricing norms). As of 2026-08-22 that's on hold at Oscar's request, pending further discussion, not reversed as policy. Either way, the actual quote is always confirmed after the 15-minute Security Conversation or a scoping call, never on the spot.
+2. **Fixed quotes privately; public display currently paused.** The original intent was to show indicative ranges on the website (a transparency differentiator against vague consulting pricing norms). As of 2026-08-22 that's on hold at Jason Hill's request, pending further discussion, not reversed as policy. Either way, the actual quote is always confirmed after the 15-minute Security Conversation or a scoping call, never on the spot.
 3. **Keep the entry point genuinely low-commitment** — the Free Security Health Check costs nothing, and the Exposure Snapshot and Independent Security Review are priced to make "yes" easy, since they're the primary lead-to-client conversion points.
 4. **No surprise consulting bills.** Every paid engagement is fixed-scope or a clearly tiered retainer. Nothing is billed open-ended.
 5. **Build toward recurring revenue** — one-off engagements are valuable, but the Security Adviser retainer is what makes the business sustainable and less dependent on constant new-client acquisition.
@@ -47,7 +47,7 @@ Even the top of this range sits well under the $1,500–$3,000/month floor typic
 
 ## What's shown publicly versus quoted privately
 
-- **On the website currently**: no prices at all. Every conversation about cost happens on a call, not on the page. This was a deliberate transparency choice originally (see the Fractional Wisdom benchmark note in `00-business/decisions.md`) and may return once Oscar decides the public-ranges question, but is paused for now.
+- **On the website currently**: no prices at all. Every conversation about cost happens on a call, not on the page. This was a deliberate transparency choice originally (see the Fractional Wisdom benchmark note in `00-business/decisions.md`) and may return once Jason Hill decides the public-ranges question, but is paused for now.
 - **Confirmed on a call**: the specific fixed quote, after the 15-minute Security Conversation or a short scoping exchange, once business size and complexity are known. This part is unaffected either way; a fixed quote was never going on the website.
 
 ## Discounting policy

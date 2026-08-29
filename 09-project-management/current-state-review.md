@@ -1,7 +1,7 @@
 ---
 title: Current State Review
 status: approved
-owner: Oscar
+owner: Jason Hill
 last-reviewed: 2026-07-21
 review-cycle: on major directive change
 ---
@@ -90,7 +90,7 @@ Renaming 91 files and every cross-reference between them is a mechanical but non
 ## What should be revised regardless of the two open decisions
 
 - Every existing document uses the em dash character. The directive's absolute punctuation rule prohibits this. This is a mechanical but large cleanup (91 markdown files). The 4 instances inside the live website's React components have already been corrected in this pass, because they are the most visible artefact. The remaining 91 markdown files are logged as the top item in the backlog rather than rewritten in this same pass, because a rushed find-and-replace across 91 files of carefully worded content risks damaging phrasing that was already reviewed. It should be done deliberately, file by file.
-- Four files contain a `[Founder Name]` placeholder. The directive confirms the founder's name is Oscar. These have been updated in this pass, since it required no judgement call.
+- Four files contain a `[Founder Name]` placeholder. The directive confirms the founder's name is Jason Hill. These have been updated in this pass, since it required no judgement call.
 - The free discovery call is specified as "20 to 30 minutes" in `04_Operating_Manual/discovery-call-process.md` and as a structured 15 minutes in the directive. This is a direct, factual conflict, not a matter of framing. See question 4.
 
 ## What should be deferred

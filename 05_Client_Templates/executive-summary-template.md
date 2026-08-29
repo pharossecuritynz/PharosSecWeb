@@ -21,11 +21,13 @@
 
 ### What matters most (top 3–5)
 
-| # | Finding | Why it matters | Priority |
-|---|---|---|---|
-| 1 | [Plain-English finding] | [Plain-English consequence] | Now / Next / Later |
-| 2 | | | |
-| 3 | | | |
+| Finding ID | Finding | Why it matters | Priority | Effort |
+|---|---|---|---|---|
+| GOV-01 | [Plain-English finding] | [Plain-English consequence] | Now / Next / Later | Very Low / Low / Moderate / Significant |
+| | | | | |
+| | | | | |
+
+*(Finding IDs per [evidence-standard.md](../04_Operating_Manual/evidence-standard.md); effort per [risk-and-priority-methodology.md](../04_Operating_Manual/risk-and-priority-methodology.md). For the full Security Posture Review, this table becomes the "Top five actions" section — see [security-posture-review-report-template.md](security-posture-review-report-template.md) — and can add a Cost column where useful.)*
 
 ### What's already working well
 

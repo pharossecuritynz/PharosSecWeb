@@ -1,12 +1,12 @@
-# SME Security Uplift Plan — Template
+# Secure Foundations Plan — Template
 
-*Full structure for the [SME Security Uplift Plan](../03_Services/sme-security-uplift-plan.md) service.*
+*Full structure for the [Secure Foundations](../03_Services/secure-foundations.md) service (renamed from SME Security Uplift Plan on 2026-08-22; this template is updated to match). For the flagship review's own four-phase 90-day structure, see [remediation-and-verification.md](../04_Operating_Manual/remediation-and-verification.md) — the three-phase version below remains the right shape for a Secure Foundations engagement scoped on its own.*
 
 ---
 
 ## Cover page
 
-- Report title: "Security Uplift Plan"
+- Report title: "Secure Foundations Plan"
 - Client name: [Client Name] | Date: [Date] | Prepared by: Pharos Security
 
 ## 1. Executive Summary
@@ -15,7 +15,7 @@
 
 ## 2. Starting point
 
-- Summary of the risk findings this plan is based on (from a prior Cyber Risk Review, or a condensed assessment)
+- Summary of the risk findings this plan is based on (from a prior Independent Security Review, or a condensed assessment), by finding ID where available (see [evidence-standard.md](../04_Operating_Manual/evidence-standard.md))
 - Business constraints considered: budget appetite, internal capability, existing IT provider relationship
 
 ## 3. The roadmap
@@ -49,7 +49,7 @@ How the business will know the plan is working — e.g. "MFA enabled on all admi
 ## 6. Review point
 
 - Recommended date to revisit this plan (typically 6–12 months, or sooner if the business changes materially)
-- Note on [Ongoing Cyber Advisor Support](../03_Services/ongoing-cyber-advisor-support.md) as an option for continued support through execution
+- Note on [Security Adviser](../03_Services/security-adviser.md) as an option for continued support through execution, including the follow-up verification approach in [remediation-and-verification.md](../04_Operating_Manual/remediation-and-verification.md)
 
 ## Appendix: Assumptions and limitations
 

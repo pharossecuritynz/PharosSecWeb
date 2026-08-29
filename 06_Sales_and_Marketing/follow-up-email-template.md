@@ -15,7 +15,7 @@ Thanks for getting in touch, really appreciate it. I'd love to learn a bit more 
 Would a quick 20 to 30 minute call work sometime [this/next week]? No obligation, just a conversation: here are a few times that could work: [2 to 3 options], or feel free to grab a slot directly here: [booking link].
 
 Talk soon,
-Oscar
+Jason Hill
 Pharos Security
 
 ---
@@ -30,7 +30,7 @@ Just following up on the proposal I sent through on [date], totally understand t
 
 Let me know if it's still of interest, or if now's just not the right time, either is completely fine.
 
-Oscar
+Jason Hill
 
 ---
 
@@ -44,7 +44,7 @@ I'll leave this with you for now, but wanted to close the loop so you're not lef
 
 All the best with [something specific and genuine, if known, for example the upcoming busy season],
 
-Oscar
+Jason Hill
 
 *(After this, log as "not proceeding" and stop follow-ups, see [../04_Operating_Manual/proposal-process.md](../04_Operating_Manual/proposal-process.md). Revisit in around 6 months with a soft, non-pushy check-in if appropriate.)*
 
@@ -66,7 +66,7 @@ No pressure on any of these, just genuinely want to keep improving.
 
 Thanks again for trusting us with this, [First Name].
 
-Oscar
+Jason Hill
 
 ---
 
@@ -78,7 +78,7 @@ Hi [First Name],
 
 It's been a while since we last spoke, hope things are going well at [Business Name]. No agenda here, just wanted to check in and see how things are tracking on the cyber security front. Happy to have another chat if anything's changed or come up.
 
-Oscar
+Jason Hill
 
 ---
 

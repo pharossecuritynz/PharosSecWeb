@@ -1,5 +1,7 @@
 # Cyber Risk Review — Report Template
 
+> **Superseded 2026-08-29.** Replaced by [security-posture-review-report-template.md](security-posture-review-report-template.md), which follows the canonical Pharos Security Posture Review structure (finding IDs, risk ratings, scorecard, privacy and MSP sections). Retained here for reference. Do not use this document for new client-facing material.
+
 *Full report structure for the [Cyber Risk Review](../03_Services/cyber-risk-review.md) service. Follows [../04_Operating_Manual/reporting-standards.md](../04_Operating_Manual/reporting-standards.md).*
 
 ---

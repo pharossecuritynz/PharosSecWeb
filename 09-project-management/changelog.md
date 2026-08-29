@@ -1,7 +1,7 @@
 ---
 title: Changelog
 status: approved
-owner: Oscar
+owner: Jason Hill
 last-reviewed: 2026-07-22
 review-cycle: update with every material change
 ---
@@ -12,7 +12,7 @@ Reverse chronological. Records material changes to the repository, not every sma
 
 ## 2026-07-22: Question 5 closed with an assumption, not an answer
 
-Oscar asked for question 5 to be answered. It asks for real facts (insurance bound, lawyer engaged, certification held, business and domain registered) that only Oscar has; inventing a specific status for any of them would be fabricating a fact with real liability consequences if it were wrong and acted on. Closed instead with an explicit, correctable assumption: all five default to "not yet in place" until Oscar names the specific ones that are actually done.
+Jason Hill asked for question 5 to be answered. It asks for real facts (insurance bound, lawyer engaged, certification held, business and domain registered) that only Jason Hill has; inventing a specific status for any of them would be fabricating a fact with real liability consequences if it were wrong and acted on. Closed instead with an explicit, correctable assumption: all five default to "not yet in place" until Jason Hill names the specific ones that are actually done.
 
 **Revised:**
 - `00-business/decisions.md`: new entry recording this as an ASSUMPTION, not a CONFIRMED answer
@@ -20,7 +20,7 @@ Oscar asked for question 5 to be answered. It asks for real facts (insurance bou
 - `09-project-management/risks.md`: insurance and Terms of Engagement rows marked as unverified assumptions, not confirmed facts
 - `09-project-management/current-sprint.md`: reframed so the sprint's definition of done does not depend on question 5 receiving a final answer
 
-**Consequence:** taking on a paying client, and everything in the agent catalogue gated on question 1's active-testing services, stays blocked until Oscar corrects specific items in question 5's table.
+**Consequence:** taking on a paying client, and everything in the agent catalogue gated on question 1's active-testing services, stays blocked until Jason Hill corrects specific items in question 5's table.
 
 ## 2026-07-22: Questions 1 to 4 answered
 
@@ -53,7 +53,7 @@ Oscar asked for question 5 to be answered. It asks for real facts (insurance bou
 
 **Revised:**
 - `08_Website/pharos-security-site/components/BuiltForSMEs.tsx`, `Hero.tsx`, `About.tsx`, `Process.tsx`: em dash removed (4 instances)
-- `06_Sales_and_Marketing/about-page-copy.md`, `linkedin-profile-copy.md`, `proposal-email-template.md`, `referral-partner-one-pager.md`: `[Founder Name]` placeholder corrected to Oscar
+- `06_Sales_and_Marketing/about-page-copy.md`, `linkedin-profile-copy.md`, `proposal-email-template.md`, `referral-partner-one-pager.md`: `[Founder Name]` placeholder corrected to Jason Hill
 
 **Deferred (see `09-project-management/current-sprint.md` for the full list):**
 - `00-business/pharos-master-plan.md`
@@ -63,7 +63,7 @@ Oscar asked for question 5 to be answered. It asks for real facts (insurance bou
 - Em dash removal from the remaining 91 markdown files
 - All active-testing-dependent agents, services, and tooling
 
-**Decisions requiring Oscar (see `09-project-management/decisions-required.md`):**
+**Decisions requiring Jason Hill (see `09-project-management/decisions-required.md`):**
 1. Advisory-only launch versus including active technical testing
 2. Folder taxonomy migration
 3. First-sale service naming (Cyber Risk Review versus Security Posture Review)
@@ -72,7 +72,7 @@ Oscar asked for question 5 to be answered. It asks for real facts (insurance bou
 
 ## 2026-07-21 (earlier, same day): Website design revision
 
-- Floating hero card added, then removed at Oscar's explicit direction (assessed as unprofessional). Hero reverted to single-column layout. Mobile navigation menu added (previously non-functional on small screens). Grain texture, card shadows, animated process connector, and expanded footer added and retained.
+- Floating hero card added, then removed at Jason Hill's explicit direction (assessed as unprofessional). Hero reverted to single-column layout. Mobile navigation menu added (previously non-functional on small screens). Grain texture, card shadows, animated process connector, and expanded footer added and retained.
 
 ## 2026-07-21 (earlier, same day): Pricing revision
 

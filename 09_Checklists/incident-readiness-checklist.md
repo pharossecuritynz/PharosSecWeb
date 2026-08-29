@@ -24,7 +24,7 @@
 3. Notify your internal decision-maker and IT provider
 4. Don't pay a ransom or engage with attackers without professional guidance
 5. Contact your cyber insurer if you have one
-6. Report to [CERT NZ](https://www.cert.govt.nz)
+6. Report to the [NCSC](https://www.ncsc.govt.nz/report)
 
 ## First steps if you suspect a fraudulent payment / business email compromise
 
@@ -32,7 +32,7 @@
 2. Change the affected account's password and check MFA is enabled
 3. Notify your internal decision-maker
 4. Have your IT provider check for further compromise
-5. Report to NZ Police (105) and CERT NZ
+5. Report to NZ Police (105) and the NCSC
 
 ## First steps if a device is lost or stolen
 
@@ -49,7 +49,7 @@
 
 ## Emergency and reporting contacts (New Zealand)
 
-- **CERT NZ** — cert.govt.nz (report cyber security incidents)
+- **NCSC** — ncsc.govt.nz/report, 0800 114 115 (report cyber security incidents; CERT NZ has fully merged into the NCSC)
 - **NZ Police** — 105 (non-emergency) or 111 (immediate danger/large-scale fraud in progress)
 - **Office of the Privacy Commissioner** — privacy.org.nz (for potential privacy breach notification)
 

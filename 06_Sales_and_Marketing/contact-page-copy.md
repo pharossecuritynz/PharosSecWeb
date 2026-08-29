@@ -6,7 +6,7 @@
 
 **Body:** Start with a straightforward conversation about your business and the risks that matter most — no obligation, no jargon.
 
-**Primary CTA:** Book a cyber risk review
+**Primary CTA:** Book a security review
 **Secondary link:** pharos.security.nz@gmail.com
 
 ## Footer contact block
@@ -39,7 +39,7 @@ New Zealand
 
 **Urgent/incident note (small text near the form):**
 
-> If you're dealing with an active security incident right now, please contact [CERT NZ](https://www.cert.govt.nz) and, if financial fraud is involved, your bank immediately. Pharos Security provides advisory and preparation services, not live incident response — see how we can help you prepare for next time once things are resolved.
+> If you're dealing with an active security incident right now, please contact the [NCSC](https://www.ncsc.govt.nz/report) (0800 114 115) and, if financial fraud is involved, your bank immediately. Pharos Security provides advisory and preparation services, not live incident response — see how we can help you prepare for next time once things are resolved.
 
 ## Assumptions / needs founder input
 

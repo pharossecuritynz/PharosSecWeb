@@ -1,8 +1,8 @@
 ---
 title: Decision Log
 status: approved
-owner: Oscar
-last-reviewed: 2026-07-22
+owner: Jason Hill
+last-reviewed: 2026-08-29
 review-cycle: on every material decision
 ---
 
@@ -10,13 +10,29 @@ review-cycle: on every material decision
 
 Running record of material decisions. Each entry is dated, states the decision, the reasoning, and who made it. This is the source of truth when documents disagree with each other.
 
+## 2026-08-29: Assessment methodology upgrade — two architecture decisions
+
+**CONFIRMED**, made while executing a founder-directed upgrade of Pharos's assessment methodology, evidence model, risk model, privacy capability, and reporting framework. Full detail in `09-project-management/process-and-reporting-gap-analysis.md` and `09-project-management/process-upgrade-changelog.md`; only the two decisions with lasting effect on other documents are recorded here.
+
+1. **"Pharos Security Posture Review" is the report name, not a new service name.** The founder's brief asked for a flagship "Pharos Security Posture Review" as the primary assessment. The service catalogue was deliberately renamed from "Cyber Risk Review" to "Independent Security Review" on 2026-08-22, with recorded commercial reasoning (see that entry below). Re-renaming the service now would silently reverse a considered decision. Resolution: the service keeps its confirmed name, Independent Security Review; the report it produces is titled the Pharos Security Posture Review. See `05_Client_Templates/security-posture-review-report-template.md` and `04_Operating_Manual/reporting-standards.md`.
+2. **No third folder structure.** The founder's brief asked for new top-level `docs/` and `templates/` folders. `CLAUDE.md` already forbids this explicitly ("Do not create a third structure"). Every requested document was mapped into the existing `04_Operating_Manual/`, `05_Client_Templates/`, `09-project-management/`, and `10-automation/` folders instead, per `CLAUDE.md`'s own instruction to check for an existing home before creating a new one. Full mapping table in the gap analysis.
+
+## 2026-08-24: Founder name corrected to Jason Hill; question 5 confirmed, not just assumed
+
+**CONFIRMED.** Two related updates from a direct conversation with the founder:
+
+1. **Founder name.** Every prior reference to "Oscar" across the repository (this file, `CLAUDE.md`, `AGENTS.md`, agent specifications, sales and marketing copy, and project-management docs) has been corrected to **Jason Hill**, the founder's real name. "Oscar" was the Master Build Directive's placeholder name (see the 2026-07-21 entry below); it was never a deliberate business alias.
+2. **Question 5 in `09-project-management/decisions-required.md` moves from ASSUMPTION to CONFIRMED.** Jason was made redundant from his role at timbre Digital and is building Pharos Security from that starting point: an idea, not an already-trading business. He confirmed directly that none of the five items (insurance, Terms of Engagement, certification, business registration, domain registration) are in place yet. This replaces the 2026-07-22 conservative default with a founder-confirmed fact; the practical consequence is unchanged (the business still cannot take a paying client or approach a real prospect), but the epistemic status is stronger.
+
+Also: a first-draft pitch document was written at `06_Sales_and_Marketing/business-pitch.md`, covering what Pharos does, how, who it's for, and the benefit case, with the founder's real background (redundancy from timbre Digital as the impetus for starting Pharos) worked into the bio. It is explicitly marked as a draft not yet ready for external use, given question 5's status.
+
 ## 2026-08-22: Public pricing paused, not decided against
 
-**PAUSED, not reversed.** "From" price ranges were briefly live on every service card on the website. Oscar asked for them to be removed, wanting to keep the public-pricing question for further discussion rather than settle it now. Removed from the homepage Services section and the IT Provider Security Assurance page. The underlying ranges and their NZ/AU/UK market research in `02_Business_Strategy/pricing-strategy.md` are untouched and remain the working internal reference for quoting on a call; only the decision to display them publicly is on hold. Revisit when Oscar wants to pick the question back up.
+**PAUSED, not reversed.** "From" price ranges were briefly live on every service card on the website. Jason Hill asked for them to be removed, wanting to keep the public-pricing question for further discussion rather than settle it now. Removed from the homepage Services section and the IT Provider Security Assurance page. The underlying ranges and their NZ/AU/UK market research in `02_Business_Strategy/pricing-strategy.md` are untouched and remain the working internal reference for quoting on a call; only the decision to display them publicly is on hold. Revisit when Jason Hill wants to pick the question back up.
 
 ## 2026-08-22: Pharos v2 — assurance-led positioning and service architecture
 
-**CONFIRMED**, per a detailed operating brief from Oscar. This supersedes the front-door service naming in the 2026-07-22 entry below and sharpens (rather than reverses) the advisory-only decision. Recorded in full so later documents don't need to re-derive the reasoning.
+**CONFIRMED**, per a detailed operating brief from Jason Hill. This supersedes the front-door service naming in the 2026-07-22 entry below and sharpens (rather than reverses) the advisory-only decision. Recorded in full so later documents don't need to re-derive the reasoning.
 
 1. **Core reframe: Pharos sells independent security assurance, not a menu of assessments.** The existing service list, brand voice, and advisory-only boundary were already sound (see `09-project-management/current-state-review.md`); the change is what's foregrounded. Website and sales copy now lead with the client's uncertainty ("is our security actually good enough, and would we know if it wasn't?") rather than with service names.
 2. **Service architecture consolidated to seven customer-facing services**, replacing the flat eight-service catalogue:
@@ -39,11 +55,11 @@ Running record of material decisions. Each entry is dated, states the decision, 
 
 ## 2026-07-22: Question 5 closed with an ASSUMPTION, not an answer
 
-**ASSUMPTION, not CONFIRMED.** Oscar asked for question 5 to be answered. It could not be, in the normal sense: it asks for real facts about insurance, legal engagement, certification, and business/domain registration that only Oscar has, and inventing a specific status for any of them (for example, claiming insurance is bound) would be fabricating a fact with real liability consequences if acted on. Instead, all five items in `09-project-management/decisions-required.md` question 5 default to the conservative assumption ("not yet in place") until Oscar corrects the specific ones that are wrong. This keeps the business's actual readiness state honest: it does not manufacture a false "ready to take a client" position, and it does not silently unblock the active-testing services gated on question 1. If any of the five are actually done, the correction should name the specific item and its real status, not a blanket "yes."
+**ASSUMPTION, not CONFIRMED.** Jason Hill asked for question 5 to be answered. It could not be, in the normal sense: it asks for real facts about insurance, legal engagement, certification, and business/domain registration that only Jason Hill has, and inventing a specific status for any of them (for example, claiming insurance is bound) would be fabricating a fact with real liability consequences if acted on. Instead, all five items in `09-project-management/decisions-required.md` question 5 default to the conservative assumption ("not yet in place") until Jason Hill corrects the specific ones that are wrong. This keeps the business's actual readiness state honest: it does not manufacture a false "ready to take a client" position, and it does not silently unblock the active-testing services gated on question 1. If any of the five are actually done, the correction should name the specific item and its real status, not a blanket "yes."
 
 ## 2026-07-22: Questions 1 to 4 in decisions-required.md answered
 
-**CONFIRMED.** Oscar accepted the stated recommendation for each of the four judgement-call questions raised in `09-project-management/decisions-required.md`. Question 5 (insurance, legal, certification, and registration status) was not answered, because it asks for facts rather than a recommendation to accept.
+**CONFIRMED.** Jason Hill accepted the stated recommendation for each of the four judgement-call questions raised in `09-project-management/decisions-required.md`. Question 5 (insurance, legal, certification, and registration status) was not answered, because it asks for facts rather than a recommendation to accept.
 
 1. **Advisory-only launch, not active technical testing.** Vulnerability Assessment, External Attack Surface Review, and their supporting agents and tooling stay in "build after client validation," gated on question 5's answers. `02_Business_Strategy/risk-boundaries.md` and `03_Services/service-boundaries.md` are unchanged, since this keeps the existing boundary rather than reversing it. Digital Exposure Review (passive research only) is not gated by this.
 2. **Migrate to the kebab-case folder taxonomy.** Confirmed, but not yet executed. No longer needs to wait on a service catalogue rewrite (question 1 kept the status quo), so it is queued as a standalone task in `09-project-management/backlog.md` rather than run immediately.
@@ -52,9 +68,9 @@ Running record of material decisions. Each entry is dated, states the decision, 
 
 See `09-project-management/decisions-required.md` for the full resolution text and what each answer unblocks.
 
-## 2026-07-21: Founder identified as Oscar
+## 2026-07-21: Founder identified as Jason Hill
 
-**CONFIRMED.** Master Build Directive states Pharos Security is founded by Oscar. Placeholder `[Founder Name]` fields updated across `06_Sales_and_Marketing/about-page-copy.md`, `06_Sales_and_Marketing/linkedin-profile-copy.md`, `06_Sales_and_Marketing/proposal-email-template.md`, and `06_Sales_and_Marketing/referral-partner-one-pager.md`. Bio, background, and credentials still needed. See question 5 in `09-project-management/decisions-required.md`.
+**CONFIRMED.** Master Build Directive states Pharos Security is founded by Jason Hill. Placeholder `[Founder Name]` fields updated across `06_Sales_and_Marketing/about-page-copy.md`, `06_Sales_and_Marketing/linkedin-profile-copy.md`, `06_Sales_and_Marketing/proposal-email-template.md`, and `06_Sales_and_Marketing/referral-partner-one-pager.md`. Bio, background, and credentials still needed. See question 5 in `09-project-management/decisions-required.md`.
 
 ## 2026-07-21: Master Build Directive received and partially reconciled
 
@@ -67,7 +83,7 @@ Pending those answers, leadership and process scaffolding was built (this file, 
 
 ## 2026-07-21 (earlier): Website floating hero card removed
 
-**CONFIRMED.** A floating "priority report" card was added to the website hero as a visual enhancement, then explicitly rejected by Oscar as unprofessional. Removed; hero reverted to a single-column layout. Recorded here because it is a real instance of the directive's own warning against decorative, AI-startup-pattern visual elements (floating cards without purpose), independently arrived at before the directive existed.
+**CONFIRMED.** A floating "priority report" card was added to the website hero as a visual enhancement, then explicitly rejected by Jason Hill as unprofessional. Removed; hero reverted to a single-column layout. Recorded here because it is a real instance of the directive's own warning against decorative, AI-startup-pattern visual elements (floating cards without purpose), independently arrived at before the directive existed.
 
 ## 2026-07-21 (earlier): Pricing validated against published market data
 

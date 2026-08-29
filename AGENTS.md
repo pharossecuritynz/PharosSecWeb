@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-Operating rules for any AI assistant working in this repository. This file governs Claude Code, Claude in other tools, and any other AI system asked to produce Pharos Security material. Applies to code, documentation, website copy, prompts, reports, templates, and client-facing material alike.
+Operating rules for any AI assistant working in this repository. This file governs Codex, Codex in other tools, and any other AI system asked to produce Pharos Security material. Applies to code, documentation, website copy, prompts, reports, templates, and client-facing material alike.
 
 ## What this repository is
 

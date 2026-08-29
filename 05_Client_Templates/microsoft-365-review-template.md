@@ -48,7 +48,7 @@ Plain-English list of areas covered (see [../03_Services/microsoft-365-security-
 ## 7. Next steps
 
 - Suggested handover note for the client's IT provider to action the recommendations
-- Mention of [Ongoing Cyber Advisor Support](../03_Services/ongoing-cyber-advisor-support.md) for periodic re-checks, since configuration can drift over time
+- Mention of [Security Adviser](../03_Services/security-adviser.md) for periodic re-checks, since configuration can drift over time
 
 ## Appendix: Methodology and limitations
 

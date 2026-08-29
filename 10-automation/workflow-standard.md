@@ -1,14 +1,14 @@
 ---
 title: Workflow Standard
 status: approved
-owner: Oscar
+owner: Jason Hill
 last-reviewed: 2026-07-21
 review-cycle: review when a workflow spec fails to fit the template
 ---
 
 # Workflow Standard
 
-The required structure for every workflow document in `10-automation/`. A workflow differs from an agent specification: a workflow describes a business process end to end, which may involve Oscar, one or more agents, and manual steps together. An agent specification describes one component within a workflow.
+The required structure for every workflow document in `10-automation/`. A workflow differs from an agent specification: a workflow describes a business process end to end, which may involve Jason Hill, one or more agents, and manual steps together. An agent specification describes one component within a workflow.
 
 ## Required fields
 
@@ -22,7 +22,7 @@ The required structure for every workflow document in `10-automation/`. A workfl
 | Outputs | What exists once the workflow completes |
 | Controls | What prevents the workflow from producing a bad outcome (approvals, checks, gates) |
 | Failure paths | What happens when a step cannot complete |
-| Human approvals | Which steps require Oscar's explicit sign-off before continuing |
+| Human approvals | Which steps require Jason Hill's explicit sign-off before continuing |
 | Records created | What gets logged, and where |
 | Completion criteria | How to know the workflow is actually finished, not just that steps were run |
 

@@ -25,7 +25,7 @@ This mix gives the business predictable entry points for new clients (low-commit
 
 ## Who runs it
 
-A solo founder, Oscar, acting as advisor, delivery consultant, and business operator. The operating manual and templates in this project assume one person doing all client-facing and delivery work, with the option to bring in subcontractors or associates for specific engagements (for example staff awareness session delivery) as volume grows.
+A solo founder, Jason Hill, acting as advisor, delivery consultant, and business operator. The operating manual and templates in this project assume one person doing all client-facing and delivery work, with the option to bring in subcontractors or associates for specific engagements (for example staff awareness session delivery) as volume grows.
 
 *[Background and specific credentials/experience to be added, see [../10_Admin/assumptions-and-open-questions.md](../10_Admin/assumptions-and-open-questions.md).]*
 
@@ -41,12 +41,12 @@ A solo founder, Oscar, acting as advisor, delivery consultant, and business oper
 
 ## Geographic scope
 
-New Zealand-wide, delivered primarily remotely (video calls, remote-accessible reviews of cloud environments like Microsoft 365) with in-person delivery available for workshops and awareness sessions within Oscar's home region.
+New Zealand-wide, delivered primarily remotely (video calls, remote-accessible reviews of cloud environments like Microsoft 365) with in-person delivery available for workshops and awareness sessions within Jason Hill's home region.
 
 *[Confirm home region/base city and travel radius for in-person work.]*
 
 ## Assumptions / needs founder input
 
 - Legal structure (sole trader vs. limited company), see [../10_Admin/business-setup-checklist-nz.md](../10_Admin/business-setup-checklist-nz.md)
-- Whether Oscar intends to stay solo long-term or bring on associates within 1 to 2 years
+- Whether Jason Hill intends to stay solo long-term or bring on associates within 1 to 2 years
 - Confirmed home base and in-person delivery radius

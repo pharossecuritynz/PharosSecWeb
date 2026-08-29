@@ -33,7 +33,7 @@ One paragraph: what this plan is for and when to use it — e.g. "This plan sets
 3. Contact IT provider
 4. Do not pay any ransom or engage with attackers without professional guidance
 5. Contact cyber insurer if applicable
-6. Consider reporting to CERT NZ (cert.govt.nz)
+6. Consider reporting to the NCSC (ncsc.govt.nz/report, 0800 114 115)
 
 ### Suspected business email compromise / fraudulent payment
 1. Contact the bank immediately to attempt to halt/recall the payment

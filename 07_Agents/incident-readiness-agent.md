@@ -37,7 +37,7 @@ Client context: [BUSINESS SIZE/INDUSTRY/KEY SYSTEMS]
 Rules:
 - Cover these standard scenarios unless workshop notes indicate otherwise: suspected ransomware, suspected business email compromise/fraudulent payment, suspected data breach, lost/stolen device
 - Each scenario needs clear, numbered first-hour actions
-- Include CERT NZ (cert.govt.nz) and NZ Police (105 non-emergency / 111 emergency) as standard reporting contacts
+- Include the NCSC (ncsc.govt.nz/report, 0800 114 115) and NZ Police (105 non-emergency / 111 emergency) as standard reporting contacts
 - Keep the document genuinely usable in a crisis - avoid dense paragraphs, favour short numbered lists
 
 Output: the full plan following the template structure, plus a condensed one-page "quick reference" version covering just contacts and first-hour actions.
