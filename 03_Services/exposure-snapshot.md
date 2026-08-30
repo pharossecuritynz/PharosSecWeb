@@ -1,14 +1,19 @@
 # Exposure Snapshot
 
-**New service, added 2026-08-22 under the Pharos v2 directive**, standing in for the "Digital Exposure Review" second entry point approved in the 2026-07-22 answer to question 1. See `00-business/decisions.md`.
+**New service, added 2026-08-22 under the Pharos v2 directive**, standing in for the "Digital Exposure Review" second entry point approved in the 2026-07-22 answer to question 1. **Rebuilt 2026-08-31 as a free, automated, self-serve web tool**, replacing the original manually-delivered, paid version of this service. See `00-business/decisions.md` for both decisions, and `08_Website/pharos-security-site/docs/EXPOSURE_SNAPSHOT_ARCHITECTURE.md` for the technical build.
 
 ## Purpose
 
-An independent look at what's visible about a business from the outside, its domain, email security, exposed services, and public footprint, without touching or logging into anything internal. A lower-cost, lower-commitment entry point than the Independent Security Review.
+An independent, automated look at what's visible about a business from the outside, its domain, email security, exposed services, and public footprint, without touching or logging into anything internal. The free front door into the Pharos service model: instant, no obligation, genuinely useful on its own.
 
 ## Who it's for
 
-Businesses that want an independent check but aren't ready to commit to the full review, or that have a specific external concern (a domain, a public-facing system, a supplier who asked "what's exposed?"). Also useful as a fast pre-call input: the founder can run one before the 15-minute Security Conversation to make that call more useful.
+Any business owner who wants a fast, no-commitment read on their external footprint before talking to anyone. It's also the natural pre-call input for the 15-minute Security Conversation: a prospect (or the founder, ahead of the call) can run it first to make that conversation more specific and useful.
+
+## Level 1 (public) and Level 2 (verified)
+
+- **Level 1, public**: anyone can run a scan against a domain without proving they control it. Uses only passive, publicly available sources (DNS, RDAP/WHOIS, certificate transparency, public threat intelligence). Never returns individual employee email addresses, credential contents, or other personal information, even in aggregate.
+- **Level 2, verified**: available once the business demonstrates control of the domain (see the architecture doc for the verification model). Unlocks domain-wide credential exposure checks (Have I Been Pwned) and any other data too sensitive to show an unverified requester. Level 1 never accidentally exposes Level 2 data.
 
 ## Problems it solves
 
@@ -41,47 +46,34 @@ This is passive, external-only observation of what's already public. It does not
 
 ## Deliverables
 
-1. Exposure Snapshot Report: plain-English summary of what's externally visible, flagged by verification level (mostly "observed", since this is Pharos's own external observation, not client-reported)
-2. Prioritised list of anything worth addressing
-3. A short call to walk through findings (20 to 30 minutes)
+1. An instant, plain-English Exposure Snapshot report on screen: an executive summary, a prioritised top-three actions, and findings by area, each labelled with its evidence type and verification level per `04_Operating_Manual/evidence-standard.md` (predominantly "observed" or "external observation", since this is Pharos's own automated external observation, not client-reported)
+2. Optionally emailed to the business, via a verified link (see the architecture doc's email/verification model)
+3. A calm, low-pressure invitation to book the 15-minute Security Conversation if the business wants help interpreting the results — not a hard sales pitch built into the report itself
 
 ## Inputs required from client
 
-- Domain name(s) and any known public-facing systems
-- Nothing requiring access, login, or authorisation from the client — that's the point of this service
+- Business name, domain, and a work email address
+- Nothing requiring access, login, or authorisation from the client at Level 1 — that's the point of this service. Level 2 requires proving control of the domain, nothing more.
 
 ## Delivery process
 
-1. Scoping/proposal — confirm domain(s) and any specific concern
-2. External research and observation (allow half a day)
-3. Report written
-4. Findings call
-5. Report delivered, with a clear next-step recommendation (Independent Security Review if broader gaps are suspected)
+Fully automated. A business enters its details, the scan runs (DNS, email authentication, certificate/subdomain history, RDAP/WHOIS, and any configured exposure-intelligence providers), and the report is produced immediately. No founder time is required per scan; founder effort goes into building and maintaining the scanner itself (see the architecture and roadmap docs) rather than delivering each individual report.
 
-## Estimated effort (founder time)
+## Suggested pricing
 
-| Task | Time |
-|---|---|
-| Scoping/proposal | 0.5 hour |
-| External research | 2–3 hours |
-| Report writing | 1.5–2 hours |
-| Findings call | 0.5 hour |
-| **Total** | **~4.5–6 hours** |
-
-## Suggested pricing range
-
-**NZD $400 – $900** (excl. GST). Deliberately priced below the Independent Security Review, as a lighter, faster, lower-commitment entry point. See `02_Business_Strategy/pricing-strategy.md`.
+**Free.** This is the deliberate, confirmed front door into the Pharos service model (Exposure Snapshot → 15-minute conversation → Independent Security Review / IT Provider Security Assurance → Secure Foundations / Incident Readiness → Security Adviser), replacing the original paid, manually-delivered version of this service. See `service-catalogue.md` for the updated funnel and `00-business/decisions.md` for the reasoning.
 
 ## Risks and limitations
 
 - Externally visible findings are necessarily partial: a clean external footprint doesn't mean internal controls are sound, and the report must say so
-- Leaked credential findings can be sensitive; handle disclosure calmly and factually, never as a scare tactic
-- Should not be marketed as a substitute for the Independent Security Review when a business's risk profile clearly warrants the fuller engagement
+- Leaked credential findings can be sensitive; handle disclosure calmly and factually, never as a scare tactic, and never show Level 2 data to an unverified requester
+- An automated report is not a substitute for a human-reviewed Independent Security Review when a business's risk profile clearly warrants the fuller engagement, and the report should say so plainly
+- Provider outages or missing credentials must degrade a specific check to "not checked," never silently to a false "no issue found" — see the architecture doc's resilience section
 
 ## Sales copy
 
-> A fast, independent look at what your business looks like from the outside, your domain, your email security, what's publicly exposed, without touching anything internal. A practical first step if you're not ready for a full review, or want to know before anyone else does.
+> See what your business looks like from the outside, in about a minute. A free, independent check of your domain, your email security, and what's publicly exposed, without touching anything internal.
 
 ## Report/output structure
 
-Report structure follows the evidence, interpretation, action standard in `04_Operating_Manual/pharos-security-baseline.md`.
+Report structure follows the evidence, interpretation, action standard in `04_Operating_Manual/pharos-security-baseline.md`, implemented directly by the finding schema in `08_Website/pharos-security-site/docs/EXPOSURE_SNAPSHOT_ARCHITECTURE.md`.

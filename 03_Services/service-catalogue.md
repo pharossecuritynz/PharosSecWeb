@@ -1,6 +1,6 @@
 # Service Catalogue
 
-**Revised 2026-08-22 under the Pharos v2 directive.** Consolidated from eight flat services to seven, organised around the client journey rather than a technical menu. Superseded individual service files are archived in `archive/`, not deleted; see `00-business/decisions.md`.
+**Revised 2026-08-22 under the Pharos v2 directive.** Consolidated from eight flat services to seven, organised around the client journey rather than a technical menu. Superseded individual service files are archived in `archive/`, not deleted; see `00-business/decisions.md`. **Exposure Snapshot rebuilt as a free, automated tool 2026-08-31**; see that entry below and `00-business/decisions.md`.
 
 Full detail for each service lives in its own file in this folder. This page is the at-a-glance summary used for proposals, the website, and internal reference.
 
@@ -8,8 +8,8 @@ Full detail for each service lives in its own file in this folder. This page is 
 
 | Service | Best for | Format | Suggested price (NZD, excl. GST) |
 |---|---|---|---|
-| [Free Security Health Check](free-security-health-check.md) | Anyone wanting a fast, no-obligation first read | Self-serve questionnaire, 8–12 min | Free |
-| [Exposure Snapshot](exposure-snapshot.md) | A lighter, faster, lower-commitment independent check | External, passive review | $400 – $900 |
+| [Free Security Health Check](free-security-health-check.md) | Anyone wanting a fast, no-obligation self-reported first read | Self-serve questionnaire, 8–12 min | Free |
+| [Exposure Snapshot](exposure-snapshot.md) | Anyone wanting an instant, independently-observed external check | Automated self-serve scan | Free |
 | [Independent Security Review](independent-security-review.md) | Businesses wanting a clear, independent picture of where they stand | Assessment + report + 90-day plan | $1,800 – $4,200 |
 | [IT Provider Security Assurance](it-provider-security-assurance.md) | Businesses with an MSP or internal IT who want independent verification | Review + report | $1,500 – $3,500 |
 | [Incident Readiness](incident-readiness.md) | Businesses wanting a plan for "what do we do if..." | Tabletop exercise + plan documents | $900 – $2,000 |
@@ -24,15 +24,19 @@ Staff awareness sessions and a policy/checklist starter pack remain available as
 Read a Pharos Answers article, or hear about Pharos from a referral
     │
     ▼
-Free Security Health Check (self-serve, free)
+┌────────────────────────────────────────────┐
+│   Free, no-obligation first read (either)    │
+│   Exposure Snapshot (automated, external),   │
+│   and/or Free Security Health Check          │
+│   (self-reported, internal practices)        │
+└────────────────────────────────────────────┘
     │
     ▼
 15-minute Security Conversation
     │
     ▼
 ┌────────────────────────────────────────────┐
-│   Entry-point engagement (pick one)          │
-│   Exposure Snapshot, OR                      │
+│   Paid entry-point engagement (pick one)     │
 │   Independent Security Review, OR            │
 │   IT Provider Security Assurance             │
 └────────────────────────────────────────────┘
@@ -55,8 +59,8 @@ Free Security Health Check (self-serve, free)
 
 | If the client says... | Recommend |
 |---|---|
-| "I just want a fast, free sense of where we stand" | Free Security Health Check |
-| "We're not ready for a full review yet, but want an independent check" | Exposure Snapshot |
+| "I just want a fast, free sense of where we stand" | Free Security Health Check (self-reported) or Exposure Snapshot (externally observed) — often both |
+| "What does our business actually look like from the outside?" | Exposure Snapshot |
 | "We don't know where we stand" | Independent Security Review |
 | "Our MSP says we're covered, how do we know that's true?" | IT Provider Security Assurance |
 | "We don't have a plan if something goes wrong" | Incident Readiness |

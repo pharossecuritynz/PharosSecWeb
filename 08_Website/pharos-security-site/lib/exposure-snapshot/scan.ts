@@ -1,0 +1,260 @@
+import dns from "node:dns/promises";
+import { validateAndNormalizeDomain } from "./domain/normalize";
+import { fetchDnsFindings } from "./providers/dns";
+import { fetchDnssecFindings } from "./providers/dnssec";
+import { fetchRegistrationFindings } from "./providers/registration";
+import { fetchCertificateTransparencyFindings } from "./providers/certificate-transparency";
+import type { ProviderResult } from "./providers/types";
+import { parseSpf, classifySpfQuality } from "./analysis/spf";
+import { parseDmarc, classifyDmarcQuality } from "./analysis/dmarc";
+import { detectMailPlatform } from "./analysis/mail-platform";
+import { checkDkim } from "./analysis/dkim";
+import { classifySubdomains } from "./analysis/subdomains";
+import { FindingIdAllocator, buildFinding } from "./findings/build-finding";
+import type { Finding, ScanFindings } from "./findings/types";
+
+export type ScanResultStatus = "completed" | "invalid-domain";
+
+export interface ScanResult {
+  status: ScanResultStatus;
+  domainError?: string;
+  scan?: ScanFindings;
+  /** Raw provider results, kept for a future technical-details report layer. Not shown in the primary report. */
+  raw?: {
+    dns: ProviderResult<unknown>;
+    dnssec: ProviderResult<unknown>;
+    registration: ProviderResult<unknown>;
+    certificateTransparency: ProviderResult<unknown>;
+  };
+}
+
+async function fetchDmarcTxt(hostname: string): Promise<string[]> {
+  try {
+    const records = await dns.resolveTxt(`_dmarc.${hostname}`);
+    return records.map((r) => r.join(""));
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Run a full Exposure Snapshot scan for one domain. Pure, testable, no HTTP
+ * surface — see docs/EXPOSURE_SNAPSHOT_ARCHITECTURE.md ("Scan flow").
+ * Every provider failure degrades to a "not-checked" finding rather than
+ * failing the whole scan.
+ */
+export async function runExposureSnapshotScan(rawDomainInput: string): Promise<ScanResult> {
+  const validation = validateAndNormalizeDomain(rawDomainInput);
+  if (!validation.ok || !validation.value) {
+    return { status: "invalid-domain", domainError: validation.error };
+  }
+
+  const { hostname, registrableDomain } = validation.value;
+  const scanStartedAt = new Date().toISOString();
+  const allocator = new FindingIdAllocator();
+  const findings: Finding[] = [];
+
+  const [dnsResult, dnssecResult, registrationResult, ctResult, dmarcTxt] = await Promise.all([
+    fetchDnsFindings(hostname),
+    fetchDnssecFindings(hostname),
+    fetchRegistrationFindings(registrableDomain),
+    fetchCertificateTransparencyFindings(registrableDomain),
+    fetchDmarcTxt(hostname),
+  ]);
+
+  // --- SPF ---
+  if (dnsResult.status === "ok" && dnsResult.findings) {
+    const txt = dnsResult.findings.txt.map((segments) => segments.join(""));
+    const spf = parseSpf(txt);
+    const quality = classifySpfQuality(spf);
+
+    if (!spf.present) {
+      findings.push(
+        buildFinding(allocator, {
+          controlId: "SPF_MISSING",
+          observation: `No SPF (v=spf1) TXT record was found for ${hostname}.`,
+          evidenceType: "external-observation",
+          evidenceCitation: `DNS TXT lookup for ${hostname}.`,
+          confidence: "high",
+        })
+      );
+    } else if (spf.malformed) {
+      findings.push(
+        buildFinding(allocator, {
+          controlId: "SPF_MALFORMED",
+          observation:
+            spf.recordCount > 1
+              ? `${spf.recordCount} separate SPF records were found for ${hostname}; RFC 7208 treats this as invalid.`
+              : `The SPF record for ${hostname} could not be reliably parsed.`,
+          evidenceType: "external-observation",
+          evidenceCitation: spf.raw.join(" | "),
+          confidence: "high",
+        })
+      );
+    } else {
+      const controlId =
+        quality === "good"
+          ? "SPF_GOOD"
+          : spf.allQualifier === "pass"
+            ? "SPF_PASS_ALL"
+            : spf.exceedsLookupLimit
+              ? "SPF_LOOKUP_LIMIT_EXCEEDED"
+              : "SPF_SOFT_OR_NEUTRAL";
+      findings.push(
+        buildFinding(allocator, {
+          controlId,
+          observation: `SPF record: "${spf.raw[0]}".`,
+          evidenceType: "external-observation",
+          evidenceCitation: `DNS TXT lookup for ${hostname}.`,
+          confidence: "high",
+        })
+      );
+    }
+  } else {
+    findings.push(
+      buildFinding(allocator, {
+        controlId: "SPF_MISSING",
+        observation: "SPF could not be checked because the DNS lookup for this domain did not succeed.",
+        evidenceType: "external-observation",
+        evidenceCitation: "DNS provider unavailable during this scan.",
+        confidence: "low",
+        overrides: { status: "not-checked", priority: "monitor", riskRating: "informational" },
+      })
+    );
+  }
+
+  // --- DMARC ---
+  const dmarc = parseDmarc(dmarcTxt);
+  const dmarcQuality = classifyDmarcQuality(dmarc);
+  const dmarcControlId = !dmarc.present
+    ? "DMARC_MISSING"
+    : dmarc.classification === "malformed"
+      ? "DMARC_MALFORMED"
+      : dmarcQuality === "good"
+        ? "DMARC_STRONG"
+        : "DMARC_MONITORING_ONLY";
+  findings.push(
+    buildFinding(allocator, {
+      controlId: dmarcControlId,
+      observation: dmarc.present
+        ? `DMARC record: "${dmarc.raw}".`
+        : `No DMARC (_dmarc.${hostname}) TXT record was found.`,
+      evidenceType: "external-observation",
+      evidenceCitation: `DNS TXT lookup for _dmarc.${hostname}.`,
+      confidence: "high",
+    })
+  );
+
+  // --- Mail platform + DKIM ---
+  const mxExchanges =
+    dnsResult.status === "ok" && dnsResult.findings ? dnsResult.findings.mx.map((m) => m.exchange) : [];
+  const mailPlatform = detectMailPlatform(mxExchanges);
+  const dkim = await checkDkim(hostname, mailPlatform.provider);
+
+  const dkimControlId =
+    dkim.status === "confirmed"
+      ? "DKIM_CONFIRMED"
+      : dkim.status === "misconfigured"
+        ? "DKIM_MISCONFIGURED"
+        : "DKIM_NOT_CONFIRMED";
+  findings.push(
+    buildFinding(allocator, {
+      controlId: dkimControlId,
+      observation: dkim.evidence,
+      evidenceType: dkim.status === "confirmed" || dkim.status === "misconfigured" ? "technical-test" : "inferred",
+      evidenceCitation:
+        dkim.selectorsChecked.length > 0
+          ? `Checked selector(s): ${dkim.selectorsChecked.join(", ")}.`
+          : "No known selector to check for this mail platform.",
+      confidence: dkim.status === "confirmed" || dkim.status === "misconfigured" ? "high" : "low",
+    })
+  );
+
+  // --- DNSSEC ---
+  if (dnssecResult.status === "ok" && dnssecResult.findings) {
+    const validated = dnssecResult.findings.status === "validated";
+    findings.push(
+      buildFinding(allocator, {
+        controlId: validated ? "DNSSEC_VALIDATED" : "DNSSEC_NOT_VALIDATED",
+        observation: `DNSSEC Authenticated Data flag: ${dnssecResult.findings.status}, reported by ${dnssecResult.findings.resolver}.`,
+        evidenceType: "external-observation",
+        evidenceCitation: dnssecResult.evidence,
+        confidence: "medium",
+      })
+    );
+  } else {
+    findings.push(
+      buildFinding(allocator, {
+        controlId: "DNSSEC_NOT_VALIDATED",
+        observation: "DNSSEC status could not be checked during this scan.",
+        evidenceType: "external-observation",
+        evidenceCitation: "DNSSEC resolver unavailable during this scan.",
+        confidence: "low",
+        overrides: { status: "not-checked", priority: "monitor" },
+      })
+    );
+  }
+
+  // --- Registration ---
+  if (registrationResult.status === "ok" && registrationResult.findings) {
+    const reg = registrationResult.findings;
+    if (reg.expiresAt) {
+      const daysUntilExpiry = (new Date(reg.expiresAt).getTime() - Date.now()) / (1000 * 60 * 60 * 24);
+      if (daysUntilExpiry >= 0 && daysUntilExpiry <= 30) {
+        findings.push(
+          buildFinding(allocator, {
+            controlId: "REGISTRATION_EXPIRING_SOON",
+            observation: `Domain registration for ${registrableDomain} is recorded as expiring ${reg.expiresAt} (registrar: ${reg.registrar ?? "unknown"}).`,
+            evidenceType: "external-observation",
+            evidenceCitation: `${reg.source.toUpperCase()} lookup for ${registrableDomain}.`,
+            confidence: "high",
+          })
+        );
+      }
+    }
+  } else {
+    findings.push(
+      buildFinding(allocator, {
+        controlId: "REGISTRATION_NOT_AVAILABLE",
+        observation: `Domain registration details for ${registrableDomain} were not available from this scan's sources.`,
+        evidenceType: "external-observation",
+        evidenceCitation: registrationResult.errors.join(" ") || "No registration data source succeeded.",
+        confidence: "low",
+      })
+    );
+  }
+
+  // --- Subdomains ---
+  if (ctResult.status === "ok" && ctResult.findings) {
+    const classified = await classifySubdomains(ctResult.findings.hostnames);
+    const exposedNonProd = classified.filter(
+      (c) =>
+        c.resolutionStatus === "currently-resolving" &&
+        ["dev", "staging", "test", "old", "legacy"].includes(c.category)
+    );
+    for (const host of exposedNonProd) {
+      findings.push(
+        buildFinding(allocator, {
+          controlId: "SUBDOMAIN_NONPRODUCTION_EXPOSED",
+          observation: `A hostname suggesting a ${host.category} environment ("${host.hostname}") appeared in public certificate records and currently resolves.`,
+          evidenceType: "external-observation",
+          evidenceCitation: `Certificate transparency records via crt.sh, cross-checked with a live DNS resolution.`,
+          confidence: "medium",
+        })
+      );
+    }
+  }
+
+  const scanCompletedAt = new Date().toISOString();
+
+  return {
+    status: "completed",
+    scan: { domain: hostname, scanStartedAt, scanCompletedAt, findings },
+    raw: {
+      dns: dnsResult,
+      dnssec: dnssecResult,
+      registration: registrationResult,
+      certificateTransparency: ctResult,
+    },
+  };
+}

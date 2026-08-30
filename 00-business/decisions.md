@@ -2,13 +2,21 @@
 title: Decision Log
 status: approved
 owner: Jason Hill
-last-reviewed: 2026-08-29
+last-reviewed: 2026-08-31
 review-cycle: on every material decision
 ---
 
 # Decision Log
 
 Running record of material decisions. Each entry is dated, states the decision, the reasoning, and who made it. This is the source of truth when documents disagree with each other.
+
+## 2026-08-31: Exposure Snapshot rebuilt as a free, automated tool
+
+**CONFIRMED**, per a direct question put to Jason Hill before implementation, since it changes pricing (`CLAUDE.md` rule 8). The founder's build brief for a self-serve domain-scanning web tool used the name "Exposure Snapshot" for a free, automated capability, while `03_Services/exposure-snapshot.md` already defined a paid ($400 to $900), manually-delivered service of the same name, added 2026-08-22. Asked directly how these should relate; Jason confirmed the recommended resolution: **the automated tool becomes the free entry point, replacing the manually-delivered paid version.**
+
+This does not conflict with the Free Security Health Check: that service is self-reported (internal practices a scan can't see), while Exposure Snapshot is independently observed (external footprint a self-report can't verify) — the two are complementary, not duplicate, and both now sit as free first-touch options ahead of the 15-minute Security Conversation. `03_Services/exposure-snapshot.md` and `service-catalogue.md` (summary table, funnel diagram, selection guide) are updated accordingly. No client has been quoted the old $400 to $900 price; Pharos has no paying clients yet (see `decisions-required.md` question 5), so this is a service-definition change, not a broken commitment.
+
+The technical build (architecture, provider choices, data model) is tracked separately in `08_Website/pharos-security-site/docs/`, not duplicated into this business decision log.
 
 ## 2026-08-29: Assessment methodology upgrade — two architecture decisions
 
