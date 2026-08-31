@@ -55,10 +55,8 @@ export default function ExposureSnapshotPage() {
         </section>
 
         <section className="bg-white py-16 md:py-20">
-          <div className="container-px mx-auto max-w-3xl">
-            <div className="rounded-3xl border border-charcoal/10 bg-mist/60 p-7 sm:p-10">
-              <ExposureSnapshotTool />
-            </div>
+          <div className="container-px mx-auto max-w-6xl">
+            <ExposureSnapshotTool />
           </div>
         </section>
 
