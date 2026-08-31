@@ -7,6 +7,11 @@
   --teal: #2fa7a0;
   --cyan: #b8eef0;
   --charcoal: #17212b;
+  /* Deliberate, considered extension for the Exposure Snapshot's
+     "high priority" status only — see docs/EXPOSURE_SNAPSHOT_DECISIONS.md.
+     A muted, warm amber, not an alarm red, kept to icon/border/badge use
+     only (never body text) per the same restraint already applied to teal. */
+  --amber: #b8763a;
 }
 
 @theme inline {
@@ -16,6 +21,7 @@
   --color-teal: var(--teal);
   --color-cyan: var(--cyan);
   --color-charcoal: var(--charcoal);
+  --color-amber: var(--amber);
 
   --font-heading: var(--font-libre-franklin), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-libre-franklin), ui-sans-serif, system-ui, sans-serif;
