@@ -22,10 +22,19 @@ export default function Problem() {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-charcoal/10 bg-charcoal/10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {questions.map((question) => (
-            <div key={question} className="bg-mist p-8">
-              <p className="font-heading text-lg font-semibold leading-snug text-navy">
+            <div
+              key={question}
+              className="group relative rounded-2xl border border-charcoal/10 bg-white p-8 shadow-[0_2px_14px_-6px_rgba(7,26,45,0.08)] transition-all duration-200 hover:-translate-y-1 hover:border-teal/40 hover:shadow-[0_20px_45px_-25px_rgba(7,26,45,0.35)]"
+            >
+              <span
+                aria-hidden="true"
+                className="font-heading text-4xl font-bold leading-none text-teal/30 transition-colors duration-200 group-hover:text-teal/50"
+              >
+                &ldquo;
+              </span>
+              <p className="mt-3 font-heading text-lg font-semibold leading-snug text-navy">
                 {question}
               </p>
             </div>
