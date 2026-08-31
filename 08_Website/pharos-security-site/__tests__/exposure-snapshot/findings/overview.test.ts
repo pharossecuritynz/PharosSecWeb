@@ -29,8 +29,13 @@ describe("buildExposureOverview", () => {
     expect(overview.emailProtection).toBe("needs-attention");
   });
 
-  it("domain security reflects registration/DNSSEC findings only", () => {
+  it("domain security reflects registration/DNSSEC/CAA findings", () => {
     const overview = buildExposureOverview([f("REGISTRATION_EXPIRING_SOON")], 0);
+    expect(overview.domainSecurity).toBe("needs-attention");
+  });
+
+  it("a missing CAA record alone does not push domain security past needs-attention", () => {
+    const overview = buildExposureOverview([f("CAA_MISSING")], 0);
     expect(overview.domainSecurity).toBe("needs-attention");
   });
 
@@ -41,6 +46,11 @@ describe("buildExposureOverview", () => {
       buildExposureOverview([f("SUBDOMAIN_NONPRODUCTION_EXPOSED"), f("SUBDOMAIN_NONPRODUCTION_EXPOSED")], 0)
         .internetExposure
     ).toBe("elevated");
+  });
+
+  it("a single subdomain takeover risk alone is enough to reach 'elevated' internet exposure", () => {
+    const overview = buildExposureOverview([f("SUBDOMAIN_TAKEOVER_RISK")], 0);
+    expect(overview.internetExposure).toBe("elevated");
   });
 
   it("credential exposure is always not-checked until HIBP is wired up — never falsely reports none-observed", () => {

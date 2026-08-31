@@ -35,6 +35,11 @@ vi.mock("@/lib/exposure-snapshot/analysis/subdomains", () => ({
   classifySubdomains: (...args: unknown[]) => classifySubdomainsMock(...args),
 }));
 
+const checkTakeoverRisksMock = vi.fn();
+vi.mock("@/lib/exposure-snapshot/analysis/subdomain-takeover", () => ({
+  checkTakeoverRisks: (...args: unknown[]) => checkTakeoverRisksMock(...args),
+}));
+
 const { runExposureSnapshotScan } = await import("@/lib/exposure-snapshot/scan");
 
 function okResult<T>(findings: T, provider = "mock") {
@@ -53,6 +58,7 @@ describe("runExposureSnapshotScan", () => {
     fetchCtFindingsMock.mockReset();
     checkDkimMock.mockReset();
     classifySubdomainsMock.mockReset();
+    checkTakeoverRisksMock.mockReset();
 
     // Sensible defaults for a "clean, well-configured" domain.
     resolveTxtMock.mockImplementation(async (query: string) => {
@@ -94,6 +100,7 @@ describe("runExposureSnapshotScan", () => {
     classifySubdomainsMock.mockResolvedValue([
       { hostname: "www.example.com", resolutionStatus: "currently-resolving", category: "www" },
     ]);
+    checkTakeoverRisksMock.mockResolvedValue([]);
   });
 
   it("rejects an invalid domain before calling any provider", async () => {
@@ -201,5 +208,68 @@ describe("runExposureSnapshotScan", () => {
     const result = await runExposureSnapshotScan("example.com");
     const devFinding = result.scan!.findings.find((f) => f.controlId === "SUBDOMAIN_NONPRODUCTION_EXPOSED");
     expect(devFinding).toBeUndefined();
+  });
+
+  it("flags CAA_MISSING when no CAA records are found", async () => {
+    const result = await runExposureSnapshotScan("example.com");
+    const caaFinding = result.scan!.findings.find((f) => f.controlId === "CAA_MISSING");
+    expect(caaFinding).toBeDefined();
+    expect(caaFinding?.status).toBe("attention");
+  });
+
+  it("flags CAA_PRESENT (good) when a CAA record exists", async () => {
+    fetchDnsFindingsMock.mockResolvedValue(
+      okResult({
+        a: ["203.0.113.10"],
+        aaaa: [],
+        mx: [{ exchange: "aspmx.l.google.com", priority: 1 }],
+        txt: [["v=spf1 include:_spf.google.com -all"]],
+        ns: ["ns1.example.com"],
+        caa: [{ critical: 0, issue: "letsencrypt.org" }],
+      })
+    );
+
+    const result = await runExposureSnapshotScan("example.com");
+    const caaFinding = result.scan!.findings.find((f) => f.controlId === "CAA_PRESENT");
+    expect(caaFinding?.status).toBe("good");
+  });
+
+  it("flags a subdomain takeover risk as high-priority and reflects it in the internet exposure overview", async () => {
+    fetchCtFindingsMock.mockResolvedValue(okResult({ hostnames: ["old.example.com"] }));
+    classifySubdomainsMock.mockResolvedValue([
+      { hostname: "old.example.com", resolutionStatus: "historically-observed", category: "old" },
+    ]);
+    checkTakeoverRisksMock.mockResolvedValue([
+      {
+        hostname: "old.example.com",
+        cnameTarget: "old-example.herokuapp.com",
+        matchedService: "Heroku",
+        targetResolves: false,
+        atRisk: true,
+      },
+    ]);
+
+    const result = await runExposureSnapshotScan("example.com");
+
+    const takeoverFinding = result.scan!.findings.find((f) => f.controlId === "SUBDOMAIN_TAKEOVER_RISK");
+    expect(takeoverFinding?.status).toBe("high-priority");
+    expect(takeoverFinding?.riskRating).toBe("high");
+    expect(result.overview?.internetExposure).toBe("elevated");
+  });
+
+  it("does not flag a takeover risk when the CNAME target still resolves", async () => {
+    checkTakeoverRisksMock.mockResolvedValue([
+      {
+        hostname: "www.example.com",
+        cnameTarget: "www-example.herokuapp.com",
+        matchedService: "Heroku",
+        targetResolves: true,
+        atRisk: false,
+      },
+    ]);
+
+    const result = await runExposureSnapshotScan("example.com");
+    const takeoverFinding = result.scan!.findings.find((f) => f.controlId === "SUBDOMAIN_TAKEOVER_RISK");
+    expect(takeoverFinding).toBeUndefined();
   });
 });

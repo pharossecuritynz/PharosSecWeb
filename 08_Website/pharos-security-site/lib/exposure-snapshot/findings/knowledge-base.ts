@@ -224,6 +224,41 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     effort: "low",
     status: "attention",
   },
+
+  SUBDOMAIN_TAKEOVER_RISK: {
+    controlId: "SUBDOMAIN_TAKEOVER_RISK",
+    concept: "subdomain-takeover",
+    title: "A subdomain may be vulnerable to takeover",
+    why: "This subdomain points to a third-party service that doesn't appear to be claimed any more. If so, someone else could potentially claim that same service address and serve their own content, including a convincing phishing page, from a subdomain of your own domain.",
+    recommendation: "Confirm whether this subdomain and the service it points to are still in use. If not, remove the DNS record; if it should still be active, reclaim or reconfigure the service it points to.",
+    riskRating: "high",
+    priority: "now",
+    effort: "low",
+    status: "high-priority",
+  },
+
+  CAA_MISSING: {
+    controlId: "CAA_MISSING",
+    concept: "caa",
+    title: "No CAA record was found",
+    why: "Without a CAA record, any publicly trusted certificate authority can issue an SSL/TLS certificate for your domain. This has been standard, workable practice on the web for years and isn't a pressing risk on its own.",
+    recommendation: "A low-effort, lower-priority improvement: add a CAA record naming the certificate authority (or authorities) you actually use.",
+    riskRating: "low",
+    priority: "later",
+    effort: "very-low",
+    status: "attention",
+  },
+  CAA_PRESENT: {
+    controlId: "CAA_PRESENT",
+    concept: "caa",
+    title: "A CAA record restricts which certificate authorities can issue for this domain",
+    why: "Your domain publishes a CAA record narrowing which certificate authorities are allowed to issue certificates for it.",
+    recommendation: "No action needed.",
+    riskRating: "informational",
+    priority: "monitor",
+    effort: "very-low",
+    status: "good",
+  },
 };
 
 export function getKnowledgeBaseEntry(controlId: string): KnowledgeBaseEntry {

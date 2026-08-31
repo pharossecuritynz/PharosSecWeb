@@ -10,6 +10,8 @@ import { parseDmarc, classifyDmarcQuality } from "./analysis/dmarc";
 import { detectMailPlatform } from "./analysis/mail-platform";
 import { checkDkim } from "./analysis/dkim";
 import { classifySubdomains } from "./analysis/subdomains";
+import { checkTakeoverRisks } from "./analysis/subdomain-takeover";
+import { classifyCaa } from "./analysis/caa";
 import { FindingIdAllocator, buildFinding } from "./findings/build-finding";
 import type { Finding, ScanFindings } from "./findings/types";
 import { buildExposureOverview, type ExposureOverview } from "./findings/overview";
@@ -199,6 +201,22 @@ export async function runExposureSnapshotScan(rawDomainInput: string): Promise<S
     );
   }
 
+  // --- CAA ---
+  if (dnsResult.status === "ok" && dnsResult.findings) {
+    const caa = classifyCaa(dnsResult.findings.caa);
+    findings.push(
+      buildFinding(allocator, {
+        controlId: caa.present ? "CAA_PRESENT" : "CAA_MISSING",
+        observation: caa.present
+          ? `CAA record found, authorising: ${caa.authorizedCAs.join(", ") || "no issuer (explicit deny-all)"}.`
+          : `No CAA record was found for ${hostname}.`,
+        evidenceType: "external-observation",
+        evidenceCitation: `DNS CAA lookup for ${hostname}.`,
+        confidence: "high",
+      })
+    );
+  }
+
   // --- Registration ---
   if (registrationResult.status === "ok" && registrationResult.findings) {
     const reg = registrationResult.findings;
@@ -243,6 +261,21 @@ export async function runExposureSnapshotScan(rawDomainInput: string): Promise<S
           observation: `A hostname suggesting a ${host.category} environment ("${host.hostname}") appeared in public certificate records and currently resolves.`,
           evidenceType: "external-observation",
           evidenceCitation: `Certificate transparency records via crt.sh, cross-checked with a live DNS resolution.`,
+          confidence: "medium",
+        })
+      );
+    }
+
+    // --- Subdomain takeover risk (purely passive: CNAME + resolution lookups only) ---
+    const takeoverChecks = await checkTakeoverRisks(ctResult.findings.hostnames);
+    const atRisk = takeoverChecks.filter((c) => c.atRisk);
+    for (const risk of atRisk) {
+      findings.push(
+        buildFinding(allocator, {
+          controlId: "SUBDOMAIN_TAKEOVER_RISK",
+          observation: `"${risk.hostname}" has a CNAME pointing to ${risk.cnameTarget} (${risk.matchedService}), which does not currently resolve to anything.`,
+          evidenceType: "external-observation",
+          evidenceCitation: `DNS CNAME lookup for ${risk.hostname}, cross-checked by resolving ${risk.cnameTarget}.`,
           confidence: "medium",
         })
       );
