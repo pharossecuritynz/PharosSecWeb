@@ -45,14 +45,20 @@ describe("optional exposure-intelligence providers", () => {
     expect(safeFetch).toHaveBeenCalled();
   });
 
-  it("Censys reports not-configured when only the API key is set, without the organization ID (v3 requires both)", async () => {
+  it("Censys works with just the API key — no organisation ID required (free-tier accounts don't have one)", async () => {
     process.env.CENSYS_API_KEY = "test-key";
+    vi.mocked(safeFetch).mockResolvedValue(
+      new Response(JSON.stringify({ result: { resource: { services: [] } } }), { status: 200 })
+    );
+
     const result = await fetchCensysFindings("203.0.113.1");
-    expect(result.status).toBe("not-configured");
-    expect(safeFetch).not.toHaveBeenCalled();
+
+    expect(result.status).toBe("ok");
+    const [, calledOptions] = vi.mocked(safeFetch).mock.calls[0];
+    expect((calledOptions as { headers: Record<string, string> }).headers).not.toHaveProperty("x-organization-id");
   });
 
-  it("Censys calls the current v3 endpoint with both required headers once fully configured, and parses the services array correctly", async () => {
+  it("Censys calls the current v3 endpoint and includes the organisation header only when one is configured, parsing the services array correctly", async () => {
     process.env.CENSYS_API_KEY = "test-key";
     process.env.CENSYS_ORGANIZATION_ID = "test-org";
     vi.mocked(safeFetch).mockResolvedValue(
