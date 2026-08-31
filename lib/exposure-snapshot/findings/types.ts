@@ -32,7 +32,15 @@ export type CheckStatus = "good" | "attention" | "high-priority" | "informationa
 
 /** Groups findings under a plain-English "what is this and why does it matter"
  * explainer, independent of the specific finding — see concept-explainers.ts. */
-export type Concept = "spf" | "dmarc" | "dkim" | "dnssec" | "domain-registration" | "public-footprint";
+export type Concept =
+  | "spf"
+  | "dmarc"
+  | "dkim"
+  | "dnssec"
+  | "domain-registration"
+  | "public-footprint"
+  | "subdomain-takeover"
+  | "caa";
 
 export interface FindingEvidence {
   type: EvidenceType;

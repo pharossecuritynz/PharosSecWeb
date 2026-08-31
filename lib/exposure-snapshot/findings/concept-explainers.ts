@@ -44,4 +44,14 @@ export const CONCEPT_EXPLAINERS: Record<Concept, ConceptExplainer> = {
     explanation:
       "This looks at what parts of your online presence, like old test sites or forgotten subdomains, are still visible to the public. These are easy to lose track of over time and can end up less protected than your main systems.",
   },
+  "subdomain-takeover": {
+    title: "What is a subdomain takeover?",
+    explanation:
+      "Some subdomains point to third-party services (like a page builder or cloud host) rather than your own server. If that service account is ever cancelled or deleted but the DNS record pointing to it isn't removed, someone else can claim the same service address and effectively take over your subdomain, potentially using it to host convincing phishing pages under your own domain name.",
+  },
+  caa: {
+    title: "What is a CAA record?",
+    explanation:
+      "A CAA record specifies which certificate authorities are allowed to issue SSL/TLS certificates for your domain. Without one, any publicly trusted certificate authority can issue a certificate for it, which has been standard practice on the web for years and isn't a serious weakness on its own, but adding one is a small, low-effort way to narrow that down.",
+  },
 };

@@ -22,7 +22,7 @@ export interface ExposureOverview {
 }
 
 const EMAIL_CONTROL_PREFIXES = ["SPF_", "DMARC_", "DKIM_"];
-const DOMAIN_CONTROL_PREFIXES = ["REGISTRATION_", "DNSSEC_"];
+const DOMAIN_CONTROL_PREFIXES = ["REGISTRATION_", "DNSSEC_", "CAA_"];
 
 function worstStatus(findings: Finding[]): "good" | "attention" | "high-priority" | "not-checked" {
   if (findings.some((f) => f.status === "high-priority")) return "high-priority";
@@ -38,7 +38,8 @@ function byControlPrefix(findings: Finding[], prefixes: string[]): Finding[] {
 export function buildExposureOverview(findings: Finding[], subdomainCount: number): ExposureOverview {
   const emailFindings = byControlPrefix(findings, EMAIL_CONTROL_PREFIXES);
   const domainFindings = byControlPrefix(findings, DOMAIN_CONTROL_PREFIXES);
-  const exposureFindings = findings.filter((f) => f.controlId === "SUBDOMAIN_NONPRODUCTION_EXPOSED");
+  const nonProdExposureCount = findings.filter((f) => f.controlId === "SUBDOMAIN_NONPRODUCTION_EXPOSED").length;
+  const takeoverRiskCount = findings.filter((f) => f.controlId === "SUBDOMAIN_TAKEOVER_RISK").length;
   const credentialFindings = findings.filter((f) => f.controlId.startsWith("HIBP_"));
 
   const emailWorst = worstStatus(emailFindings);
@@ -49,12 +50,12 @@ export function buildExposureOverview(findings: Finding[], subdomainCount: numbe
   const domainSecurity: DomainSecurityLevel =
     domainWorst === "high-priority" ? "high-priority" : domainWorst === "attention" ? "needs-attention" : "strong";
 
+  // Takeover risk weighs more heavily than a plain non-production hostname
+  // being reachable — a single takeover-vulnerable subdomain alone is
+  // enough to reach "elevated", since it's a materially more serious finding.
+  const exposureScore = nonProdExposureCount + takeoverRiskCount * 2;
   const internetExposure: InternetExposureLevel =
-    exposureFindings.length === 0
-      ? "low"
-      : exposureFindings.length === 1
-        ? "moderate"
-        : "elevated";
+    exposureScore === 0 ? "low" : exposureScore === 1 ? "moderate" : "elevated";
 
   // No credential-exposure provider (HIBP) is wired up yet — see EXTERNAL_PROVIDERS.md.
   // Always "not-checked" until Milestone 7. Never silently reported as "none-observed",
