@@ -14,6 +14,7 @@ import { checkTakeoverRisks } from "./analysis/subdomain-takeover";
 import { classifyCaa } from "./analysis/caa";
 import { classifyInternetExposure } from "./analysis/internet-exposure";
 import { fetchShodanFindings } from "./providers/shodan";
+import { fetchCensysFindings } from "./providers/censys";
 import { FindingIdAllocator, buildFinding } from "./findings/build-finding";
 import type { Finding, ScanFindings } from "./findings/types";
 import { buildExposureOverview, type ExposureOverview } from "./findings/overview";
@@ -250,12 +251,12 @@ export async function runExposureSnapshotScan(rawDomainInput: string): Promise<S
     );
   }
 
-  // --- Internet exposure (Shodan) ---
-  // Uses the first resolved A/AAAA address as the target IP. Only Shodan is
-  // wired up here; Censys stays available as an interface but unused, since
-  // it wasn't asked for. See docs/EXTERNAL_PROVIDERS.md for the licensing
-  // note on Shodan's free tier — this only produces a real result once a
-  // paid SHODAN_API_KEY is set; otherwise it degrades to not-checked.
+  // --- Internet exposure (Shodan + Censys, combined) ---
+  // Uses the first resolved A/AAAA address as the target IP. Both providers
+  // are queried and their port lists merged into one signal, rather than
+  // two separate (and potentially conflicting) findings — see
+  // docs/EXTERNAL_PROVIDERS.md for the licensing/cost note on both.
+  // Degrades to not-checked only if neither provider returns a result.
   {
     const ipToCheck =
       dnsResult.status === "ok" && dnsResult.findings
@@ -263,9 +264,25 @@ export async function runExposureSnapshotScan(rawDomainInput: string): Promise<S
         : undefined;
 
     if (ipToCheck) {
-      const shodanResult = await fetchShodanFindings(ipToCheck);
+      const [shodanResult, censysResult] = await Promise.all([
+        fetchShodanFindings(ipToCheck),
+        fetchCensysFindings(ipToCheck),
+      ]);
+
+      const contributingProviders: string[] = [];
+      const combinedPorts = new Set<number>();
+
       if (shodanResult.status === "ok" && shodanResult.findings) {
-        const classification = classifyInternetExposure(shodanResult.findings.ports);
+        contributingProviders.push("Shodan");
+        shodanResult.findings.ports.forEach((p) => combinedPorts.add(p));
+      }
+      if (censysResult.status === "ok" && censysResult.findings) {
+        contributingProviders.push("Censys");
+        censysResult.findings.services.forEach((s) => combinedPorts.add(s.port));
+      }
+
+      if (contributingProviders.length > 0) {
+        const classification = classifyInternetExposure([...combinedPorts]);
         const controlId =
           classification.level === "critical"
             ? "INTERNET_EXPOSURE_CRITICAL"
@@ -281,7 +298,7 @@ export async function runExposureSnapshotScan(rawDomainInput: string): Promise<S
                 ? `An IP address (${ipToCheck}) currently associated with this domain has previously been observed offering services on port(s): ${notablePorts.join(", ")}.`
                 : `An IP address (${ipToCheck}) currently associated with this domain has previously been observed offering only routine web services.`,
             evidenceType: "external-observation",
-            evidenceCitation: `Previously-observed internet services for ${ipToCheck}, via Shodan.`,
+            evidenceCitation: `Previously-observed internet services for ${ipToCheck}, via ${contributingProviders.join(" and ")}.`,
             confidence: "medium",
           })
         );
@@ -292,9 +309,9 @@ export async function runExposureSnapshotScan(rawDomainInput: string): Promise<S
             observation: "Previously-observed internet services were not checked during this scan.",
             evidenceType: "external-observation",
             evidenceCitation:
-              shodanResult.status === "not-configured"
-                ? "No Shodan API key is configured."
-                : shodanResult.errors.join(" ") || "Shodan provider unavailable during this scan.",
+              [shodanResult, censysResult]
+                .flatMap((r) => (r.status === "not-configured" ? [`No ${r.provider} API key is configured.`] : r.errors))
+                .join(" ") || "No exposure-intelligence provider was available during this scan.",
             confidence: "low",
           })
         );

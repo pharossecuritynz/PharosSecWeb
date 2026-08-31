@@ -17,7 +17,8 @@
 - **MTA-STS and BIMI**: two more DNS TXT presence checks, same pattern as SPF/DMARC. BIMI absence deliberately never produces a finding (not a meaningful gap for an SME) — only reported when present, as a positive signal.
 - **Homepage link**: `/exposure-snapshot` is now linked from the "Start light" cluster in `components/Services.tsx`. Reachable from the live site, not just by direct URL.
 - **Shodan wired in for real** (`INTERNET_EXPOSURE_CRITICAL` / `_SENSITIVE` / `_ROUTINE` / `_NOT_CHECKED`): queries the first resolved A/AAAA address. RDP and Telnet are called out specifically (high-priority — the two ports most associated with ransomware/mass-exploitation), other admin/database ports flagged as worth confirming, routine web ports treated as good. Founder is using a personal Shodan key for testing; per the licensing note in `EXTERNAL_PROVIDERS.md`, this needs a real paid key before real clients use the tool.
-- **"Email me this report" via Resend**: `app/api/exposure-snapshot/email/route.ts` sends the already-computed scan result (no re-scan, no database) as a styled HTML email. `RESEND_API_KEY` required; degrades to a clear 503 if unset. `RESEND_FROM_ADDRESS` defaults to Resend's own unverified testing address since `pharos.security.nz` isn't a registered/verified sending domain yet — set it once that's resolved.
+- **"Email me this report" via Resend**: `app/api/exposure-snapshot/email/route.ts` sends the already-computed scan result (no re-scan, no database) as a styled HTML email. `RESEND_API_KEY` required; degrades to a clear 503 if unset. `RESEND_FROM_ADDRESS` defaults to Resend's own unverified testing address since `pharos.security.nz` isn't a registered/verified sending domain yet — **paused, by the founder's own choice, until the domain is registered.**
+- **Censys wired in and merged with Shodan** into one combined Internet Exposure signal. Required rebuilding the provider against Censys's current Platform API v3 (the originally-built v2 endpoint has been retired) — see the decisions log for the full story. Needs both `CENSYS_API_KEY` and `CENSYS_ORGANIZATION_ID` set; either missing and it cleanly reports not-configured.
 
 ## NEXT (the persistence-dependent half of Milestone 4)
 
@@ -25,7 +26,7 @@
 - Cloudflare Turnstile or equivalent bot protection on the form, once real traffic risk justifies it
 - Accessibility pass (keyboard navigation, ARIA labelling on the status badges, screen-reader testing) — not yet done
 - Lookalike/typosquat domain detection — flagged as valuable, not yet built
-- Wire Censys too, if wanted (interface exists, unused — only Shodan was asked for)
+- Resend sending domain — resume once `pharos.security.nz` (or whichever domain) is registered and verified in Resend
 
 ## LATER (Milestone 5-9)
 

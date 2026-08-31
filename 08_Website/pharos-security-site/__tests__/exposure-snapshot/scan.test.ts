@@ -45,6 +45,11 @@ vi.mock("@/lib/exposure-snapshot/providers/shodan", () => ({
   fetchShodanFindings: (...args: unknown[]) => fetchShodanFindingsMock(...args),
 }));
 
+const fetchCensysFindingsMock = vi.fn();
+vi.mock("@/lib/exposure-snapshot/providers/censys", () => ({
+  fetchCensysFindings: (...args: unknown[]) => fetchCensysFindingsMock(...args),
+}));
+
 const { runExposureSnapshotScan } = await import("@/lib/exposure-snapshot/scan");
 
 function okResult<T>(findings: T, provider = "mock") {
@@ -65,6 +70,7 @@ describe("runExposureSnapshotScan", () => {
     classifySubdomainsMock.mockReset();
     checkTakeoverRisksMock.mockReset();
     fetchShodanFindingsMock.mockReset();
+    fetchCensysFindingsMock.mockReset();
 
     // Sensible defaults for a "clean, well-configured" domain.
     resolveTxtMock.mockImplementation(async (query: string) => {
@@ -110,6 +116,15 @@ describe("runExposureSnapshotScan", () => {
     fetchShodanFindingsMock.mockResolvedValue({
       status: "not-configured",
       provider: "shodan",
+      checkedAt: new Date().toISOString(),
+      findings: null,
+      evidence: "",
+      confidence: "low",
+      errors: ["No credentials configured for this provider."],
+    });
+    fetchCensysFindingsMock.mockResolvedValue({
+      status: "not-configured",
+      provider: "censys",
       checkedAt: new Date().toISOString(),
       findings: null,
       evidence: "",
@@ -342,10 +357,56 @@ describe("runExposureSnapshotScan", () => {
     expect(result.scan!.findings.find((f) => f.controlId === "CERTIFICATE_NOT_FOUND")).toBeDefined();
   });
 
-  it("reports internet exposure as not-checked when Shodan has no key configured", async () => {
+  it("reports internet exposure as not-checked when neither Shodan nor Censys is configured", async () => {
     const result = await runExposureSnapshotScan("example.com");
     const finding = result.scan!.findings.find((f) => f.controlId === "INTERNET_EXPOSURE_NOT_CHECKED");
     expect(finding?.status).toBe("not-checked");
+  });
+
+  it("still produces a real finding from Censys alone when Shodan isn't configured", async () => {
+    fetchCensysFindingsMock.mockResolvedValue({
+      status: "ok",
+      provider: "censys",
+      checkedAt: new Date().toISOString(),
+      findings: { ip: "203.0.113.10", services: [{ port: 3389, protocol: "RDP", transportProtocol: "TCP" }] },
+      evidence: "",
+      confidence: "medium",
+      errors: [],
+    });
+
+    const result = await runExposureSnapshotScan("example.com");
+    const finding = result.scan!.findings.find((f) => f.controlId === "INTERNET_EXPOSURE_CRITICAL");
+    expect(finding).toBeDefined();
+    expect(finding?.evidence.citation).toContain("Censys");
+    expect(finding?.evidence.citation).not.toContain("Shodan");
+  });
+
+  it("merges ports from both Shodan and Censys into a single combined finding, citing both", async () => {
+    fetchShodanFindingsMock.mockResolvedValue({
+      status: "ok",
+      provider: "shodan",
+      checkedAt: new Date().toISOString(),
+      findings: { ip: "203.0.113.10", ports: [443], hostnames: [], tags: [] },
+      evidence: "",
+      confidence: "medium",
+      errors: [],
+    });
+    fetchCensysFindingsMock.mockResolvedValue({
+      status: "ok",
+      provider: "censys",
+      checkedAt: new Date().toISOString(),
+      findings: { ip: "203.0.113.10", services: [{ port: 22, protocol: "SSH", transportProtocol: "TCP" }] },
+      evidence: "",
+      confidence: "medium",
+      errors: [],
+    });
+
+    const result = await runExposureSnapshotScan("example.com");
+    const finding = result.scan!.findings.find((f) => f.controlId === "INTERNET_EXPOSURE_SENSITIVE");
+    expect(finding).toBeDefined();
+    expect(finding?.observation).toContain("22");
+    expect(finding?.evidence.citation).toContain("Shodan");
+    expect(finding?.evidence.citation).toContain("Censys");
   });
 
   it("flags routine web-only ports as good when Shodan is configured", async () => {
