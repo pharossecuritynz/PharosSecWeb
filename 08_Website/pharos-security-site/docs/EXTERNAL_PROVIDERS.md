@@ -110,6 +110,21 @@ Researched against current, live documentation on 2026-08-31 (not older blog pos
 
 Doesn't require a subscription, but isn't part of the current scope — this tool checks domain/email exposure, not individual password strength. Noted here only so it isn't confused with the domain/breach search API above.
 
+## Alternatives considered and rejected for credential exposure (researched 2026-08-31)
+
+The founder asked whether DeHashed, OathNet, OSINTLeak, or Intelligence X ("Data Leak Check" on osint-ui.com) could make credential exposure available sooner than HIBP's domain-verification requirement. Researched directly; **none are recommended, for the same underlying reason across all four, not just cost.**
+
+| Provider | Cost for commercial use | Why not used here |
+|---|---|---|
+| **DeHashed** | Paid subscription/credits, no free commercial tier | Positioned as "Free the Password" — designed to surface actual leaked credential contents, not just breach metadata. No domain-ownership gate: an anonymous requester could search any domain, including a third party's, and see real people's leaked data. |
+| **OathNet** | Free tier (10 lookups/day), paid beyond that | A stealer-log search engine — indexes credentials actively harvested by malware from infected machines. Same no-ownership-gate problem, arguably more sensitive source data (live-harvested, not just old breach dumps). |
+| **OSINTLeak** | Free community plan; business/API access from $6,500/year | Same stealer-log/credential category as OathNet. No domain-verification gate found. |
+| **Intelligence X** (via "Data Leak Check") | Free tiers explicitly **forbid** third-party product integration; the cheapest licence that permits it is the API tier at €7,000/year (~NZD 12,500/year), rising to €20,000/year for Enterprise | Confirmed directly against intelx.io/product. Even setting cost aside, its searchable categories explicitly include "compromised credentials," dark web/paste-site content, and (on the Identity Portal tier) "password hash analysis" and "export leaked accounts" — the same raw-credential-index category as the other three, not a metadata-only source. |
+
+**The common problem, stated plainly:** all four return or index actual credential/personal content, and none require the requester to prove they control the domain being searched — the exact opposite of HIBP's design, which was built specifically to prevent an anonymous stranger from pulling up someone else's leaked data. Wiring any of them into this tool's public, unverified Level 1 would let anyone type in any business's domain and potentially see real people's leaked passwords. That's a privacy problem, not just a brand-risk one, and it would directly contradict this tool's own Level 1 design rule (evidence-standard.md / the architecture doc: no personal data, even in aggregate, without verification).
+
+**Decision: stay with the original plan.** HIBP remains the credential-exposure provider, gated behind domain-control verification (Milestone 6, before Milestone 7). This is not a technical shortcut being worked around — HIBP's ownership-verification requirement is the correct design for this specific capability, and no researched alternative avoids that requirement without introducing the exact problem it exists to prevent.
+
 ## Summary for Milestone 1
 
 Only DNS (native), DNSSEC-via-DoH, RDAP, WHOIS fallback, and certificate transparency are live in this pass. Shodan, Censys, and HIBP all have real provider interfaces implementing the shared `ProviderResult` contract, and all three correctly report `not-configured` with zero cost or licensing exposure until the founder decides to pay for a real key — at which point, re-check this document's terms, since API pricing and licence conditions change.

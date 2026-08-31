@@ -30,6 +30,10 @@ export type Effort = "very-low" | "low" | "moderate" | "significant";
 /** Report-facing simplification for the per-check status badge. */
 export type CheckStatus = "good" | "attention" | "high-priority" | "informational" | "not-checked";
 
+/** Groups findings under a plain-English "what is this and why does it matter"
+ * explainer, independent of the specific finding — see concept-explainers.ts. */
+export type Concept = "spf" | "dmarc" | "dkim" | "dnssec" | "domain-registration" | "public-footprint";
+
 export interface FindingEvidence {
   type: EvidenceType;
   citation: string;
@@ -41,6 +45,8 @@ export interface Finding {
   id: string;
   /** Key into the remediation knowledge base, e.g. "DMARC_MISSING". */
   controlId: string;
+  /** Key into concept-explainers.ts, for the "what is this?" info disclosure. */
+  concept: Concept;
   /** Always "EXT" for this tool — the domain prefix already reserved for external exposure findings. */
   domain: "EXT";
   title: string;

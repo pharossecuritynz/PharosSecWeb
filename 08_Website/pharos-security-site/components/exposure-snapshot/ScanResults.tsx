@@ -1,5 +1,6 @@
 import Link from "next/link";
 import StatusBadge, { type BadgeStatus } from "./StatusBadge";
+import ConceptInfo from "./ConceptInfo";
 import type { Finding } from "@/lib/exposure-snapshot/findings/types";
 import type { ExecutiveSummary } from "@/lib/exposure-snapshot/findings/executive-summary";
 import type { ExposureOverview } from "@/lib/exposure-snapshot/findings/overview";
@@ -12,12 +13,32 @@ export interface ScanResultsData {
   executiveSummary: ExecutiveSummary;
 }
 
-const OVERVIEW_ROWS: { key: keyof ExposureOverview; label: string }[] = [
-  { key: "emailProtection", label: "Email protection" },
-  { key: "domainSecurity", label: "Domain security" },
-  { key: "internetExposure", label: "Internet exposure" },
-  { key: "credentialExposure", label: "Credential exposure" },
-  { key: "publicFootprint", label: "Public footprint" },
+const OVERVIEW_ROWS: { key: keyof ExposureOverview; label: string; description: string }[] = [
+  {
+    key: "emailProtection",
+    label: "Email protection",
+    description: "Whether your domain has basic protections (SPF, DMARC, DKIM) against spoofed or faked email.",
+  },
+  {
+    key: "domainSecurity",
+    label: "Domain security",
+    description: "Whether your domain registration and DNS security are in reasonable shape.",
+  },
+  {
+    key: "internetExposure",
+    label: "Internet exposure",
+    description: "Forgotten or non-production systems (like an old test site) still reachable from the internet.",
+  },
+  {
+    key: "credentialExposure",
+    label: "Credential exposure",
+    description: "Whether email addresses linked to your domain have appeared in known data breaches.",
+  },
+  {
+    key: "publicFootprint",
+    label: "Public footprint",
+    description: "How much about your business is discoverable from public DNS and certificate records.",
+  },
 ];
 
 const OVERVIEW_VALUE_LABEL: Record<string, string> = {
@@ -52,7 +73,10 @@ function FindingRow({ finding }: { finding: Finding }) {
   return (
     <div className="flex flex-col gap-3 border-t border-charcoal/10 py-5 first:border-t-0 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
       <div className="min-w-0">
-        <p className="font-heading text-base font-semibold text-navy">{finding.title}</p>
+        <p className="flex items-center gap-2 font-heading text-base font-semibold text-navy">
+          {finding.title}
+          <ConceptInfo concept={finding.concept} />
+        </p>
         <p className="mt-1.5 text-sm leading-relaxed text-charcoal/70">{finding.observation}</p>
         {finding.status !== "good" && (
           <p className="mt-2 text-sm leading-relaxed text-charcoal/70">
@@ -130,7 +154,10 @@ export default function ScanResults({ data }: { data: ScanResultsData }) {
                   {i + 1}
                 </span>
                 <div className="min-w-0">
-                  <p className="text-sm font-semibold text-navy">{action.title}</p>
+                  <p className="flex items-center gap-2 text-sm font-semibold text-navy">
+                    {action.title}
+                    <ConceptInfo concept={action.concept} />
+                  </p>
                   <p className="mt-1 text-sm leading-relaxed text-charcoal/65">{action.recommendation}</p>
                 </div>
               </li>
@@ -142,11 +169,14 @@ export default function ScanResults({ data }: { data: ScanResultsData }) {
       <div>
         <h3 className="font-heading text-lg font-semibold text-navy">External exposure overview</h3>
         <div className="mt-4 divide-y divide-charcoal/10 rounded-2xl border border-charcoal/10">
-          {OVERVIEW_ROWS.map(({ key, label }) => {
+          {OVERVIEW_ROWS.map(({ key, label, description }) => {
             const value = overview[key];
             return (
-              <div key={key} className="flex items-center justify-between gap-4 px-5 py-3.5">
-                <span className="text-sm font-medium text-charcoal/80">{label}</span>
+              <div key={key} className="flex items-center justify-between gap-4 px-5 py-4">
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-charcoal/80">{label}</p>
+                  <p className="mt-0.5 text-xs leading-relaxed text-charcoal/50">{description}</p>
+                </div>
                 <StatusBadge
                   status={OVERVIEW_BADGE_STATUS[value] ?? "not-checked"}
                   label={OVERVIEW_VALUE_LABEL[value] ?? value}
@@ -155,6 +185,13 @@ export default function ScanResults({ data }: { data: ScanResultsData }) {
             );
           })}
         </div>
+        <p className="mt-3 text-xs leading-relaxed text-charcoal/45">
+          &ldquo;Credential exposure&rdquo; isn&apos;t checked yet in this version of the tool — see the{" "}
+          <a href="#credential-exposure-note" className="underline underline-offset-2 hover:text-charcoal/70">
+            note below
+          </a>
+          .
+        </p>
       </div>
 
       <div>
@@ -164,6 +201,19 @@ export default function ScanResults({ data }: { data: ScanResultsData }) {
             <FindingRow key={finding.id} finding={finding} />
           ))}
         </div>
+      </div>
+
+      <div
+        id="credential-exposure-note"
+        className="rounded-2xl border border-charcoal/10 bg-white p-6 text-sm leading-relaxed text-charcoal/65"
+      >
+        <p className="font-semibold text-navy">A note on credential exposure</p>
+        <p className="mt-2">
+          Checking whether email addresses linked to your domain have appeared in known data breaches is
+          genuinely useful, but it&apos;s sensitive information, so it&apos;s only shown once a business has
+          confirmed it actually controls the domain being checked. That verification step isn&apos;t built into
+          this tool yet, which is why credential exposure always shows as &ldquo;not checked&rdquo; for now.
+        </p>
       </div>
 
       <div className="rounded-2xl border border-charcoal/10 bg-white p-6 text-sm leading-relaxed text-charcoal/65">
