@@ -5,10 +5,14 @@ import { providerError, providerNotConfigured, providerOk, type ProviderResult }
  * Censys provider, targeting the current Platform API v3 (verified directly
  * against docs.censys.com 2026-08-31 — the legacy v2 api.censys.io/v2/hosts
  * endpoint this originally targeted has been retired). Reports
- * "not-configured" unless both CENSYS_API_KEY (a Personal Access Token) and
- * CENSYS_ORGANIZATION_ID are set — v3 requires both, not just the token.
- * Free tier is heavily rate-limited — see docs/EXTERNAL_PROVIDERS.md before
- * enabling this for real scans.
+ * "not-configured" unless CENSYS_API_KEY (a Personal Access Token) is set.
+ *
+ * CENSYS_ORGANIZATION_ID is optional, not required: per Censys's own docs,
+ * free-tier accounts don't have an organisation at all (only paid Starter/
+ * Search/Core tiers do) — a request with no org ID header simply falls back
+ * to free-tier limits rather than being refused, so it's sent only when
+ * present. Free tier is heavily rate-limited — see
+ * docs/EXTERNAL_PROVIDERS.md before enabling this for real scans.
  */
 
 export interface CensysFindings {
@@ -36,7 +40,7 @@ export async function fetchCensysFindings(ip: string): Promise<ProviderResult<Ce
   const apiKey = process.env.CENSYS_API_KEY;
   const organizationId = process.env.CENSYS_ORGANIZATION_ID;
 
-  if (!apiKey || !organizationId) {
+  if (!apiKey) {
     return providerNotConfigured("censys");
   }
 
@@ -45,7 +49,7 @@ export async function fetchCensysFindings(ip: string): Promise<ProviderResult<Ce
     const response = await safeFetch(url.toString(), {
       headers: {
         authorization: `Bearer ${apiKey}`,
-        "x-organization-id": organizationId,
+        ...(organizationId ? { "x-organization-id": organizationId } : {}),
         accept: "application/vnd.censys.api.v3.host.v1+json",
       },
       timeoutMs: 8000,
