@@ -32,6 +32,7 @@ export function buildFinding(allocator: FindingIdAllocator, options: BuildFindin
   return {
     id: allocator.next(),
     controlId: options.controlId,
+    concept: entry.concept,
     domain: "EXT",
     title: options.overrides?.title ?? entry.title,
     observation: options.observation,

@@ -29,3 +29,11 @@ Running the WHOIS fallback against a real `.nz` domain (`internetnz.nz`) during 
 ## Business-model decision (cross-reference)
 
 The pricing/naming decision (automated tool replaces the paid manual Exposure Snapshot service) was confirmed directly with the founder before implementation began, since it's a pricing commitment outside an AI system's standing authority per `CLAUDE.md` rule 8. Full reasoning in `00-business/decisions.md`, 2026-08-31 entry.
+
+## 2026-08-31 (later): concept explainers, a richer overview, and credential-exposure providers rejected
+
+**Added a "what is this?" info disclosure**, keyed by a new `Concept` field on every finding (`spf`/`dmarc`/`dkim`/`dnssec`/`domain-registration`/`public-footprint`), separate from the finding-specific observation/recommendation text. Content lives in `lib/exposure-snapshot/findings/concept-explainers.ts`, deliberately plain-English and not technically deep, per the founder's explicit request. Shown next to both the Priority Actions list and the full Findings list.
+
+**Enriched the External Exposure Overview** with a permanent one-line description under each category (email protection / domain security / internet exposure / credential exposure / public footprint), since a bare "Needs attention" badge with no context was flagged as not helpful. Also added a visible note explaining why credential exposure always shows "not checked" right now, linked from the overview section itself, rather than leaving that unexplained.
+
+**Researched DeHashed, OathNet, OSINTLeak, and Intelligence X as possible credential-exposure providers** (the founder asked specifically, wanting a path to "workable" credential exposure sooner than HIBP's domain-verification requirement). Rejected all four — see `EXTERNAL_PROVIDERS.md`'s "Alternatives considered and rejected" section for the full reasoning. In short: all four index or return actual leaked credential content rather than breach metadata, and none require the requester to prove domain ownership, which is precisely the problem HIBP's own verification requirement exists to prevent. Intelligence X is additionally the most expensive of the four for legitimate commercial use (€7,000/year minimum, confirmed directly against intelx.io). Decision: no substitute provider; HIBP behind Level 2 verification remains the plan.
