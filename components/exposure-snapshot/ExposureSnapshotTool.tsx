@@ -11,6 +11,7 @@ export default function ExposureSnapshotTool() {
   const [state, setState] = useState<ToolState>("form");
   const [errorMessage, setErrorMessage] = useState<string | undefined>(undefined);
   const [results, setResults] = useState<ScanResultsData | null>(null);
+  const [workEmail, setWorkEmail] = useState<string>("");
 
   const handleSubmit = async (values: ScanFormValues) => {
     setState("scanning");
@@ -32,6 +33,7 @@ export default function ExposureSnapshotTool() {
       }
 
       setResults(body as ScanResultsData);
+      setWorkEmail(values.workEmail);
       setState("results");
     } catch {
       setErrorMessage("That didn't go through. Please check your connection and try again.");
@@ -52,7 +54,7 @@ export default function ExposureSnapshotTool() {
   if (state === "results" && results) {
     return (
       <div>
-        <ScanResults data={results} />
+        <ScanResults data={results} recipientEmail={workEmail} />
         <div className="mt-10 text-center">
           <button
             type="button"

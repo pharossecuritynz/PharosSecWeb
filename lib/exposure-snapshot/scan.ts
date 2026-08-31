@@ -12,6 +12,8 @@ import { checkDkim } from "./analysis/dkim";
 import { classifySubdomains } from "./analysis/subdomains";
 import { checkTakeoverRisks } from "./analysis/subdomain-takeover";
 import { classifyCaa } from "./analysis/caa";
+import { classifyInternetExposure } from "./analysis/internet-exposure";
+import { fetchShodanFindings } from "./providers/shodan";
 import { FindingIdAllocator, buildFinding } from "./findings/build-finding";
 import type { Finding, ScanFindings } from "./findings/types";
 import { buildExposureOverview, type ExposureOverview } from "./findings/overview";
@@ -34,9 +36,9 @@ export interface ScanResult {
   };
 }
 
-async function fetchDmarcTxt(hostname: string): Promise<string[]> {
+async function fetchTxtRecords(query: string): Promise<string[]> {
   try {
-    const records = await dns.resolveTxt(`_dmarc.${hostname}`);
+    const records = await dns.resolveTxt(query);
     return records.map((r) => r.join(""));
   } catch {
     return [];
@@ -60,12 +62,14 @@ export async function runExposureSnapshotScan(rawDomainInput: string): Promise<S
   const allocator = new FindingIdAllocator();
   const findings: Finding[] = [];
 
-  const [dnsResult, dnssecResult, registrationResult, ctResult, dmarcTxt] = await Promise.all([
+  const [dnsResult, dnssecResult, registrationResult, ctResult, dmarcTxt, mtaStsTxt, bimiTxt] = await Promise.all([
     fetchDnsFindings(hostname),
     fetchDnssecFindings(hostname),
     fetchRegistrationFindings(registrableDomain),
     fetchCertificateTransparencyFindings(registrableDomain),
-    fetchDmarcTxt(hostname),
+    fetchTxtRecords(`_dmarc.${hostname}`),
+    fetchTxtRecords(`_mta-sts.${hostname}`),
+    fetchTxtRecords(`default._bimi.${hostname}`),
   ]);
 
   // --- SPF ---
@@ -151,6 +155,35 @@ export async function runExposureSnapshotScan(rawDomainInput: string): Promise<S
     })
   );
 
+  // --- MTA-STS ---
+  const mtaStsPresent = mtaStsTxt.some((r) => /^v=STSv1/i.test(r.trim()));
+  findings.push(
+    buildFinding(allocator, {
+      controlId: mtaStsPresent ? "MTA_STS_PRESENT" : "MTA_STS_MISSING",
+      observation: mtaStsPresent
+        ? `MTA-STS policy record found at _mta-sts.${hostname}.`
+        : `No MTA-STS (_mta-sts.${hostname}) TXT record was found.`,
+      evidenceType: "external-observation",
+      evidenceCitation: `DNS TXT lookup for _mta-sts.${hostname}.`,
+      confidence: "high",
+    })
+  );
+
+  // --- BIMI --- only reported when present (see knowledge-base.ts: absence isn't
+  // a meaningful gap for a small business, so it isn't turned into a nag).
+  const bimiPresent = bimiTxt.some((r) => /^v=BIMI1/i.test(r.trim()));
+  if (bimiPresent) {
+    findings.push(
+      buildFinding(allocator, {
+        controlId: "BIMI_PRESENT",
+        observation: `BIMI record found at default._bimi.${hostname}.`,
+        evidenceType: "external-observation",
+        evidenceCitation: `DNS TXT lookup for default._bimi.${hostname}.`,
+        confidence: "high",
+      })
+    );
+  }
+
   // --- Mail platform + DKIM ---
   const mxExchanges =
     dnsResult.status === "ok" && dnsResult.findings ? dnsResult.findings.mx.map((m) => m.exchange) : [];
@@ -217,6 +250,58 @@ export async function runExposureSnapshotScan(rawDomainInput: string): Promise<S
     );
   }
 
+  // --- Internet exposure (Shodan) ---
+  // Uses the first resolved A/AAAA address as the target IP. Only Shodan is
+  // wired up here; Censys stays available as an interface but unused, since
+  // it wasn't asked for. See docs/EXTERNAL_PROVIDERS.md for the licensing
+  // note on Shodan's free tier — this only produces a real result once a
+  // paid SHODAN_API_KEY is set; otherwise it degrades to not-checked.
+  {
+    const ipToCheck =
+      dnsResult.status === "ok" && dnsResult.findings
+        ? (dnsResult.findings.a[0] ?? dnsResult.findings.aaaa[0])
+        : undefined;
+
+    if (ipToCheck) {
+      const shodanResult = await fetchShodanFindings(ipToCheck);
+      if (shodanResult.status === "ok" && shodanResult.findings) {
+        const classification = classifyInternetExposure(shodanResult.findings.ports);
+        const controlId =
+          classification.level === "critical"
+            ? "INTERNET_EXPOSURE_CRITICAL"
+            : classification.level === "sensitive"
+              ? "INTERNET_EXPOSURE_SENSITIVE"
+              : "INTERNET_EXPOSURE_ROUTINE";
+        const notablePorts = [...classification.criticalPorts, ...classification.sensitivePorts];
+        findings.push(
+          buildFinding(allocator, {
+            controlId,
+            observation:
+              notablePorts.length > 0
+                ? `An IP address (${ipToCheck}) currently associated with this domain has previously been observed offering services on port(s): ${notablePorts.join(", ")}.`
+                : `An IP address (${ipToCheck}) currently associated with this domain has previously been observed offering only routine web services.`,
+            evidenceType: "external-observation",
+            evidenceCitation: `Previously-observed internet services for ${ipToCheck}, via Shodan.`,
+            confidence: "medium",
+          })
+        );
+      } else {
+        findings.push(
+          buildFinding(allocator, {
+            controlId: "INTERNET_EXPOSURE_NOT_CHECKED",
+            observation: "Previously-observed internet services were not checked during this scan.",
+            evidenceType: "external-observation",
+            evidenceCitation:
+              shodanResult.status === "not-configured"
+                ? "No Shodan API key is configured."
+                : shodanResult.errors.join(" ") || "Shodan provider unavailable during this scan.",
+            confidence: "low",
+          })
+        );
+      }
+    }
+  }
+
   // --- Registration ---
   if (registrationResult.status === "ok" && registrationResult.findings) {
     const reg = registrationResult.findings;
@@ -280,6 +365,42 @@ export async function runExposureSnapshotScan(rawDomainInput: string): Promise<S
         })
       );
     }
+
+    // --- Certificate freshness ---
+    const cert = ctResult.findings.mostRecentCertificate;
+    if (cert) {
+      const isExpired = new Date(cert.notAfter).getTime() < Date.now();
+      findings.push(
+        buildFinding(allocator, {
+          controlId: isExpired ? "CERTIFICATE_STALE_OR_EXPIRED" : "CERTIFICATE_CURRENT",
+          observation: `Most recent certificate found for ${cert.matchedName}: issued ${cert.notBefore}, expires ${cert.notAfter}.`,
+          evidenceType: "external-observation",
+          evidenceCitation: `Certificate transparency records via crt.sh for ${cert.matchedName}.`,
+          confidence: "medium",
+        })
+      );
+    } else {
+      findings.push(
+        buildFinding(allocator, {
+          controlId: "CERTIFICATE_NOT_FOUND",
+          observation: `No certificate covering ${hostname} or www.${registrableDomain} was found in public certificate transparency logs.`,
+          evidenceType: "external-observation",
+          evidenceCitation: `Certificate transparency records via crt.sh for ${registrableDomain}.`,
+          confidence: "medium",
+        })
+      );
+    }
+  } else {
+    findings.push(
+      buildFinding(allocator, {
+        controlId: "CERTIFICATE_NOT_FOUND",
+        observation: "Certificate history could not be checked because certificate transparency lookup did not succeed during this scan.",
+        evidenceType: "external-observation",
+        evidenceCitation: "Certificate transparency provider unavailable during this scan.",
+        confidence: "low",
+        overrides: { status: "not-checked", priority: "monitor", riskRating: "informational" },
+      })
+    );
   }
 
   const scanCompletedAt = new Date().toISOString();

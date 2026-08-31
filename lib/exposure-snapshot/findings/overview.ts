@@ -21,8 +21,12 @@ export interface ExposureOverview {
   publicFootprint: PublicFootprintLevel;
 }
 
+// Deliberately just the three core checks — the overview row is described
+// to the reader as "SPF, DMARC, DKIM" specifically (see ScanResults.tsx).
+// MTA-STS and BIMI still show as their own findings, just don't drag this
+// summary category down on their own, since neither is a core expectation.
 const EMAIL_CONTROL_PREFIXES = ["SPF_", "DMARC_", "DKIM_"];
-const DOMAIN_CONTROL_PREFIXES = ["REGISTRATION_", "DNSSEC_", "CAA_"];
+const DOMAIN_CONTROL_PREFIXES = ["REGISTRATION_", "DNSSEC_", "CAA_", "CERTIFICATE_"];
 
 function worstStatus(findings: Finding[]): "good" | "attention" | "high-priority" | "not-checked" {
   if (findings.some((f) => f.status === "high-priority")) return "high-priority";
@@ -40,6 +44,8 @@ export function buildExposureOverview(findings: Finding[], subdomainCount: numbe
   const domainFindings = byControlPrefix(findings, DOMAIN_CONTROL_PREFIXES);
   const nonProdExposureCount = findings.filter((f) => f.controlId === "SUBDOMAIN_NONPRODUCTION_EXPOSED").length;
   const takeoverRiskCount = findings.filter((f) => f.controlId === "SUBDOMAIN_TAKEOVER_RISK").length;
+  const criticalServiceCount = findings.filter((f) => f.controlId === "INTERNET_EXPOSURE_CRITICAL").length;
+  const sensitiveServiceCount = findings.filter((f) => f.controlId === "INTERNET_EXPOSURE_SENSITIVE").length;
   const credentialFindings = findings.filter((f) => f.controlId.startsWith("HIBP_"));
 
   const emailWorst = worstStatus(emailFindings);
@@ -50,10 +56,12 @@ export function buildExposureOverview(findings: Finding[], subdomainCount: numbe
   const domainSecurity: DomainSecurityLevel =
     domainWorst === "high-priority" ? "high-priority" : domainWorst === "attention" ? "needs-attention" : "strong";
 
-  // Takeover risk weighs more heavily than a plain non-production hostname
-  // being reachable — a single takeover-vulnerable subdomain alone is
-  // enough to reach "elevated", since it's a materially more serious finding.
-  const exposureScore = nonProdExposureCount + takeoverRiskCount * 2;
+  // Takeover risk and a critical previously-observed service (RDP/Telnet)
+  // each weigh more heavily than a plain non-production hostname being
+  // reachable — either alone is enough to reach "elevated", since both are
+  // materially more serious findings than a stray old subdomain.
+  const exposureScore =
+    nonProdExposureCount + sensitiveServiceCount + takeoverRiskCount * 2 + criticalServiceCount * 2;
   const internetExposure: InternetExposureLevel =
     exposureScore === 0 ? "low" : exposureScore === 1 ? "moderate" : "elevated";
 
