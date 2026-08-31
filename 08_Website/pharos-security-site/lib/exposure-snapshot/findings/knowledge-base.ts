@@ -1,4 +1,4 @@
-import type { CheckStatus, Priority, RiskRating } from "./types";
+import type { CheckStatus, Effort, Priority, RiskRating } from "./types";
 
 /**
  * Deterministic remediation knowledge base. The same control ID always
@@ -15,6 +15,7 @@ export interface KnowledgeBaseEntry {
   recommendation: string;
   riskRating: RiskRating;
   priority: Priority;
+  effort: Effort;
   status: CheckStatus;
 }
 
@@ -26,6 +27,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "Identify every system that legitimately sends email for your domain (your mailbox provider, and any marketing, invoicing, or booking tools that send on your behalf), then publish an SPF record listing them.",
     riskRating: "high",
     priority: "now",
+    effort: "low",
     status: "high-priority",
   },
   SPF_PASS_ALL: {
@@ -35,6 +37,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "Replace the permissive \"+all\" ending with a restrictive one, after confirming every legitimate sending source is already listed.",
     riskRating: "high",
     priority: "now",
+    effort: "very-low",
     status: "high-priority",
   },
   SPF_SOFT_OR_NEUTRAL: {
@@ -44,6 +47,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "Before moving to a stricter policy, confirm all legitimate mail services are correctly listed, then move toward an ending that clearly fails unauthorised senders.",
     riskRating: "moderate",
     priority: "next",
+    effort: "low",
     status: "attention",
   },
   SPF_MALFORMED: {
@@ -53,6 +57,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "Consolidate to a single, correctly formatted SPF record.",
     riskRating: "moderate",
     priority: "now",
+    effort: "low",
     status: "attention",
   },
   SPF_LOOKUP_LIMIT_EXCEEDED: {
@@ -62,6 +67,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "Review the includes and mechanisms in your SPF record with your mail/IT provider and simplify where possible.",
     riskRating: "moderate",
     priority: "next",
+    effort: "moderate",
     status: "attention",
   },
   SPF_GOOD: {
@@ -71,6 +77,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "No action needed. Revisit if you add or remove a mail-sending service.",
     riskRating: "informational",
     priority: "monitor",
+    effort: "very-low",
     status: "good",
   },
 
@@ -81,6 +88,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "Begin by identifying every legitimate system that sends mail for your domain. Confirm SPF and DKIM are correctly configured, then introduce a DMARC record in monitoring mode (p=none with a reporting address) before moving toward enforcement.",
     riskRating: "high",
     priority: "now",
+    effort: "low",
     status: "high-priority",
   },
   DMARC_MONITORING_ONLY: {
@@ -90,6 +98,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "Once SPF and DKIM are confirmed correctly configured for all legitimate senders, move DMARC toward an enforcement policy (quarantine, then reject) in stages.",
     riskRating: "moderate",
     priority: "next",
+    effort: "moderate",
     status: "attention",
   },
   DMARC_MALFORMED: {
@@ -99,6 +108,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "Correct the DMARC record with your mail/IT provider so there is exactly one, correctly formatted record.",
     riskRating: "moderate",
     priority: "now",
+    effort: "low",
     status: "attention",
   },
   DMARC_STRONG: {
@@ -108,6 +118,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "No action needed. Continue reviewing DMARC aggregate reports periodically if you receive them.",
     riskRating: "informational",
     priority: "monitor",
+    effort: "very-low",
     status: "good",
   },
 
@@ -118,6 +129,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "Confirm DKIM is configured directly with your mail provider or IT provider, since this is often set up by default but is worth verifying explicitly.",
     riskRating: "low",
     priority: "next",
+    effort: "low",
     status: "attention",
   },
   DKIM_MISCONFIGURED: {
@@ -127,6 +139,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "Review DKIM configuration with your mail provider or IT provider.",
     riskRating: "moderate",
     priority: "next",
+    effort: "moderate",
     status: "attention",
   },
   DKIM_CONFIRMED: {
@@ -136,6 +149,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "No action needed.",
     riskRating: "informational",
     priority: "monitor",
+    effort: "very-low",
     status: "good",
   },
 
@@ -146,6 +160,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "Worth considering once higher-priority items are addressed. Ask your DNS/domain provider whether they support DNSSEC signing.",
     riskRating: "low",
     priority: "later",
+    effort: "moderate",
     status: "attention",
   },
   DNSSEC_VALIDATED: {
@@ -155,6 +170,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "No action needed.",
     riskRating: "informational",
     priority: "monitor",
+    effort: "very-low",
     status: "good",
   },
 
@@ -165,6 +181,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "Confirm the domain is set to auto-renew with your registrar, and that billing details are current.",
     riskRating: "moderate",
     priority: "now",
+    effort: "very-low",
     status: "attention",
   },
   REGISTRATION_NOT_AVAILABLE: {
@@ -174,6 +191,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "No action implied by this alone. If you'd like this confirmed, ask your domain registrar directly.",
     riskRating: "informational",
     priority: "monitor",
+    effort: "very-low",
     status: "not-checked",
   },
 
@@ -184,6 +202,7 @@ export const KNOWLEDGE_BASE: Record<string, KnowledgeBaseEntry> = {
     recommendation: "Confirm whether this host is still required. If so, ensure it receives the same security attention as production; if not, consider retiring it.",
     riskRating: "moderate",
     priority: "next",
+    effort: "low",
     status: "attention",
   },
 };

@@ -1,18 +1,23 @@
 # Exposure Snapshot — Roadmap
 
-## NOW (this pass: Milestone 0 + Milestone 1)
+## DONE (Milestone 0, 1, 2, and a first cut of 4)
 
 - Architecture, provider comparison, decisions log, this roadmap
 - Core passive scanner engine (`lib/exposure-snapshot/`): domain validation, SSRF-safe fetch, DNS, DNSSEC signal, RDAP + WHOIS fallback, certificate transparency + subdomain classification, SPF/DMARC parsers, DKIM detector, mail-platform detector, finding schema + deterministic remediation knowledge base, scan orchestrator
-- Full unit and security test suite (Vitest)
+- Finding-engine polish (Milestone 2): executive-summary model, a "strongest recommendations first" top-actions selector (effort-aware, not just severity-sorted), and a domain-level External Exposure Overview scorecard
+- A working public UI and API route, ahead of schedule and **without a database**: `app/exposure-snapshot/page.tsx`, `app/api/exposure-snapshot/scan/route.ts`, and `components/exposure-snapshot/*`. A business can enter a domain and see a real, live result today. This was possible without persistence because the result is returned directly in the API response and rendered client-side — no shareable link, history, or email delivery yet, which is exactly the persistence-dependent part still deferred below.
+- A documented, honest stopgap rate limiter (`lib/exposure-snapshot/security/rate-limit.ts`) — in-memory, works within one warm serverless instance, does not provide a hard limit across Netlify's multiple instances. Real protection needs the shared-state store below.
+- A new, deliberate amber accent colour for "high priority" status badges, added to `app/globals.css` per `colour-palette.md`'s own instruction to extend the palette deliberately rather than default to red.
+- Full unit and security test suite (Vitest, 138 tests), plus a live-browser check (Playwright via the `run` skill) confirming the actual page renders and the full form-to-results flow works with zero console errors.
 - Business doc updates reflecting the confirmed free/automated pricing decision
 
-## NEXT (Milestone 2-4: finding polish, exposure intelligence, and UI)
+## NEXT (the persistence-dependent half of Milestone 4, plus Milestone 3)
 
-- Milestone 2: finding-engine polish — executive-summary model, top-three-actions selection logic, domain-level scorecard rollup
 - Milestone 3: wire Shodan/Censys once the founder has decided whether to pay for real credentials (see `EXTERNAL_PROVIDERS.md` for the licensing detail that decision depends on)
-- Milestone 4: public UI — scan form (business name, domain, work email), progress state, results page, technical-details layer, mobile responsiveness, accessibility. This is also when a database (Netlify DB / Neon Postgres + Drizzle, per the architecture doc) and the first API route (`app/api/exposure-snapshot/scan/route.ts`) get built, since a public endpoint is what actually needs rate limiting, abuse protection (Cloudflare Turnstile), and persistence
-- New status-badge colours finalised and added to `app/globals.css`'s `@theme inline` tokens (see the decisions log)
+- A database (Netlify DB / Neon Postgres + Drizzle, per the architecture doc) — needed for: a shareable report link, scan history, real cross-instance rate limiting, and lead metadata (business name / work email are currently validated but not stored anywhere)
+- Cloudflare Turnstile or equivalent bot protection on the form, once real traffic risk justifies it
+- Accessibility pass (keyboard navigation, ARIA labelling on the status badges, screen-reader testing) — not yet done
+- A `/exposure-snapshot` link somewhere discoverable from the main site (homepage services section, header nav) — the page exists and works but isn't linked from anywhere yet
 
 ## LATER (Milestone 5-9)
 

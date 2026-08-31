@@ -108,3 +108,25 @@ export function CheckCircleIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+export function AlertCircleIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 8v5" />
+      <circle cx="12" cy="16" r="0.15" fill="currentColor" stroke="currentColor" />
+    </svg>
+  );
+}
+
+export function ScanIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className} aria-hidden="true">
+      <path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8" />
+      <path d="M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8" />
+      <path d="M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16" />
+      <path d="M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16" />
+      <circle cx="12" cy="12" r="3.2" />
+    </svg>
+  );
+}

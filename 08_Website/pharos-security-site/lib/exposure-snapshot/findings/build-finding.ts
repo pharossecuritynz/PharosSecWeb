@@ -22,8 +22,8 @@ export interface BuildFindingOptions {
   evidenceType: EvidenceType;
   evidenceCitation: string;
   confidence: Finding["confidence"];
-  /** Override the knowledge base's default risk/priority/status for this specific instance, if the analysis warrants it. */
-  overrides?: Partial<Pick<Finding, "riskRating" | "priority" | "status" | "title" | "recommendation">>;
+  /** Override the knowledge base's default risk/priority/effort/status for this specific instance, if the analysis warrants it. */
+  overrides?: Partial<Pick<Finding, "riskRating" | "priority" | "effort" | "status" | "title" | "recommendation">>;
 }
 
 export function buildFinding(allocator: FindingIdAllocator, options: BuildFindingOptions): Finding {
@@ -43,6 +43,7 @@ export function buildFinding(allocator: FindingIdAllocator, options: BuildFindin
     riskRating: options.overrides?.riskRating ?? entry.riskRating,
     confidence: options.confidence,
     priority: options.overrides?.priority ?? entry.priority,
+    effort: options.overrides?.effort ?? entry.effort,
     recommendation: options.overrides?.recommendation ?? entry.recommendation,
     status: options.overrides?.status ?? entry.status,
   };

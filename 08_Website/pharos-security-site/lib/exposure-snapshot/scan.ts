@@ -12,6 +12,8 @@ import { checkDkim } from "./analysis/dkim";
 import { classifySubdomains } from "./analysis/subdomains";
 import { FindingIdAllocator, buildFinding } from "./findings/build-finding";
 import type { Finding, ScanFindings } from "./findings/types";
+import { buildExposureOverview, type ExposureOverview } from "./findings/overview";
+import { buildExecutiveSummary, type ExecutiveSummary } from "./findings/executive-summary";
 
 export type ScanResultStatus = "completed" | "invalid-domain";
 
@@ -19,6 +21,8 @@ export interface ScanResult {
   status: ScanResultStatus;
   domainError?: string;
   scan?: ScanFindings;
+  overview?: ExposureOverview;
+  executiveSummary?: ExecutiveSummary;
   /** Raw provider results, kept for a future technical-details report layer. Not shown in the primary report. */
   raw?: {
     dns: ProviderResult<unknown>;
@@ -246,10 +250,13 @@ export async function runExposureSnapshotScan(rawDomainInput: string): Promise<S
   }
 
   const scanCompletedAt = new Date().toISOString();
+  const subdomainCount = ctResult.status === "ok" && ctResult.findings ? ctResult.findings.hostnames.length : 0;
 
   return {
     status: "completed",
     scan: { domain: hostname, scanStartedAt, scanCompletedAt, findings },
+    overview: buildExposureOverview(findings, subdomainCount),
+    executiveSummary: buildExecutiveSummary(hostname, findings),
     raw: {
       dns: dnsResult,
       dnssec: dnssecResult,

@@ -24,6 +24,9 @@ export type Confidence = "high" | "medium" | "low";
  * existing methodology; not redefined here. */
 export type Priority = "now" | "next" | "later" | "monitor";
 
+/** Very Low/Low/Moderate/Significant — see risk-and-priority-methodology.md. */
+export type Effort = "very-low" | "low" | "moderate" | "significant";
+
 /** Report-facing simplification for the per-check status badge. */
 export type CheckStatus = "good" | "attention" | "high-priority" | "informational" | "not-checked";
 
@@ -46,6 +49,7 @@ export interface Finding {
   riskRating: RiskRating;
   confidence: Confidence;
   priority: Priority;
+  effort: Effort;
   recommendation: string;
   status: CheckStatus;
 }
