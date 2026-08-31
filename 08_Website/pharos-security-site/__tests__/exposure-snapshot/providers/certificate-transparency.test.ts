@@ -37,6 +37,34 @@ describe("fetchCertificateTransparencyFindings", () => {
     expect(result.findings?.hostnames).toEqual(["example.com", "mail.example.com", "www.example.com"]);
   });
 
+  it("finds the most recent certificate covering the apex or www, ignoring other subdomains and older certs", async () => {
+    safeFetchMock.mockResolvedValue(
+      jsonResponse([
+        { name_value: "www.example.com", not_before: "2025-01-01T00:00:00", not_after: "2025-04-01T00:00:00" },
+        { name_value: "example.com", not_before: "2026-06-01T00:00:00", not_after: "2026-09-01T00:00:00" },
+        { name_value: "mail.example.com", not_before: "2026-08-01T00:00:00", not_after: "2026-11-01T00:00:00" },
+      ])
+    );
+
+    const result = await fetchCertificateTransparencyFindings("example.com");
+
+    expect(result.findings?.mostRecentCertificate).toEqual({
+      matchedName: "example.com",
+      notBefore: "2026-06-01T00:00:00",
+      notAfter: "2026-09-01T00:00:00",
+    });
+  });
+
+  it("returns null for mostRecentCertificate when nothing covers the apex or www", async () => {
+    safeFetchMock.mockResolvedValue(
+      jsonResponse([{ name_value: "mail.example.com", not_before: "2026-01-01", not_after: "2026-04-01" }])
+    );
+
+    const result = await fetchCertificateTransparencyFindings("example.com");
+
+    expect(result.findings?.mostRecentCertificate).toBeNull();
+  });
+
   it("degrades to unavailable, not an error, on a non-OK response", async () => {
     safeFetchMock.mockResolvedValue(jsonResponse([], 503));
 

@@ -56,6 +56,7 @@ const clusters = [
         description:
           "A fast, independent look at what your business looks like from the outside, without touching anything internal.",
         forWho: "Businesses that want an independent check without committing to a full review yet.",
+        href: "/exposure-snapshot",
       },
     ],
   },
@@ -168,9 +169,9 @@ export default function Services() {
                 <div className="mt-4 space-y-5">
                   {cluster.items.map((service) => {
                     const Icon = service.icon;
-                    return (
-                      <div key={service.title} className="flex items-start gap-3.5">
-                        <div className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-mist text-navy">
+                    const itemContent = (
+                      <>
+                        <div className="flex h-9 w-9 flex-none items-center justify-center rounded-lg bg-mist text-navy transition-colors duration-200 group-hover:bg-teal/15 group-hover:text-teal">
                           <Icon className="h-[18px] w-[18px]" />
                         </div>
                         <div>
@@ -185,6 +186,19 @@ export default function Services() {
                             {service.forWho}
                           </p>
                         </div>
+                      </>
+                    );
+                    return service.href ? (
+                      <Link
+                        key={service.title}
+                        href={service.href}
+                        className="group flex items-start gap-3.5 rounded-lg transition-colors"
+                      >
+                        {itemContent}
+                      </Link>
+                    ) : (
+                      <div key={service.title} className="flex items-start gap-3.5">
+                        {itemContent}
                       </div>
                     );
                   })}

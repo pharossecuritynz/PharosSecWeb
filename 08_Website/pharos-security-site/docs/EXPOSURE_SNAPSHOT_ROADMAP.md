@@ -11,13 +11,21 @@
 - Full unit and security test suite (Vitest, 138 tests), plus a live-browser check (Playwright via the `run` skill) confirming the actual page renders and the full form-to-results flow works with zero console errors.
 - Business doc updates reflecting the confirmed free/automated pricing decision
 
-## NEXT (the persistence-dependent half of Milestone 4, plus Milestone 3)
+## DONE (this round): certificate freshness, MTA-STS/BIMI, homepage link, Shodan, email delivery
 
-- Milestone 3: wire Shodan/Censys once the founder has decided whether to pay for real credentials (see `EXTERNAL_PROVIDERS.md` for the licensing detail that decision depends on)
-- A database (Netlify DB / Neon Postgres + Drizzle, per the architecture doc) — needed for: a shareable report link, scan history, real cross-instance rate limiting, and lead metadata (business name / work email are currently validated but not stored anywhere)
+- **Certificate freshness signal**: the certificate-transparency provider now also returns the most recently issued certificate covering the domain apex or www, cross-checked for expiry (`CERTIFICATE_CURRENT` / `CERTIFICATE_STALE_OR_EXPIRED` / `CERTIFICATE_NOT_FOUND`).
+- **MTA-STS and BIMI**: two more DNS TXT presence checks, same pattern as SPF/DMARC. BIMI absence deliberately never produces a finding (not a meaningful gap for an SME) — only reported when present, as a positive signal.
+- **Homepage link**: `/exposure-snapshot` is now linked from the "Start light" cluster in `components/Services.tsx`. Reachable from the live site, not just by direct URL.
+- **Shodan wired in for real** (`INTERNET_EXPOSURE_CRITICAL` / `_SENSITIVE` / `_ROUTINE` / `_NOT_CHECKED`): queries the first resolved A/AAAA address. RDP and Telnet are called out specifically (high-priority — the two ports most associated with ransomware/mass-exploitation), other admin/database ports flagged as worth confirming, routine web ports treated as good. Founder is using a personal Shodan key for testing; per the licensing note in `EXTERNAL_PROVIDERS.md`, this needs a real paid key before real clients use the tool.
+- **"Email me this report" via Resend**: `app/api/exposure-snapshot/email/route.ts` sends the already-computed scan result (no re-scan, no database) as a styled HTML email. `RESEND_API_KEY` required; degrades to a clear 503 if unset. `RESEND_FROM_ADDRESS` defaults to Resend's own unverified testing address since `pharos.security.nz` isn't a registered/verified sending domain yet — set it once that's resolved.
+
+## NEXT (the persistence-dependent half of Milestone 4)
+
+- A database (Netlify DB / Neon Postgres + Drizzle, per the architecture doc) — needed for: a shareable report link, scan history, real cross-instance rate limiting, and lead metadata (business name / work email are currently validated but not stored anywhere, even though they're now emailed on request)
 - Cloudflare Turnstile or equivalent bot protection on the form, once real traffic risk justifies it
 - Accessibility pass (keyboard navigation, ARIA labelling on the status badges, screen-reader testing) — not yet done
-- A `/exposure-snapshot` link somewhere discoverable from the main site (homepage services section, header nav) — the page exists and works but isn't linked from anywhere yet
+- Lookalike/typosquat domain detection — flagged as valuable, not yet built
+- Wire Censys too, if wanted (interface exists, unused — only Shodan was asked for)
 
 ## LATER (Milestone 5-9)
 

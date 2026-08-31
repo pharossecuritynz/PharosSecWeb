@@ -54,4 +54,24 @@ export const CONCEPT_EXPLAINERS: Record<Concept, ConceptExplainer> = {
     explanation:
       "A CAA record specifies which certificate authorities are allowed to issue SSL/TLS certificates for your domain. Without one, any publicly trusted certificate authority can issue a certificate for it, which has been standard practice on the web for years and isn't a serious weakness on its own, but adding one is a small, low-effort way to narrow that down.",
   },
+  "tls-certificate": {
+    title: "Why does certificate history matter?",
+    explanation:
+      "Every certificate issued for a public website is recorded in public certificate transparency logs. Checking when your site's certificate was last issued is a useful, indirect way to tell whether your website is currently using HTTPS properly, without Pharos needing to connect to your site directly. This is a lagging signal though: a site can have a perfectly current certificate that just hasn't been logged as recently as expected.",
+  },
+  "mta-sts": {
+    title: "What is MTA-STS?",
+    explanation:
+      "MTA-STS is a newer standard that tells other mail servers to always use an encrypted, verified connection when delivering email to your domain, rather than allowing a fallback to an unencrypted one. It's a good complement to SPF, DKIM, and DMARC, though less widely adopted than those three.",
+  },
+  bimi: {
+    title: "What is BIMI?",
+    explanation:
+      "BIMI lets you display your business's verified logo next to your emails in supporting inboxes (like Gmail). It's not a security control on its own, but it only works on top of a strong DMARC policy, so it's a small, visible sign that email authentication has been properly set up.",
+  },
+  "internet-exposure": {
+    title: "What does 'previously observed' mean here?",
+    explanation:
+      "This comes from internet-wide scanning services that have already looked at your IP address, not from Pharos actively scanning your systems. An IP address can also belong to shared hosting, a cloud provider, or a content delivery network rather than a server your business directly controls, so this is reported as what's been observed, not a certainty about what you're running.",
+  },
 };

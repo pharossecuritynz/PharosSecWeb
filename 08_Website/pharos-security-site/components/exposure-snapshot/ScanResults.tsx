@@ -1,6 +1,7 @@
 import Link from "next/link";
 import StatusBadge, { type BadgeStatus } from "./StatusBadge";
 import ConceptInfo from "./ConceptInfo";
+import EmailReportButton from "./EmailReportButton";
 import type { Finding } from "@/lib/exposure-snapshot/findings/types";
 import type { ExecutiveSummary } from "@/lib/exposure-snapshot/findings/executive-summary";
 import type { ExposureOverview } from "@/lib/exposure-snapshot/findings/overview";
@@ -11,6 +12,11 @@ export interface ScanResultsData {
   scan: { scanCompletedAt: string; findings: Finding[] };
   overview: ExposureOverview;
   executiveSummary: ExecutiveSummary;
+}
+
+interface ScanResultsProps {
+  data: ScanResultsData;
+  recipientEmail?: string;
 }
 
 const OVERVIEW_ROWS: { key: keyof ExposureOverview; label: string; description: string }[] = [
@@ -92,7 +98,7 @@ function FindingRow({ finding }: { finding: Finding }) {
   );
 }
 
-export default function ScanResults({ data }: { data: ScanResultsData }) {
+export default function ScanResults({ data, recipientEmail }: ScanResultsProps) {
   const { businessName, domain, scan, overview, executiveSummary } = data;
   const checkedDate = new Date(scan.scanCompletedAt).toLocaleDateString("en-NZ", {
     day: "numeric",
@@ -224,6 +230,12 @@ export default function ScanResults({ data }: { data: ScanResultsData }) {
           or that it hasn&apos;t been compromised.
         </p>
       </div>
+
+      {recipientEmail && (
+        <div className="text-center">
+          <EmailReportButton email={recipientEmail} data={data} />
+        </div>
+      )}
 
       <div className="rounded-2xl bg-navy p-7 text-center sm:p-9">
         <p className="font-heading text-lg font-semibold text-white">Want help interpreting the results?</p>

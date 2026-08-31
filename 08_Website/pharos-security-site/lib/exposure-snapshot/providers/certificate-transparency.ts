@@ -9,9 +9,18 @@ import { providerError, providerOk, providerUnavailable, type ProviderResult } f
  * docs/EXPOSURE_SNAPSHOT_ARCHITECTURE.md and docs/EXTERNAL_PROVIDERS.md.
  */
 
+export interface MostRecentCertificate {
+  /** Which name this certificate actually covers: the apex domain or its www subdomain. */
+  matchedName: string;
+  notBefore: string;
+  notAfter: string;
+}
+
 export interface CertificateTransparencyFindings {
   /** Deduplicated, lowercased hostnames extracted from certificate names. */
   hostnames: string[];
+  /** The most recently issued certificate found covering the domain apex or www, or null if none was found. */
+  mostRecentCertificate: MostRecentCertificate | null;
 }
 
 const CRT_SH_URL = "https://crt.sh/";
@@ -72,6 +81,41 @@ function extractHostnames(entries: CrtShEntry[], registrableDomain: string): str
   return [...names].sort();
 }
 
+/**
+ * Find the most recently issued certificate covering the domain apex or
+ * its www subdomain specifically — not just any subdomain — since this is
+ * meant to answer "is the primary site's certificate current", not "when
+ * was any certificate anywhere under this domain last issued".
+ */
+function extractMostRecentPrimaryCertificate(
+  entries: CrtShEntry[],
+  registrableDomain: string
+): MostRecentCertificate | null {
+  const primaryNames = new Set([registrableDomain, `www.${registrableDomain}`]);
+  let best: MostRecentCertificate | null = null;
+
+  for (const entry of entries) {
+    if (!entry.not_before || !entry.not_after) continue;
+    const raw = `${entry.name_value ?? ""}\n${entry.common_name ?? ""}`;
+    const names = raw
+      .split(/[\n,]/)
+      .map((line) => line.trim().toLowerCase().replace(/^\*\./, ""))
+      .filter(Boolean);
+
+    const matchedName = names.find((n) => primaryNames.has(n));
+    if (!matchedName) continue;
+
+    const notBefore = new Date(entry.not_before);
+    if (Number.isNaN(notBefore.getTime())) continue;
+
+    if (!best || notBefore.getTime() > new Date(best.notBefore).getTime()) {
+      best = { matchedName, notBefore: entry.not_before, notAfter: entry.not_after };
+    }
+  }
+
+  return best;
+}
+
 export async function fetchCertificateTransparencyFindings(
   registrableDomain: string
 ): Promise<ProviderResult<CertificateTransparencyFindings>> {
@@ -105,10 +149,11 @@ export async function fetchCertificateTransparencyFindings(
 
     recordSuccess();
     const hostnames = extractHostnames(entries, registrableDomain);
+    const mostRecentCertificate = extractMostRecentPrimaryCertificate(entries, registrableDomain);
 
     return providerOk(
       "certificate-transparency",
-      { hostnames },
+      { hostnames, mostRecentCertificate },
       `Public certificate transparency records for ${registrableDomain}, via crt.sh.`,
       "high"
     );

@@ -53,6 +53,29 @@ describe("buildExposureOverview", () => {
     expect(overview.internetExposure).toBe("elevated");
   });
 
+  it("a single critical previously-observed service (e.g. RDP) alone reaches 'elevated'", () => {
+    const overview = buildExposureOverview([f("INTERNET_EXPOSURE_CRITICAL")], 0);
+    expect(overview.internetExposure).toBe("elevated");
+  });
+
+  it("a single sensitive previously-observed service reaches only 'moderate'", () => {
+    const overview = buildExposureOverview([f("INTERNET_EXPOSURE_SENSITIVE")], 0);
+    expect(overview.internetExposure).toBe("moderate");
+  });
+
+  it("domain security reflects certificate findings too", () => {
+    const overview = buildExposureOverview([f("CERTIFICATE_STALE_OR_EXPIRED")], 0);
+    expect(overview.domainSecurity).toBe("needs-attention");
+  });
+
+  it("MTA-STS/BIMI findings do not drag down the email protection category on their own", () => {
+    const overview = buildExposureOverview(
+      [f("SPF_GOOD"), f("DMARC_STRONG"), f("DKIM_CONFIRMED"), f("MTA_STS_MISSING")],
+      0
+    );
+    expect(overview.emailProtection).toBe("strong");
+  });
+
   it("credential exposure is always not-checked until HIBP is wired up — never falsely reports none-observed", () => {
     const overview = buildExposureOverview([f("SPF_GOOD")], 0);
     expect(overview.credentialExposure).toBe("not-checked");

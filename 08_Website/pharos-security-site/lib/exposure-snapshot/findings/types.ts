@@ -40,7 +40,11 @@ export type Concept =
   | "domain-registration"
   | "public-footprint"
   | "subdomain-takeover"
-  | "caa";
+  | "caa"
+  | "tls-certificate"
+  | "mta-sts"
+  | "bimi"
+  | "internet-exposure";
 
 export interface FindingEvidence {
   type: EvidenceType;

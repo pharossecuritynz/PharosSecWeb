@@ -40,6 +40,11 @@ vi.mock("@/lib/exposure-snapshot/analysis/subdomain-takeover", () => ({
   checkTakeoverRisks: (...args: unknown[]) => checkTakeoverRisksMock(...args),
 }));
 
+const fetchShodanFindingsMock = vi.fn();
+vi.mock("@/lib/exposure-snapshot/providers/shodan", () => ({
+  fetchShodanFindings: (...args: unknown[]) => fetchShodanFindingsMock(...args),
+}));
+
 const { runExposureSnapshotScan } = await import("@/lib/exposure-snapshot/scan");
 
 function okResult<T>(findings: T, provider = "mock") {
@@ -59,6 +64,7 @@ describe("runExposureSnapshotScan", () => {
     checkDkimMock.mockReset();
     classifySubdomainsMock.mockReset();
     checkTakeoverRisksMock.mockReset();
+    fetchShodanFindingsMock.mockReset();
 
     // Sensible defaults for a "clean, well-configured" domain.
     resolveTxtMock.mockImplementation(async (query: string) => {
@@ -90,7 +96,7 @@ describe("runExposureSnapshotScan", () => {
         source: "rdap",
       })
     );
-    fetchCtFindingsMock.mockResolvedValue(okResult({ hostnames: ["www.example.com"] }));
+    fetchCtFindingsMock.mockResolvedValue(okResult({ hostnames: ["www.example.com"], mostRecentCertificate: null }));
     checkDkimMock.mockResolvedValue({
       status: "confirmed",
       selectorsChecked: ["google"],
@@ -101,6 +107,15 @@ describe("runExposureSnapshotScan", () => {
       { hostname: "www.example.com", resolutionStatus: "currently-resolving", category: "www" },
     ]);
     checkTakeoverRisksMock.mockResolvedValue([]);
+    fetchShodanFindingsMock.mockResolvedValue({
+      status: "not-configured",
+      provider: "shodan",
+      checkedAt: new Date().toISOString(),
+      findings: null,
+      evidence: "",
+      confidence: "low",
+      errors: ["No credentials configured for this provider."],
+    });
   });
 
   it("rejects an invalid domain before calling any provider", async () => {
@@ -189,7 +204,7 @@ describe("runExposureSnapshotScan", () => {
   });
 
   it("flags a currently-resolving dev/staging hostname found via certificate transparency", async () => {
-    fetchCtFindingsMock.mockResolvedValue(okResult({ hostnames: ["dev.example.com"] }));
+    fetchCtFindingsMock.mockResolvedValue(okResult({ hostnames: ["dev.example.com"], mostRecentCertificate: null }));
     classifySubdomainsMock.mockResolvedValue([
       { hostname: "dev.example.com", resolutionStatus: "currently-resolving", category: "dev" },
     ]);
@@ -200,7 +215,7 @@ describe("runExposureSnapshotScan", () => {
   });
 
   it("does NOT flag a historically-observed (non-resolving) dev hostname as currently exposed", async () => {
-    fetchCtFindingsMock.mockResolvedValue(okResult({ hostnames: ["dev.example.com"] }));
+    fetchCtFindingsMock.mockResolvedValue(okResult({ hostnames: ["dev.example.com"], mostRecentCertificate: null }));
     classifySubdomainsMock.mockResolvedValue([
       { hostname: "dev.example.com", resolutionStatus: "historically-observed", category: "dev" },
     ]);
@@ -235,7 +250,7 @@ describe("runExposureSnapshotScan", () => {
   });
 
   it("flags a subdomain takeover risk as high-priority and reflects it in the internet exposure overview", async () => {
-    fetchCtFindingsMock.mockResolvedValue(okResult({ hostnames: ["old.example.com"] }));
+    fetchCtFindingsMock.mockResolvedValue(okResult({ hostnames: ["old.example.com"], mostRecentCertificate: null }));
     classifySubdomainsMock.mockResolvedValue([
       { hostname: "old.example.com", resolutionStatus: "historically-observed", category: "old" },
     ]);
@@ -255,6 +270,131 @@ describe("runExposureSnapshotScan", () => {
     expect(takeoverFinding?.status).toBe("high-priority");
     expect(takeoverFinding?.riskRating).toBe("high");
     expect(result.overview?.internetExposure).toBe("elevated");
+  });
+
+  it("flags MTA-STS missing by default, and present when the record exists", async () => {
+    const missing = await runExposureSnapshotScan("example.com");
+    expect(missing.scan!.findings.find((f) => f.controlId === "MTA_STS_MISSING")).toBeDefined();
+
+    resolveTxtMock.mockImplementation(async (query: string) => {
+      if (query.startsWith("_dmarc.")) return [["v=DMARC1; p=reject"]];
+      if (query.startsWith("_mta-sts.")) return [["v=STSv1; id=20260101000000Z"]];
+      throw new Error("ENOTFOUND");
+    });
+    const present = await runExposureSnapshotScan("example.com");
+    const finding = present.scan!.findings.find((f) => f.controlId === "MTA_STS_PRESENT");
+    expect(finding?.status).toBe("good");
+  });
+
+  it("never flags BIMI absence as a finding — only reports it when present", async () => {
+    const missing = await runExposureSnapshotScan("example.com");
+    expect(missing.scan!.findings.some((f) => f.concept === "bimi")).toBe(false);
+
+    resolveTxtMock.mockImplementation(async (query: string) => {
+      if (query.startsWith("_dmarc.")) return [["v=DMARC1; p=reject"]];
+      if (query.startsWith("default._bimi.")) return [["v=BIMI1; l=https://example.com/logo.svg"]];
+      throw new Error("ENOTFOUND");
+    });
+    const present = await runExposureSnapshotScan("example.com");
+    expect(present.scan!.findings.find((f) => f.controlId === "BIMI_PRESENT")?.status).toBe("good");
+  });
+
+  it("flags a current certificate as good, and reports the matched name/dates", async () => {
+    fetchCtFindingsMock.mockResolvedValue(
+      okResult({
+        hostnames: ["www.example.com"],
+        mostRecentCertificate: {
+          matchedName: "example.com",
+          notBefore: new Date().toISOString(),
+          notAfter: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000).toISOString(),
+        },
+      })
+    );
+
+    const result = await runExposureSnapshotScan("example.com");
+    const finding = result.scan!.findings.find((f) => f.controlId === "CERTIFICATE_CURRENT");
+    expect(finding?.status).toBe("good");
+  });
+
+  it("flags an expired most-recent certificate as needing attention", async () => {
+    fetchCtFindingsMock.mockResolvedValue(
+      okResult({
+        hostnames: ["www.example.com"],
+        mostRecentCertificate: {
+          matchedName: "example.com",
+          notBefore: "2020-01-01T00:00:00Z",
+          notAfter: "2020-04-01T00:00:00Z",
+        },
+      })
+    );
+
+    const result = await runExposureSnapshotScan("example.com");
+    const finding = result.scan!.findings.find((f) => f.controlId === "CERTIFICATE_STALE_OR_EXPIRED");
+    expect(finding?.status).toBe("attention");
+  });
+
+  it("flags CERTIFICATE_NOT_FOUND when no matching certificate exists in CT logs", async () => {
+    fetchCtFindingsMock.mockResolvedValue(
+      okResult({ hostnames: ["mail.example.com"], mostRecentCertificate: null })
+    );
+
+    const result = await runExposureSnapshotScan("example.com");
+    expect(result.scan!.findings.find((f) => f.controlId === "CERTIFICATE_NOT_FOUND")).toBeDefined();
+  });
+
+  it("reports internet exposure as not-checked when Shodan has no key configured", async () => {
+    const result = await runExposureSnapshotScan("example.com");
+    const finding = result.scan!.findings.find((f) => f.controlId === "INTERNET_EXPOSURE_NOT_CHECKED");
+    expect(finding?.status).toBe("not-checked");
+  });
+
+  it("flags routine web-only ports as good when Shodan is configured", async () => {
+    fetchShodanFindingsMock.mockResolvedValue({
+      status: "ok",
+      provider: "shodan",
+      checkedAt: new Date().toISOString(),
+      findings: { ip: "203.0.113.10", ports: [80, 443], hostnames: [], tags: [] },
+      evidence: "",
+      confidence: "medium",
+      errors: [],
+    });
+
+    const result = await runExposureSnapshotScan("example.com");
+    const finding = result.scan!.findings.find((f) => f.controlId === "INTERNET_EXPOSURE_ROUTINE");
+    expect(finding?.status).toBe("good");
+  });
+
+  it("flags RDP as high-priority (critical) internet exposure and reflects it in the overview", async () => {
+    fetchShodanFindingsMock.mockResolvedValue({
+      status: "ok",
+      provider: "shodan",
+      checkedAt: new Date().toISOString(),
+      findings: { ip: "203.0.113.10", ports: [443, 3389], hostnames: [], tags: [] },
+      evidence: "",
+      confidence: "medium",
+      errors: [],
+    });
+
+    const result = await runExposureSnapshotScan("example.com");
+    const finding = result.scan!.findings.find((f) => f.controlId === "INTERNET_EXPOSURE_CRITICAL");
+    expect(finding?.status).toBe("high-priority");
+    expect(result.overview?.internetExposure).toBe("elevated");
+  });
+
+  it("flags SSH/database ports as needing attention (sensitive, not critical)", async () => {
+    fetchShodanFindingsMock.mockResolvedValue({
+      status: "ok",
+      provider: "shodan",
+      checkedAt: new Date().toISOString(),
+      findings: { ip: "203.0.113.10", ports: [22, 3306], hostnames: [], tags: [] },
+      evidence: "",
+      confidence: "medium",
+      errors: [],
+    });
+
+    const result = await runExposureSnapshotScan("example.com");
+    const finding = result.scan!.findings.find((f) => f.controlId === "INTERNET_EXPOSURE_SENSITIVE");
+    expect(finding?.status).toBe("attention");
   });
 
   it("does not flag a takeover risk when the CNAME target still resolves", async () => {
