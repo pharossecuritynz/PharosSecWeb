@@ -48,12 +48,16 @@ export default function ExposureSnapshotTool() {
   };
 
   if (state === "scanning") {
-    return <ScanProgress />;
+    return (
+      <div className="mx-auto max-w-2xl rounded-3xl border border-charcoal/10 bg-mist/60 p-7 sm:p-10">
+        <ScanProgress />
+      </div>
+    );
   }
 
   if (state === "results" && results) {
     return (
-      <div>
+      <div className="mx-auto max-w-4xl">
         <ScanResults data={results} recipientEmail={workEmail} />
         <div className="mt-10 text-center">
           <button
@@ -68,5 +72,9 @@ export default function ExposureSnapshotTool() {
     );
   }
 
-  return <ScanForm onSubmit={handleSubmit} submitting={false} errorMessage={errorMessage} />;
+  return (
+    <div className="mx-auto max-w-2xl rounded-3xl border border-charcoal/10 bg-mist/60 p-7 sm:p-10">
+      <ScanForm onSubmit={handleSubmit} submitting={false} errorMessage={errorMessage} />
+    </div>
+  );
 }

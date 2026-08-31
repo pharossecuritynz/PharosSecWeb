@@ -120,10 +120,10 @@ export default function ScanResults({ data, recipientEmail }: ScanResultsProps) 
   return (
     <div className="space-y-10">
       <div>
-        <span className="text-xs font-semibold tracking-wide text-charcoal/50 uppercase">
+        <span className="inline-flex items-center rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-xs font-medium tracking-wide text-navy uppercase">
           Pharos Exposure Snapshot
         </span>
-        <h2 className="mt-2 font-heading text-2xl font-bold tracking-tight text-navy sm:text-3xl">
+        <h2 className="mt-4 font-heading text-2xl font-bold tracking-tight text-navy sm:text-3xl">
           {businessName}
         </h2>
         <p className="mt-1 text-sm text-charcoal/60">
