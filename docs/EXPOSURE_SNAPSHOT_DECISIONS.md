@@ -36,6 +36,12 @@ Running the WHOIS fallback against a real `.nz` domain (`internetnz.nz`) during 
 
 **Built "email me this report" via Resend, without a database.** The client already has the full computed scan result from the initial scan call, so the email endpoint just formats and sends what it's given — no re-scan, nothing stored. This is consistent with the existing privacy model (Level 1 findings never contain personal data, so there's nothing in the email more sensitive than what's already on screen) and avoids needing persistence to deliver real value now. Flagged directly in code and `.env.example`: `pharos.security.nz` isn't a registered/verified sending domain yet, so the sender defaults to Resend's own unverified testing address until that's resolved.
 
+## 2026-08-31 (later still): Censys wired in — and a real bug caught by checking current docs before using a real key
+
+Founder added a Censys key and asked for it to be wired in. **Checked Censys's current API docs before touching the code, and found the provider built in Milestone 1 was already stale**: Censys retired the `api.censys.io/v2/hosts/{ip}` endpoint this was originally built against, in favour of a new Platform API v3 at `api.platform.censys.io/v3/global/asset/host/{ip}`. Beyond the URL, v3 requires **two** credentials, not one — a Personal Access Token (`CENSYS_API_KEY`) and an `X-Organization-ID` header (`CENSYS_ORGANIZATION_ID`) — and returns services in a different response shape (`result.resource.services[]` rather than the old `result.services[]`). Rebuilt `providers/censys.ts` against the verified current endpoint and response shape; the old version would have authenticated fine but silently returned nothing useful.
+
+**Shodan and Censys are now merged into one Internet Exposure signal**, not two separate findings — their port lists are combined before classification, and the finding's evidence citation names whichever provider(s) actually contributed. This avoids two potentially-conflicting findings about the same underlying question ("what's reachable on this IP") and matches the tool's existing "synthesize into one useful signal" pattern rather than dumping raw per-provider output.
+
 ## Business-model decision (cross-reference)
 
 The pricing/naming decision (automated tool replaces the paid manual Exposure Snapshot service) was confirmed directly with the founder before implementation began, since it's a pricing commitment outside an AI system's standing authority per `CLAUDE.md` rule 8. Full reasoning in `00-business/decisions.md`, 2026-08-31 entry.
