@@ -10,6 +10,17 @@ review-cycle: on every material decision
 
 Running record of material decisions. Each entry is dated, states the decision, the reasoning, and who made it. This is the source of truth when documents disagree with each other.
 
+## 2026-09-09 (later): Hero rewritten with a sourced NZ cyber-threat statistic
+
+**CONFIRMED**, per Jason Hill's direct hero copy, including a specific statistic. Per `00-business/pharos-current-strategy.md`'s copy rules and `CLAUDE.md`'s prohibition on inventing statistics, the figure was verified before publishing, not taken on trust:
+
+- **Statistic:** "53% of surveyed New Zealand SMEs experienced a cyber threat in the past six months."
+- **Source:** National Cyber Security Centre (NCSC), ["More than half of New Zealand businesses experiencing cyber threats"](https://www.ncsc.govt.nz/news/more-than-half-of-new-zealand-businesses-experiencing-cyber-threats/), released 4 September 2025. Survey commissioned by the NCSC, conducted by The Research Agency (TRA). Sample size not published on the release page. Up from 36% the prior year.
+- **Exact wording preserved:** the source itself says "cyber threat," not "security incident" or "attack," and the release does not distinguish threat exposure from a confirmed, successful incident. The website uses the source's own wording rather than a stronger or more alarming paraphrase.
+- **Note on brand tone:** `01_Brand/mission-vision-values.md` and `tone-of-voice.md` both explicitly warn against "breach statistics as pressure" or manufactured urgency. This is a real tension, not one resolved by this entry alone: the stat is used with an inline visible source citation (consistent with the business's own evidence-labelling standard applied to its own marketing) rather than as an unattributed scare line, and Jason Hill supplied the exact copy directly rather than it being AI-generated. Revisit if it reads as fear-based once real prospects react to it.
+
+**Applied to:** `08_Website/pharos-security-site/components/Hero.tsx` (headline, stat callout with citation, restructured body copy, CTA changed to "Find out where you stand" linking to `/exposure-snapshot` as the primary action, "Book a 15-minute conversation" moved to secondary).
+
 ## 2026-09-09: Pivot from building Pharos to validating Pharos commercially
 
 **CONFIRMED**, per a direct, detailed operating directive from Jason Hill. Full detail in the new canonical `00-business/pharos-current-strategy.md`, which now governs strategy, positioning, service, and pricing questions; this entry records the decision and reasoning, not the full content.
