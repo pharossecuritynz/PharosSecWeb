@@ -46,7 +46,7 @@ export default function Hero() {
       />
 
       <div className="container-px relative z-10 mx-auto max-w-6xl">
-        <div className="max-w-3xl animate-fade-up">
+        <div className="max-w-4xl animate-fade-up">
           <span className="inline-flex items-center rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-xs font-medium tracking-wide text-cyan uppercase">
             Independent security advisory for New Zealand SMEs
           </span>
@@ -82,10 +82,10 @@ export default function Hero() {
             Source: National Cyber Security Centre, September 2025.
           </p>
 
-          <div className="mt-7 max-w-2xl space-y-4 text-lg leading-relaxed text-white/70 md:text-xl">
+          <div className="mt-7 max-w-3xl space-y-4 text-lg leading-relaxed text-white/70 md:text-xl">
             <p>
               You may already have an IT provider, antivirus, backups, and
-              Microsoft 365 security in place. Most businesses do.
+              Microsoft&nbsp;365 security in place. Most businesses do.
             </p>
             <p className="font-semibold text-white/90">
               But having security measures in place is not the same as
