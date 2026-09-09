@@ -57,9 +57,11 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70 md:text-xl">
-            Pharos Security independently checks whether your security is
-            actually good enough, and gives you a clear, prioritised plan
-            if it isn&apos;t. No jargon, no products to sell.
+            Your IT provider may be doing a good job. But has anyone
+            independently checked? Pharos Security reviews your security
+            from a business-risk perspective, tells you what actually
+            matters, and works with your existing IT provider on what to
+            fix first. No jargon, no products to sell.
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
