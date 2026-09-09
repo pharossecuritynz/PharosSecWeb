@@ -1,5 +1,7 @@
 # Free Security Health Check
 
+**Status (2026-09-09): BUILD LATER — do not build the questionnaire during the 90-day commercial-validation window.** The Exposure Snapshot (already built) plus the website's short conversation-intake form already give enough free-entry capacity to test demand without the cost of building a second self-serve tool. Revisit once real client volume through the existing free entries justifies a second one. See `00-business/pharos-current-strategy.md`.
+
 **New service, added 2026-08-22 under the Pharos v2 directive.** See `00-business/decisions.md`.
 
 ## Purpose

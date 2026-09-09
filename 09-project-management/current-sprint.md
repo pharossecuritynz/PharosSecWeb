@@ -8,6 +8,8 @@ review-cycle: weekly, or when a sprint completes
 
 # Current Sprint
 
+**Status note (2026-09-09): the current sprint focus is commercial validation, not further build.** See `00-business/pharos-current-strategy.md`, `09-project-management/build-now-later-stop.md`, and the 30-day plan in `10_Admin/next-actions.md`. The sprint history below (2026-07-21 through 2026-08-31) is accurate as a record and unchanged; it just no longer describes what to work on next.
+
 ## 2026-08-22 update: Pharos v2 pass complete
 
 A separate, more detailed directive (Pharos v2: positioning, service architecture, and website improvement) was received and implemented in this pass. This explicitly required implementation, not just recommendations, which supersedes the "not in this sprint: rebuilding or expanding the live website" line below for this specific pass. Full detail in `00-business/decisions.md` (2026-08-22 entry) and `09-project-management/backlog.md` (2026-08-22 section) for what's now queued next. The question-5 gate below (insurance, legal, certification, registration, domain) is unaffected: it still blocks taking a paying client regardless of how good the positioning or website now are.

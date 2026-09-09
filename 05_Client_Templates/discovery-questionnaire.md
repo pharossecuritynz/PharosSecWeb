@@ -1,6 +1,8 @@
 # Discovery Questionnaire
 
-*Sent to clients ahead of a Cyber Risk Review (or adapted for other services) to make the discovery session more efficient. Client can answer informally — this isn't a formal audit form.*
+**Status (2026-09-09):** this is the **paid-assessment tier** questionnaire, sent only once a client has committed to an Independent Security Review, not before or during the free 15-minute call. See `00-business/pharos-current-strategy.md` for the three-tier distinction: the website's short conversation-intake form (public qualification), the 15-minute call (pre-discovery, no form needed), and this document (paid assessment, sent after commitment). No content change needed below; it was already correctly scoped to this stage, only the service name was stale.
+
+*Sent to clients ahead of an Independent Security Review (or adapted for other services) to make the discovery session more efficient. Client can answer informally — this isn't a formal audit form.*
 
 ---
 

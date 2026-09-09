@@ -1,5 +1,7 @@
 # Secure Foundations
 
+**Status (2026-09-09): BUILD LATER.** Still a valid, fully-designed service; not actively pitched during the 90-day commercial-validation window. `03_Services/remediation-assurance.md` is the active, lighter follow-on for that window; Secure Foundations is the right offer once a client wants a fuller coordinated improvement programme, not just verification of specific findings. See `00-business/pharos-current-strategy.md`.
+
 **Renamed and reframed from SME Security Uplift Plan, 2026-08-22, under the Pharos v2 directive.** Reframed as a bounded coordination period, not an open-ended plan document, to make clear Pharos does not become the client's MSP. Previous version archived at `archive/sme-security-uplift-plan.md`. See `00-business/decisions.md`.
 
 ## Purpose

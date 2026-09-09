@@ -2,9 +2,11 @@
 
 Three illustrative buyer profiles to guide messaging, service design, and sales conversations. These are composites based on the target market, not real clients.
 
+**Status note (2026-09-09):** for the current validation beachhead (`00-business/pharos-current-strategy.md`), **Profile 1, Cautious Caroline, is the primary profile to design outreach around** — she already is the professional-services buyer the beachhead targets. Profile 2 (trades) and Profile 3 (a 60-person business, both above the 15 to 50 staff beachhead band and outside professional services) are kept for later, not deleted; don't spend beachhead-phase outreach effort chasing them.
+
 ---
 
-## Profile 1: "Cautious Caroline" — Professional services owner
+## Profile 1: "Cautious Caroline" — Professional services owner (primary beachhead profile)
 
 - **Business:** 18-person accounting or law firm
 - **Role:** Managing partner or practice manager

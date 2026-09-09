@@ -1,8 +1,8 @@
-const principles = [
-  "Independent advice, free from vendor or product bias",
-  "Plain-language guidance, explained without jargon",
-  "Recommendations sized to your business and budget",
-  "A calm, practical approach, never scare tactics",
+const credentials = [
+  "26 years in IT, roughly 15 of them focused substantially on cyber security and security operations",
+  "Most recently headed security operations at timbre Digital, across SIEM, EDR, endpoint, network, email, identity, and cloud platforms",
+  "Technical training through SANS, Palo Alto Networks, and Splunk",
+  "Volunteers with Trace Labs, contributing OSINT research to missing-persons search efforts",
 ];
 
 export default function About() {
@@ -18,13 +18,15 @@ export default function About() {
               <p>
                 Pharos Security is a boutique cyber security advisory
                 practice built specifically for New Zealand small and
-                medium businesses.
+                medium businesses, led by Jason Hill.
               </p>
               <p>
-                We work directly with owners and leadership teams to
-                translate cyber risk into clear, achievable action,
-                grounded in how your business actually runs, not
-                theoretical best practice.
+                Cyber incidents aren&apos;t theoretical to Jason. Years spent
+                working around the systems, alerts, investigations, and
+                real-world attempts that organisations face every day sit
+                behind every recommendation Pharos makes, translated into
+                clear, achievable action grounded in how your business
+                actually runs, not theoretical best practice.
               </p>
               <p>
                 Like a beacon guiding a course through unfamiliar water,
@@ -41,17 +43,17 @@ export default function About() {
             />
             <div className="relative rounded-3xl border border-white/10 bg-white/[0.04] p-9 sm:p-10">
               <h3 className="font-heading text-lg font-semibold text-white">
-                How we work
+                Jason Hill, founder
               </h3>
               <ul className="mt-7 space-y-5">
-                {principles.map((principle) => (
-                  <li key={principle} className="flex gap-4">
+                {credentials.map((credential) => (
+                  <li key={credential} className="flex gap-4">
                     <span
                       aria-hidden="true"
                       className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-teal"
                     />
                     <span className="text-base leading-relaxed text-white/75">
-                      {principle}
+                      {credential}
                     </span>
                   </li>
                 ))}

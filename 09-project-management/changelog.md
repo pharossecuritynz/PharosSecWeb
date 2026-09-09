@@ -10,6 +10,56 @@ review-cycle: update with every material change
 
 Reverse chronological. Records material changes to the repository, not every small edit.
 
+## 2026-09-09: Pivot to commercial validation
+
+Full reasoning in `00-business/decisions.md` (2026-09-09 entry) and the canonical `00-business/pharos-current-strategy.md`. Grouped by category below; formatting-only or mode-only file changes are not listed (see the session's own audit: 34 pre-existing files across `01_Brand/`, `04_Operating_Manual/`, `05_Client_Templates/`, `06_Sales_and_Marketing/`, `10_Admin/`, and website config/assets showed only a file-permission-mode diff, predate this pass, and were left untouched).
+
+**Strategy correction:**
+- `00-business/pharos-current-strategy.md` (new): canonical single source of truth for ICP, positioning, active offer, pricing, and BUILD NOW/LATER status
+- `00-business/decisions.md`: pivot decision logged in full
+- `02_Business_Strategy/target-market.md`: added the 15–50 staff professional-services beachhead as the active ICP; broader 5–50 range kept as later-expansion context, not deleted
+- `02_Business_Strategy/customer-profiles.md`: Profile 1 (Cautious Caroline, professional services) marked primary; Profiles 2–3 marked secondary for now
+- `01_Brand/positioning.md`, `02_Business_Strategy/differentiation.md`, `02_Business_Strategy/competitor-positioning.md`: confirmed as sound, given pointer banners to the canonical doc rather than rewritten
+- `02_Business_Strategy/business-overview.md`, `90-day-launch-plan.md`, `03_Services/service-model.md`: superseded-notice banners added
+- `09-project-management/current-sprint.md`, `milestones.md`, `backlog.md`, `10_Admin/next-actions.md`: reframed around validation; `next-actions.md` also renumbered and gained the brand-name due-diligence action
+
+**Service change:**
+- `03_Services/remediation-assurance.md` (new): lighter follow-on service, distinct from Secure Foundations
+- `03_Services/service-catalogue.md`: rebuilt around ACTIVE NOW / SUPPORTING FEATURE / BUILD LATER categorisation; client-journey diagram and selection guide updated to match
+- `03_Services/independent-security-review.md`: confirmed as the core offer; report deliverable now explicitly groups actions by owner (management / IT provider / specialist referral)
+- `03_Services/it-provider-security-assurance.md`: reframed as the same core review, not a second flagship
+- `03_Services/exposure-snapshot.md`: reframed as a supporting lead qualifier (no scope change; it was already correctly framed)
+- `03_Services/secure-foundations.md`, `incident-readiness.md`, `security-adviser.md`, `free-security-health-check.md`: marked BUILD LATER with a status banner; content untouched and not deleted
+
+**Pricing change:**
+- `02_Business_Strategy/pricing-strategy.md`: reconciled the July 2026 market-validated range with a founder-directed active pilot/standard pricing hypothesis, logged as an open assumption rather than silently overwritten
+- `10_Admin/delivery-economics-tracker.csv` and `delivery-economics-tracker-guide.md` (new): per-engagement hours/margin tracker
+
+**Website change:**
+- `components/Hero.tsx`: subheading tightened to name the MSP-collaborative framing explicitly; headline kept (already on-strategy)
+- `components/Problem.tsx`: one card swapped to name invoice fraud/BEC explicitly
+- `components/Services.tsx`: rebuilt from a 7-service grid to one foregrounded core service (Independent Security Review), two lighter alternate-entry cards (Exposure Snapshot, IT Provider Security Assurance), and a single-sentence mention of Remediation Assurance as the next step, not a co-equal flagship
+- `components/About.tsx`: added the founder bio and credentials that were previously entirely absent (the largest flagged credibility gap on the site since 2026-07-21)
+- `components/ConversationIntakeForm.tsx` and `public/__forms.html`: added an industry field to support beachhead qualification, kept in sync for Netlify's static form detection
+- Verified: `tsc --noEmit`, `eslint .`, and the full 185-test suite all pass; internal links and dev-server rendering checked live
+
+**Sales change:**
+- `06_Sales_and_Marketing/validation-outreach-kit.md` (new): buyer intro, warm-intro request, MSP partner pitch, and eight trigger-specific outreach snippets
+
+**Validation change:**
+- `09-project-management/pharos-assumption-register.md` (new): 13-row living assumption register
+- `09-project-management/validation-checkpoints.md` (new): 30-day and 90-day double-down/adjust/stop thresholds
+- `10_Admin/commercial-validation-tracker.csv` (new): pipeline tracker
+
+**Archival/deprioritisation:**
+- `09-project-management/build-now-later-stop.md` (new): full audit of every active initiative (services, agents, tooling, website features) into BUILD NOW / BUILD LATER / DO MANUALLY / STOP; nothing deleted
+
+**Risk/compliance change:**
+- `09-project-management/risks.md`: three new open risks (untested pricing hypothesis, untested MSP-cooperation assumption, unverified brand name/trademark status)
+- `10_Admin/next-actions.md`: brand-name due-diligence action added (NZ Companies Office, NZBN, IPONZ, domain, international-name conflicts)
+- Claims/boundary scan across website, sales copy, and client templates for overclaim language (guarantees, "100% secure," penetration testing, 24/7 monitoring, forensic/certification claims): no unfenced instance found; existing boundary discipline confirmed sound, nothing changed
+- The business-readiness gate (insurance, Terms of Engagement, business/domain registration) is explicitly unchanged by this pivot; see the canonical doc's "What's actually blocking a paying client" section
+
 ## 2026-07-22: Question 5 closed with an assumption, not an answer
 
 Jason Hill asked for question 5 to be answered. It asks for real facts (insurance bound, lawyer engaged, certification held, business and domain registered) that only Jason Hill has; inventing a specific status for any of them would be fabricating a fact with real liability consequences if it were wrong and acted on. Closed instead with an explicit, correctable assumption: all five default to "not yet in place" until Jason Hill names the specific ones that are actually done.

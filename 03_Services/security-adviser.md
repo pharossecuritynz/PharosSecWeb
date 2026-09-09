@@ -1,5 +1,7 @@
 # Security Adviser
 
+**Status (2026-09-09): BUILD LATER as a cold-sale offer.** Not the primary or a parallel cold-sale proposition during the 90-day commercial-validation window; this should only ever be pitched as an upsell after Pharos has demonstrated value through a completed review, per `00-business/pharos-current-strategy.md`. The service definition below stays valid for that conversation, whenever it happens.
+
 **Renamed from Ongoing Cyber Advisor Support, 2026-08-22, under the Pharos v2 directive.** Not positioned as vCISO at this stage; the brief is explicit that this should grow naturally toward fractional security leadership over time rather than claim it now. Previous version archived at `archive/ongoing-cyber-advisor-support.md`. See `00-business/decisions.md`.
 
 ## Purpose

@@ -1,7 +1,7 @@
 const questions = [
   "Are we actually secure, or does it just feel that way?",
   "How do I know our IT support has everything covered?",
-  "What should we improve first?",
+  "We nearly paid a fraudulent invoice. Are we actually protected against this?",
   "A customer wants evidence of our security. What do we give them?",
   "Our insurer sent a cyber questionnaire we don't fully understand.",
   "Are our backups actually recoverable, not just running?",

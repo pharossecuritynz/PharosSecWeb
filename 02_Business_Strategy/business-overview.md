@@ -1,5 +1,7 @@
 # Business Overview
 
+**Status note (2026-09-09):** the revenue entry points table below still names the pre-v2 service names (Cyber Risk Review, SME Security Uplift Plan, Ongoing Cyber Advisor Support); see `03_Services/service-catalogue.md` for the current names and `00-business/pharos-current-strategy.md` for which of them are actively sold right now versus BUILD LATER. The business model description itself (fixed-scope entry, project-based uplift, recurring retainer) is still accurate.
+
 ## What Pharos Security is
 
 A founder-led, independent cyber security advisory practice serving New Zealand small and medium businesses. The business provides risk assessment, practical security uplift planning, staff awareness training, incident readiness preparation, and ongoing advisory support, delivered in plain English, sized for SMEs, and free of product sales or vendor bias.

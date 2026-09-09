@@ -1,5 +1,7 @@
 # Exposure Snapshot
 
+**Status (2026-09-09): SUPPORTING FEATURE — a free lead qualifier and entry point into the Independent Security Review, not a paid product to sell separately.** Already correctly framed below as an outside-in snapshot of publicly observable exposure, not a determination that the business is secure; no scope change needed for the commercial-validation pivot. See `00-business/pharos-current-strategy.md`.
+
 **New service, added 2026-08-22 under the Pharos v2 directive**, standing in for the "Digital Exposure Review" second entry point approved in the 2026-07-22 answer to question 1. **Rebuilt 2026-08-31 as a free, automated, self-serve web tool**, replacing the original manually-delivered, paid version of this service. See `00-business/decisions.md` for both decisions, and `08_Website/pharos-security-site/docs/EXPOSURE_SNAPSHOT_ARCHITECTURE.md` for the technical build.
 
 ## Purpose

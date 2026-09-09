@@ -1,5 +1,7 @@
 # Differentiation
 
+**Status note (2026-09-09):** unchanged in substance by the commercial-validation pivot (`00-business/pharos-current-strategy.md`); this document's reasoning holds and is treated as confirmed, not rewritten.
+
 ## The core differentiation statement
 
 Pharos Security is the only option in the market that is simultaneously: **independent** (no products to sell), **right-sized** (SME-only focus), and **calm** (no fear-based selling). Most competitors have at most one of these three.

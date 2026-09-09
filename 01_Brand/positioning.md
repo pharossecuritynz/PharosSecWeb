@@ -1,5 +1,7 @@
 # Positioning
 
+**Status note (2026-09-09):** this document's positioning holds and is not being rewritten; the 2026-09-09 pivot (`00-business/pharos-current-strategy.md`) confirmed it directly rather than changing it, and narrowed only the target ICP (see `02_Business_Strategy/target-market.md`) and the active service list (see `03_Services/service-catalogue.md`). The one addition: never frame this as "the company that checks whether your MSP is doing its job" or "the independent expert you hire because your MSP can't be trusted" — both read as adversarial and undercut the MSP-referral relationship this document already argues for below.
+
 **Status note (2026-08-22):** revised under the Pharos v2 directive to lead with independent security assurance rather than a list of services. See `00-business/decisions.md` for the full reasoning. Superseded wording is not deleted from git history but is no longer live.
 
 ## Positioning statement

@@ -1,5 +1,7 @@
 # 90-Day Launch Plan
 
+**Status note (2026-09-09): superseded as the active plan by `00-business/pharos-current-strategy.md` and `09-project-management/validation-checkpoints.md`**, which reframe the 90 days around commercial validation (real conversations, paid pilots, evidence) rather than the build/launch sequencing below. Several items below (finalising the full service catalogue, the original front-door service names) are stale; use `10_Admin/next-actions.md` for the current sequenced list.
+
 A realistic, achievable launch sequence for a solo founder. Assumes part-time-to-full-time availability building toward full-time as client work materialises. Adjust timeline if the founder is launching alongside existing employment.
 
 ## Days 1–30: Foundation

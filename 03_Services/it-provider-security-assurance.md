@@ -1,5 +1,7 @@
 # IT Provider Security Assurance
 
+**Status (2026-09-09): ACTIVE NOW — the same core review as `independent-security-review.md`, entered through the "is our MSP covering what we assume?" trigger.** Not a separate flagship with its own pricing logic; sell and scope it as the Independent Security Review with this framing, per `00-business/pharos-current-strategy.md`.
+
 **New service, added 2026-08-22 under the Pharos v2 directive.** Makes explicit, as its own service, the MSP-adjacent value that was previously implicit in the Cyber Risk Review's scope. See `00-business/decisions.md`.
 
 ## Purpose

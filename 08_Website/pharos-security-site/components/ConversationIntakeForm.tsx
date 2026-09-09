@@ -83,6 +83,21 @@ export default function ConversationIntakeForm() {
       </div>
 
       <div>
+        <label htmlFor="industry" className={labelClass}>
+          Industry
+        </label>
+        <select id="industry" name="industry" required className={inputClass}>
+          <option value="">Select one</option>
+          <option value="accounting-bookkeeping-payroll">Accounting, bookkeeping, or payroll</option>
+          <option value="legal">Legal</option>
+          <option value="property-professional-services">Property-related professional services</option>
+          <option value="engineering-consulting">Engineering or consulting</option>
+          <option value="other-professional-services">Other professional services</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+
+      <div>
         <label htmlFor="it-support" className={labelClass}>
           How is IT support handled?
         </label>

@@ -8,6 +8,8 @@ review-cycle: monthly
 
 # Milestones
 
+**Status note (2026-09-09): superseded by the 30/90-day validation checkpoints in `09-project-management/validation-checkpoints.md`**, which measure commercial evidence (conversations, proposals, paid customers) rather than internal build milestones. The table below is kept as a historical record of the original launch sequencing; several rows (agent catalogue, folder migration) are now explicitly BUILD LATER per `09-project-management/build-now-later-stop.md`, not active targets.
+
 Aligned to the directive's core objective: begin earning revenue within approximately three months. Dates are targets from 2026-07-21, not commitments; adjust once the 5 open decisions land and real delivery data exists.
 
 | Milestone | Target | Depends on | Status |

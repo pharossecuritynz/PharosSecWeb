@@ -1,5 +1,7 @@
 # Independent Security Review
 
+**Status (2026-09-09): ACTIVE NOW — the single core paid service during the 90-day commercial-validation window.** Kept under this name deliberately rather than renamed again; see the "naming decisions" section of `00-business/pharos-current-strategy.md`. `it-provider-security-assurance.md` is the same underlying engagement, entered through a different trigger, not a second flagship. `remediation-assurance.md` is the intended paid follow-on.
+
 **Flagship service. Renamed and expanded from Cyber Risk Review, 2026-08-22, under the Pharos v2 directive.** Previous version archived at `archive/cyber-risk-review.md`. See `00-business/decisions.md`.
 
 ## Purpose
@@ -67,9 +69,9 @@ Not a list of every possible control. Seven questions:
 
 1. Discovery session (interview-based, approximately 90 minutes)
 2. A Pharos Security Posture Review report (see `05_Client_Templates/security-posture-review-report-template.md`) including:
-   - Executive Security Brief (one page, non-technical — see `04_Operating_Manual/reporting-standards.md`)
+   - Executive Security Brief (one page, non-technical — see `04_Operating_Manual/reporting-standards.md`), stating plainly what appears to already be working, not only what's missing
    - Findings by domain, each with a stable finding ID, stated as evidence, interpretation, action, and labelled by verification level and risk rating (see `04_Operating_Manual/evidence-standard.md` and `risk-and-priority-methodology.md`)
-   - A 90-Day Security Improvement Plan (First 14 days / 15–30 / 31–60 / 61–90 days — see `04_Operating_Manual/remediation-and-verification.md`)
+   - A 90-Day Security Improvement Plan (First 14 days / 15–30 / 31–60 / 61–90 days — see `04_Operating_Manual/remediation-and-verification.md`), with each action grouped by who owns it: for management to decide, for the IT provider to implement, or requiring a specialist referral, so the client and their IT provider each know exactly what's theirs to do
 3. A 45 to 60 minute walkthrough call to present findings and answer questions
 
 ## Inputs required from client

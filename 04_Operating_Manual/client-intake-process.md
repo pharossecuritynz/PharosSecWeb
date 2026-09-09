@@ -15,7 +15,7 @@ Respond within **1 business day** (aim for same-day). A short, warm acknowledgem
 
 ### 2. Do a 2-minute fit check
 Before booking a call, sanity-check:
-- Is this a New Zealand SME roughly in the 5–100 staff range? (See [../02_Business_Strategy/target-market.md](../02_Business_Strategy/target-market.md).)
+- Is this a New Zealand SME, ideally in the current beachhead (professional services, roughly 15–50 staff, per [00-business/pharos-current-strategy.md](../00-business/pharos-current-strategy.md)), or at least within the broader 5–50 staff range in [../02_Business_Strategy/target-market.md](../02_Business_Strategy/target-market.md)? A good-fit business outside the beachhead sector is still worth a call during validation, just not a priority for active outreach.
 - Is the request within [service boundaries](../03_Services/service-boundaries.md) — i.e. not asking for pentesting, 24/7 monitoring, or active incident response?
 
 **If it's a clear mismatch** (e.g. explicitly wants a pentest, or is an enterprise with 500+ staff): respond warmly, explain briefly why it's not a fit, and offer a referral if one is known. Don't book a call purely to be polite — it wastes both parties' time.

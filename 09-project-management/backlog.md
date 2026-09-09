@@ -8,6 +8,8 @@ review-cycle: weekly
 
 # Backlog
 
+**Status note (2026-09-09): the governing prioritisation is now `09-project-management/build-now-later-stop.md`**, organised around commercial validation rather than the 7-point commercial-focus score below. That scoring method is still reasonable and the historical entries below are accurate; just check the newer file first for what's actually active right now.
+
 ## 2026-08-22: Pharos v2 pass — what changed and what's queued next
 
 The Pharos v2 directive (see `00-business/decisions.md`) was implemented in place: positioning, service architecture (seven services replacing eight), the Pharos Security Baseline methodology, pricing, and the live website (homepage copy across every section, plus a new `/it-provider-security-assurance` page). The items below are what that pass deliberately deferred, added to this backlog rather than left implicit.

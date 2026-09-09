@@ -1,5 +1,7 @@
 # Competitor Positioning
 
+**Status note (2026-09-09):** unchanged in substance by the commercial-validation pivot (`00-business/pharos-current-strategy.md`). MSPs remain a priority referral-conversation target for the 30-day validation plan (see `09-project-management/pharos-assumption-register.md` and `06_Sales_and_Marketing/validation-outreach-kit.md`); the "how Pharos Security should talk about competitors" guidance below is exactly the collaborative, non-adversarial framing the pivot reinforces.
+
 ## Competitive landscape (categories, not named competitors)
 
 Rather than naming specific NZ firms (which should be researched directly by the founder — see assumptions below), this document maps the *categories* of alternatives a prospective client is weighing Pharos Security against.

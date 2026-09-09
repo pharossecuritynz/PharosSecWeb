@@ -1,5 +1,7 @@
 # Incident Readiness
 
+**Status (2026-09-09): BUILD LATER as a standalone acquisition product.** Not actively pitched cold during the 90-day commercial-validation window; readiness already lives inside the Independent Security Review's scope (see that file), which is where it should surface for now. Works better as a specific event-triggered follow-on once a client raises it directly, not a separate product to sell in parallel with the core review. See `00-business/pharos-current-strategy.md`.
+
 **Broadened and renamed from Incident Readiness Workshop, 2026-08-22, under the Pharos v2 directive.** The workshop remains the core delivery format but is now one deliverable within a family, not the whole service. Previous version archived at `archive/incident-readiness-workshop.md`. See `00-business/decisions.md`.
 
 ## Purpose

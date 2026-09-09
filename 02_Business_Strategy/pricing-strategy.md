@@ -1,5 +1,7 @@
 # Pricing Strategy
 
+**Status note (2026-09-09): active validation-phase pricing is now set in `00-business/pharos-current-strategy.md`** — a founder-directed hypothesis (paid pilot $1,500–$2,500 for the first 3–5 clients, standard $2,500–$5,000 thereafter) layered on top of, not replacing, the market-validated research below. The gap between the two is an open assumption to test, tracked in `09-project-management/pharos-assumption-register.md`, not silently resolved. Track actual hours and effective rate per engagement in `10_Admin/delivery-economics-tracker.csv` starting with the first paid engagement.
+
 **Status: validated against published NZ/AU market data (see [Market validation](#market-validation) below) as of July 2026, restructured 2026-08-22 to match the seven-service v2 architecture, and cross-checked against UK market data 2026-08-22 (see [International benchmark](#international-benchmark-uk-market-added-2026-08-22)). Figures below have been checked against real competitor and market pricing signals, but no NZ competitor publishes exact fixed-fee pricing for a direct like-for-like comparison — treat these as evidence-informed, not confirmed-by-quote. Continue to sanity-check against real proposals and win/loss feedback in the first 90 days.**
 
 **2026-08-22: public display paused, pending further discussion.** Ranges were briefly live on every service card. Jason Hill asked for them to come off, wanting to keep this for further discussion rather than treat the public-ranges question as settled. The ranges and their research below are unchanged and still the working internal reference for quoting; only the decision to *display* them on the website is on hold. See `00-business/decisions.md`.
@@ -54,7 +56,7 @@ Even the top of this range sits well under the $1,500–$3,000/month floor typic
 
 - Avoid discounting the headline price; instead, adjust scope (for example a narrower Exposure Snapshot instead of the full Independent Security Review) to fit a tighter budget.
 - Bundle discounts are acceptable and encouraged (for example Independent Security Review + Secure Foundations bundled at a modest discount to the sum of both).
-- Avoid "first client" or "founding client" discounts becoming a permanent anchor; if used to build initial case studies, cap it to the first 3 to 5 clients and say so explicitly in internal pricing notes, not necessarily to the client.
+- Avoid "first client" or "founding client" discounts becoming a permanent anchor; if used to build initial case studies, cap it to the first 3 to 5 clients and say so explicitly in internal pricing notes, not necessarily to the client. **This is now the formal "paid pilot" tier** in `00-business/pharos-current-strategy.md` ($1,500–$2,500): the discount buys structured feedback and testimonial/case-study permission where deserved, it is never delivered free, and it stops after the first 3 to 5 clients, not extended indefinitely.
 
 ## Payment terms (suggested starting point)
 

@@ -1,8 +1,10 @@
 # Target Market
 
+**Status note (2026-09-09): the canonical current ICP is now `00-business/pharos-current-strategy.md`.** For the current 90-day validation window, the primary market is narrowed further, to a specific beachhead: New Zealand **professional-services** businesses, roughly **15 to 50 staff**, on Microsoft 365, with an outsourced MSP, no internal security specialist. See the canonical doc for the full reasoning and priority sector list (accounting, bookkeeping, payroll, legal, property-related professional services, engineering, consulting). This is a beachhead for testing, not a permanent narrowing: the broader 5 to 50 market described below remains a plausible later market once the beachhead is proven, and nothing below is wrong, only wider than what should be actively pursued right now.
+
 **Status note (2026-08-22):** tightened from 5-100 to 5-50 staff under the Pharos v2 directive, and buyer/trigger lists added. See `00-business/decisions.md`.
 
-## Primary market
+## Primary market (broader range, held for later expansion)
 
 New Zealand organisations with roughly **5 to 50 staff** that:
 
@@ -48,18 +50,21 @@ The events that turn a business from "we should probably look at this sometime" 
 
 ## Best-fit industry sectors (highest natural fit)
 
-| Sector | Why it fits |
-|---|---|
-| Professional services (law, accounting, financial advisory) | Handle sensitive client data; reputational risk from a breach is high; often have some compliance awareness already |
-| Property and construction | Growing digital footprint (accounting, project systems), often thin IT resourcing |
-| Healthcare and allied health (small practices) | Patient data sensitivity, privacy obligations, limited IT sophistication |
-| Retail and e-commerce (SME scale) | Payment systems, customer data, growing reliance on cloud tools |
-| Trades and services businesses with growing back-office systems | Often have outgrown ad-hoc IT habits but haven't formalised security |
-| Not-for-profits and membership organisations | Sensitive member/donor data, typically very limited security budget or awareness |
+**For the current validation beachhead, start with professional services specifically** (accounting, bookkeeping, payroll, legal, property-related professional services, engineering, consulting) rather than treating the full table below as equally near-term. The table itself is unchanged and still a reasonable view of the broader market:
+
+| Sector | Why it fits | Beachhead status (2026-09-09) |
+|---|---|---|
+| Professional services (law, accounting, financial advisory, bookkeeping, payroll) | Handle sensitive client data; reputational risk from a breach is high; often have some compliance awareness already | **Active beachhead — approach first** |
+| Property and construction (property-related professional services, engineering) | Growing digital footprint (accounting, project systems), often thin IT resourcing | **Active beachhead — approach first**, for the professional-services-adjacent end of this sector specifically |
+| Healthcare and allied health (small practices) | Patient data sensitivity, privacy obligations, limited IT sophistication | Deliberately deprioritised for this beachhead — sensitivity exceeds what this phase needs to prove; revisit only against a specific opportunity, not by default |
+| Retail and e-commerce (SME scale) | Payment systems, customer data, growing reliance on cloud tools | Deprioritised for the beachhead unless a strong trigger exists |
+| Trades and services businesses with growing back-office systems | Often have outgrown ad-hoc IT habits but haven't formalised security | Deprioritised for the beachhead unless a strong trigger exists |
+| Not-for-profits and membership organisations | Sensitive member/donor data, typically very limited security budget or awareness | Not part of the beachhead; plausible later expansion |
 
 ## Less-fit segments (deprioritise or refer out)
 
-- Micro businesses (1 to 4 staff, minimal digital footprint) — may not have budget to justify a paid engagement; the Free Security Health Check is the right offer here, not a paid review.
+- Micro businesses (1 to 4 staff, minimal digital footprint) — may not have budget to justify a paid engagement; the Exposure Snapshot and the free conversation-intake form are the right offer here, not a paid review.
+- Very small retail, hospitality, and trades businesses — deprioritised as a primary acquisition target for the current beachhead unless a strong specific trigger exists (a near-miss, an insurer requirement, a customer questionnaire). Not excluded permanently; see `00-business/pharos-current-strategy.md`.
 - Larger organisations (50+ staff, dedicated IT/security function) — needs exceed what a solo advisory practice should take on; refer to a larger consultancy.
 - Businesses whose actual need is penetration testing, compliance certification audits, or active incident response — outside scope; refer out per `risk-boundaries.md`.
 
