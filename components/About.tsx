@@ -1,6 +1,6 @@
 const credentials = [
   "26 years in IT, roughly 15 of them focused substantially on cyber security and security operations",
-  "Most recently headed security operations at timbre Digital, across SIEM, EDR, endpoint, network, email, identity, and cloud platforms",
+  "Most recently headed security operations at a New Zealand IT and security provider, across SIEM, EDR, endpoint, network, email, identity, and cloud platforms",
   "Technical training through SANS, Palo Alto Networks, and Splunk",
   "Volunteers with Trace Labs, contributing OSINT research to missing-persons search efforts",
 ];
