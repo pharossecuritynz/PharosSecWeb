@@ -7,6 +7,18 @@ const trustPoints = [
   "Clear scope, fixed pricing",
 ];
 
+/*
+  Hero copy: PROPOSED 2026-11-25, pending Jason Hill's approval. See
+  00-business/decisions.md. Claims here are supported by the sources cited
+  in components/Evidence.tsx:
+  - "faster, at lower cost": UK NCSC, 24 Nov 2026 ("how quickly and
+    persistently threat actors can conduct attacks, at low cost").
+  - "familiar weaknesses": UK NCSC ("none of the weaknesses being exploited
+    are new or novel") and Unit 42 2026 (preventable gaps in over 90% of
+    breaches investigated).
+  The founder's 53% NCSC NZ statistic moved, unchanged and with its
+  citation, to the Evidence section.
+*/
 export default function Hero() {
   return (
     <section
@@ -48,54 +60,32 @@ export default function Hero() {
       <div className="container-px relative z-10 mx-auto max-w-6xl">
         <div className="max-w-4xl animate-fade-up">
           <span className="inline-flex items-center rounded-full border border-teal/30 bg-teal/10 px-4 py-1.5 text-xs font-medium tracking-wide text-cyan uppercase">
-            Independent security advisory for New Zealand SMEs
+            Independent security advisory for New Zealand businesses
           </span>
 
           <h1 className="mt-7 font-heading text-4xl font-extrabold leading-[1.12] tracking-tight text-white sm:text-5xl md:text-6xl">
-            Think your business is protected?
+            AI is changing cyberattacks. Getting the basics right has never
+            mattered more.
           </h1>
-
-          {/*
-            Statistic sourced and verified before publishing, per CLAUDE.md's
-            no-invented-statistics rule: National Cyber Security Centre,
-            "More than half of New Zealand businesses experiencing cyber
-            threats" (released 4 September 2025), a survey commissioned by
-            the NCSC and conducted by The Research Agency. Exact wording
-            preserved: the source says "cyber threat," not "security
-            incident" or "attack," and the underlying research does not
-            distinguish threat exposure from confirmed incidents. See
-            00-business/decisions.md (2026-09-09 entry) for the record.
-          */}
-          <div className="mt-7 flex items-start gap-3.5 rounded-2xl border border-teal/25 bg-white/5 px-5 py-4">
-            <span
-              aria-hidden="true"
-              className="mt-1 h-2 w-2 flex-none rounded-full bg-teal shadow-[0_0_10px_2px_rgba(47,167,160,0.6)]"
-            />
-            <p className="text-base leading-relaxed text-white/85 sm:text-lg">
-              <strong className="font-semibold text-white">
-                53% of surveyed New Zealand SMEs experienced a cyber threat
-                in the past six months.
-              </strong>
-            </p>
-          </div>
-          <p className="mt-2 text-xs text-white/40">
-            Source: National Cyber Security Centre, September 2025.
-          </p>
 
           <div className="mt-7 max-w-3xl space-y-4 text-lg leading-relaxed text-white/70 md:text-xl">
             <p>
-              You may already have an IT provider, antivirus, backups, and
-              Microsoft&nbsp;365 security in place. Most businesses do.
+              Attackers are using automated tools to find and exploit
+              weaknesses faster, and more cheaply, than before. But the
+              weaknesses are mostly familiar: systems left open to the
+              internet, sign-ins without multi-factor authentication,
+              software that hasn&apos;t been updated, and protections that
+              are only partly in place.
             </p>
             <p className="font-semibold text-white/90">
-              But having security measures in place is not the same as
-              knowing they&apos;re enough.
+              You may already have an IT provider, antivirus and backups.
+              Having security measures in place is not the same as knowing
+              they&apos;re enough.
             </p>
             <p>
-              Pharos independently reviews how your business is protected,
-              shows you where the important gaps are, and gives you a
-              practical plan to improve them with your existing IT
-              provider.
+              Pharos independently checks how your business is protected,
+              shows you which gaps matter most, and helps you fix them with
+              your existing IT provider.
             </p>
           </div>
 
@@ -104,13 +94,13 @@ export default function Hero() {
               href="/exposure-snapshot"
               className="inline-flex items-center justify-center rounded-full bg-teal px-7 py-3.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
             >
-              Find out where you stand
+              Check what you expose to the internet
             </Link>
             <Link
               href="/book-a-conversation"
               className="inline-flex items-center justify-center rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/50 hover:bg-white/5"
             >
-              Book a 15-minute conversation
+              Talk about your business security
             </Link>
           </div>
 

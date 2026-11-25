@@ -90,6 +90,6 @@ export async function checkDkim(
     status: "not-externally-confirmed",
     selectorsChecked: selectorsToCheck,
     confirmedSelector: null,
-    evidence: `None of the documented default selectors for ${mailPlatform} (${selectorsToCheck.join(", ")}) resolved. This does not mean DKIM is missing — most providers use a custom or rotated selector that cannot be discovered without the client confirming it.`,
+    evidence: `None of the documented default selectors for ${mailPlatform} (${selectorsToCheck.join(", ")}) resolved. This does not mean DKIM is missing: most providers use a custom or rotated selector that cannot be discovered without the client confirming it.`,
   };
 }

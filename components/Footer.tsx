@@ -4,15 +4,19 @@ import LogoMark from "./LogoMark";
 const navLinks = [
   { href: "/#services", label: "Services" },
   { href: "/#process", label: "Process" },
+  { href: "/resources", label: "Guides" },
+  { href: "/resources/security-foundations-checklist", label: "Free checklist" },
   { href: "/#about", label: "About" },
   { href: "/#contact", label: "Contact" },
+  { href: "/book-a-conversation", label: "Book a conversation" },
 ];
 
 const serviceLinks = [
-  "Independent Security Review",
-  "IT Provider Security Assurance",
-  "Secure Foundations",
-  "Security Adviser",
+  { label: "Exposure Snapshot (free)", href: "/exposure-snapshot" },
+  { label: "Independent Security Review", href: "/#services" },
+  { label: "IT Provider Security Assurance", href: "/it-provider-security-assurance" },
+  { label: "Secure Foundations", href: "/#services" },
+  { label: "Security Adviser", href: "/#services" },
 ];
 
 export default function Footer() {
@@ -68,12 +72,12 @@ export default function Footer() {
             </p>
             <ul className="mt-4 flex flex-col gap-3">
               {serviceLinks.map((service) => (
-                <li key={service}>
+                <li key={service.label}>
                   <Link
-                    href="/#services"
+                    href={service.href}
                     className="text-sm font-medium text-white/60 transition-colors hover:text-white"
                   >
-                    {service}
+                    {service.label}
                   </Link>
                 </li>
               ))}

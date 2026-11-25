@@ -73,7 +73,7 @@ export async function fetchCensysFindings(ip: string): Promise<ProviderResult<Ce
     return providerOk(
       "censys",
       { ip, services },
-      `Previously-observed services for ${ip}, via Censys. Attribution should be treated cautiously — see the architecture doc.`,
+      `Previously-observed services for ${ip}, via Censys. Attribution should be treated cautiously, as these records can be out of date.`,
       "medium"
     );
   } catch (error) {

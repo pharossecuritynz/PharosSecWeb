@@ -22,14 +22,7 @@ export default function EmailReportButton({ email, data }: EmailReportButtonProp
       const response = await fetch("/api/exposure-snapshot/email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          businessName: data.businessName,
-          domain: data.domain,
-          scan: data.scan,
-          overview: data.overview,
-          executiveSummary: data.executiveSummary,
-        }),
+        body: JSON.stringify({ token: data.reportToken }),
       });
 
       const body = await response.json();
@@ -49,7 +42,7 @@ export default function EmailReportButton({ email, data }: EmailReportButtonProp
 
   if (state === "sent") {
     return (
-      <p className="text-sm font-medium text-navy">Sent to {email} — check your inbox shortly.</p>
+      <p className="text-sm font-medium text-navy">Sent to {email}. Check your inbox shortly.</p>
     );
   }
 
