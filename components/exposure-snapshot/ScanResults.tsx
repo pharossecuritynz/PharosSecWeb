@@ -12,6 +12,8 @@ export interface ScanResultsData {
   scan: { scanCompletedAt: string; findings: Finding[] };
   overview: ExposureOverview;
   executiveSummary: ExecutiveSummary;
+  /** Signed by the scan route; the only thing the email route accepts. */
+  reportToken?: string | null;
 }
 
 interface ScanResultsProps {
@@ -192,7 +194,7 @@ export default function ScanResults({ data, recipientEmail }: ScanResultsProps) 
           })}
         </div>
         <p className="mt-3 text-xs leading-relaxed text-charcoal/45">
-          &ldquo;Credential exposure&rdquo; isn&apos;t checked yet in this version of the tool — see the{" "}
+          &ldquo;Credential exposure&rdquo; isn&apos;t checked yet in this version of the tool. See the{" "}
           <a href="#credential-exposure-note" className="underline underline-offset-2 hover:text-charcoal/70">
             note below
           </a>
@@ -231,7 +233,7 @@ export default function ScanResults({ data, recipientEmail }: ScanResultsProps) 
         </p>
       </div>
 
-      {recipientEmail && (
+      {recipientEmail && data.reportToken && (
         <div className="text-center">
           <EmailReportButton email={recipientEmail} data={data} />
         </div>

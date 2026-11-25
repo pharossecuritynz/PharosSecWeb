@@ -34,6 +34,17 @@ export default function CTA() {
             pharos.security.nz@gmail.com
           </a>
         </div>
+
+        <p className="mt-10 text-sm text-white/55">
+          Not ready to talk yet? Start with the{" "}
+          <Link
+            href="/resources/security-foundations-checklist"
+            className="font-semibold text-white/80 underline decoration-white/25 underline-offset-4 hover:text-white"
+          >
+            free security foundations checklist
+          </Link>
+          .
+        </p>
       </div>
     </section>
   );

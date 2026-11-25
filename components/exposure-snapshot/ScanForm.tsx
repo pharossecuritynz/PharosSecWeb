@@ -89,7 +89,7 @@ export default function ScanForm({ onSubmit, submitting, errorMessage }: ScanFor
       </button>
 
       <p className="text-sm leading-relaxed text-charcoal/55">
-        We don&apos;t vulnerability-scan or attempt to access your systems during this check — only publicly
+        We don&apos;t vulnerability-scan or attempt to access your systems during this check. Only publicly
         available information is used.
       </p>
     </form>

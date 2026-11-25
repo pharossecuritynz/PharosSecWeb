@@ -48,7 +48,7 @@ export async function fetchShodanFindings(
         hostnames: body.hostnames ?? [],
         tags: body.tags ?? [],
       },
-      `Previously-observed services for ${ip}, via Shodan. Attribution should be treated cautiously — see the architecture doc.`,
+      `Previously-observed services for ${ip}, via Shodan. Attribution should be treated cautiously, as these records can be out of date.`,
       "medium"
     );
   } catch (error) {

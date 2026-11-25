@@ -13,7 +13,7 @@ export default function Problem() {
       <div className="container-px mx-auto max-w-6xl">
         <div className="max-w-2xl">
           <h2 className="font-heading text-3xl font-bold tracking-tight text-navy sm:text-4xl">
-            Questions we hear from business owners every week.
+            Questions business owners ask about security.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-charcoal/70">
             Most businesses don&apos;t need a security department. They need

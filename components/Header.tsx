@@ -7,6 +7,7 @@ import LogoMark from "./LogoMark";
 const navLinks = [
   { href: "/#services", label: "Services" },
   { href: "/#process", label: "Process" },
+  { href: "/resources", label: "Guides" },
   { href: "/#about", label: "About" },
   { href: "/#contact", label: "Contact" },
 ];
@@ -24,7 +25,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-9 md:flex">
+        <nav className="hidden items-center gap-9 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -38,12 +39,12 @@ export default function Header() {
 
         <Link
           href="/book-a-conversation"
-          className="hidden rounded-full bg-teal px-5 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan md:inline-block"
+          className="hidden rounded-full bg-teal px-5 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-cyan lg:inline-block"
         >
           Book a 15-minute conversation
         </Link>
 
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <Link
             href="/book-a-conversation"
             className="rounded-full bg-teal px-4 py-2 text-sm font-semibold text-navy transition-colors hover:bg-cyan"
@@ -79,7 +80,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="border-t border-white/10 bg-navy md:hidden">
+        <div className="border-t border-white/10 bg-navy lg:hidden">
           <nav className="container-px mx-auto flex max-w-6xl flex-col gap-1 py-3">
             {navLinks.map((link) => (
               <Link

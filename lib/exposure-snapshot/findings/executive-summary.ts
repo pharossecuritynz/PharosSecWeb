@@ -74,7 +74,7 @@ function buildOverallPictureText(strengthCount: number, reviewCount: number, pri
       : "no protections confirmed in place yet";
 
   if (reviewCount === 0) {
-    return `We found ${strengthPart}, and nothing that needs attention from this scan. That's a solid external picture, though this scan only covers what's publicly observable — it isn't a guarantee against every risk.`;
+    return `We found ${strengthPart}, and nothing that needs attention from this scan. That's a solid external picture, though this scan only covers what's publicly observable. It isn't a guarantee against every risk.`;
   }
 
   const reviewPart = `${reviewCount} thing${reviewCount === 1 ? "" : "s"} worth reviewing`;
